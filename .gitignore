@@ -35,3 +35,9 @@ Icon
 # License
 # ---------------
 /site/config/.license
+
+
+# Custom
+# ---------------
+# Don't check in Kirby website content
+/content/*
