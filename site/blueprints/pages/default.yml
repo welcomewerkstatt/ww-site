@@ -22,10 +22,6 @@ status:
     label: Menu Page
     text: The page is listed in the main menu
 
-# Limit subpage display to certain templates in a page preset
-pages:
-  template: default
-
 # A page preset can have a freely defined set of fields
 # List of all available field types: https://getkirby.com/docs/reference/panel/fields
 fields:
