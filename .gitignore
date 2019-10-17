@@ -41,3 +41,7 @@ Icon
 # ---------------
 # Don't check in Kirby website content
 /content/*
+
+/vendor/*
+
+/.vscode/*

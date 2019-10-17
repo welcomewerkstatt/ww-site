@@ -7,7 +7,7 @@
     <h3><?= $page->headline()->kt() ?></h3>
     <?= $page->text()->kt() ?>
   </section>
-  <?php snippet('sidebar') ?>
+  <?php snippet('sidebarCalendar', ['calendar' => $calendar]) ?>
 </div>
 
 <?php snippet('footer') ?>

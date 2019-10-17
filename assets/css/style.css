@@ -5,6 +5,7 @@
   --primary-blue: #232931;
   --highlight-green: #12b27f;
   --background-white: #f1f1f1;
+  --border-grey: #ced4da;
   --column-width: calc(1260px / 3);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -21,24 +22,60 @@ a {
   text-decoration: none;
 }
 
-button {
+table {
+  border-collapse: collapse;
+}
+
+table, th, td {
+  border: 1px solid black;
+}
+
+th, td {
+  padding: 10px;
+}
+
+.button {
   background-color: var(--highlight-green);
   font-weight: bold;
-  border: none;
   color: white;
-  padding: 0.8em 3em;
+  padding: 0.5em 3em;
   text-align: center;
-  text-decoration: none;
   display: inline-block;
-  margin-bottom: 1em;
-  width: 100%;
 }
 
 h1, h2, h3, h4, h5, h6, button {
   font-family: "Raleway", sans-serif;
 }
+
 h4 {
   border-bottom: 4px solid var(--highlight-green);
+  margin-bottom: 1em;
+  font-weight: 600;
+  font-size: 1.2em;
+}
+
+input, textarea {
+  border-radius: 0.25rem;
+  border: 1px solid var(--border-grey);
+  padding: .375rem .75rem;
+}
+
+form > .field {
+  display: flex;
+  max-width: 800px;
+  flex-wrap: wrap;
+}
+
+form > .field > label {
+  flex: 1 0 120px;
+}
+
+form > .field > input {
+  flex: 1 0 220px;
+}
+
+.field {
+  margin-bottom: 2rem;
 }
 
 main {
@@ -95,6 +132,10 @@ nav ul img {
   padding-bottom: 0.5em;
 }
 
+.honeypot {
+  position: absolute;
+  left: -9999px;
+}
 
 
 .hamburger-icon {
@@ -179,8 +220,12 @@ nav a:hover {
     margin: 0;
   }
 
-  nav ul > li {
+  nav > ul > li {
     padding: 1em;
+  }
+
+  nav > ul > li > ul > li{
+    padding: 0.5em 1em;
   }
 
   nav > ul > li:first-child {
@@ -199,12 +244,11 @@ nav a:hover {
   nav ul li ul {
     display: none;
     position: absolute;
-    top: 2.5em;
+    top: 2.75em;
     background-color: var(--highlight-green);
     min-width: 80%;
     white-space: nowrap;
     margin-left: -1em;
-    padding: 1em;
     box-shadow: 6px 6px 12px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
   }
@@ -242,7 +286,6 @@ nav a:hover {
 
 nav ul {
   padding: 0;
-  text-align: center;
   position: relative;
 }
 
@@ -292,7 +335,7 @@ nav .active > a {
 }
 
 .content-row {
-  padding-top: 1.5em;
+  padding: 1.5em 0;
   grid-row: content;
 }
 
@@ -323,4 +366,37 @@ nav .active > a {
   padding: 0.2em;
   transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
+}
+
+.calendar {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.calendar li {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.undecoratedLink {
+  color: var(--primary-blue);
+  text-decoration: none;
+}
+
+.icon {
+  display: inline-flex;
+  align-self: center;
+}
+
+.icon svg, .icon img {
+  height: 1em;
+  width: 1em;
+  fill: var(--primary-blue);
+}
+
+.icon.baseline svg, .icon img {
+  top: .125em;
+  position: relative;
 }
