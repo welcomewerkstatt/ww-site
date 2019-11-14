@@ -99,26 +99,96 @@
 
 
 
-        <h4>Beiträge</h4>
-        <p>Die einmalige Aufnahmegebühr beträgt zehn Euro. Der Mitgliedsbeitrag wird monatlich berechnet gemäß Beitragstabelle.</p>
+        <h4>Mitgliedschaft & Beiträge</h4>
+        <p>Die einmalige Aufnahmegebühr beträgt zehn Euro. Der Mitgliedsbeitrag wird monatlich berechnet gemäß der <a href="beitragsordnung">Beitragsordnung zum Zeitpunkt dieses Antrags</a>.</p>
         <p>Ich wähle die folgende Mitgliedschaft:</p>
         <div class="formRow">
 
           <div class="radio">
             <input type="radio" id="regular" name="membership" value="regular">
-            <label for="regular">Ordentliche Mitgliedschaft</label>
-            <label class="secondaryLabel" for="regular">Ordentliche Mitglieder zahlen den vollen Mitgliedsbeitrag und haben ein Stimmrecht auf allen Mitgliederversammlungen des Vereins. </label>
+            <div class="radioLabelsContainer">
+              <label for="regular">Ordentliche Mitgliedschaft</label>
+              <label class="secondaryLabel" for="regular">Ordentliche Mitglieder zahlen den vollen Mitgliedsbeitrag und haben ein Stimmrecht auf allen Mitgliederversammlungen des Vereins. </label>
+            </div>
           </div>
 
           <div class="radio">
             <input type="radio" id="extra" name="membership" value="extra">
-            <label for="extra">Fördermitgliedschaft</label>
-            <label class="secondaryLabel" for="extra">Fördermitglieder unterstützen den Verein finanziell durch einen frei gewählten Monatsbeitrag. Sie haben kein Stimmrecht auf Mitgliederversammlungen. </label>
+            <div class="radioLabelsContainer">
+              <label for="extra">Fördermitgliedschaft</label>
+              <label class="secondaryLabel" for="extra">Fördermitglieder unterstützen den Verein finanziell durch einen frei gewählten Monatsbeitrag. Sie haben kein Stimmrecht auf Mitgliederversammlungen. </label>
+            </div>
           </div>
 
         </div>
-        <?= isset($alert['text']) ? '<span class="alert error">' . html($alert['text']) . '</span>' : '' ?>
-        <input type="submit" name="submit" value="Absenden" class="button">
+        <p>Ich möchte meinen Beitrag
+          <select name="interval" id="interval-select">
+            <option value="monthly">monatlich</option>
+            <option value="quarterly">quartalsweise</option>
+            <option value="halfyear">halbjährlich</option>
+            <option value="yearly">jährlich</option>
+          </select> bezahlen, und zwar via:</p>
+        <div class="formRow">
+
+          <div class="radio">
+            <input type="radio" id="bankTransfer" name="payment" value="bankTransfer">
+            <div class="radioLabelsContainer">
+              <label for="bankTransfer">Banküberweisung/Dauerauftrag</label>
+              <label class="secondaryLabel" for="bankTransfer">Ich überweise die Beiträge manuell beziehungsweise kümmere mich um die Einrichtung eines Dauerauftrags. </label>
+            </div>
+          </div>
+
+          <div class="radio">
+            <input type="radio" id="sepaRecurring" name="payment" value="sepaRecurring">
+            <div class="radioLabelsContainer">
+              <label for="sepaRecurring">SEPA-Lastschriftmandat</label>
+              <label class="secondaryLabel" for="sepaRecurring">Ich erstelle ein SEPA-Mandat, und die Beiträge werden automatisch von meinem Konto abgebucht.</label>
+            </div>
+          </div>
+
+        </div>
+        <div>
+          <p>Bitte richte deine Überweisung an folgendes Konto:<br />
+            <strong>Inhaber:</strong> Welcome Werkstatt e.V.<br />
+            <strong>IBAN:</strong> DE31 2005 0550 1240 1316 70<br />
+            <strong>BIC:</strong> HASPDEHHXXX<br />
+            <strong>Bank:</strong> Hamburger Sparkasse</p>
+        </div>
+        <div class="formRow">
+          <div class="field">
+            <label for="sepaOwner">
+              Kontoinhaber
+            </label>
+            <input type="text" id="sepaOwner" name="sepaOwner" value="<?= $data['sepaOwner'] ?? '' ?>" required>
+            <?= isset($alert['sepaOwner']) ? '<span class="alert error">' . html($alert['sepaOwner']) . '</span>' : '' ?>
+          </div>
+          <div class="field">
+            <label for="sepaBank">
+              Bank
+            </label>
+            <input type="text" id="sepaBank" name="sepaBank" value="<?= $data['sepaBank'] ?? '' ?>" required>
+            <?= isset($alert['sepaBank']) ? '<span class="alert error">' . html($alert['sepaBank']) . '</span>' : '' ?>
+          </div>
+        </div>
+        <div class="formRow">
+          <div class="field">
+            <label for="sepaIban">
+              IBAN
+            </label>
+            <input type="text" id="sepaIban" name="sepaIban" value="<?= $data['sepaIban'] ?? '' ?>" required>
+            <?= isset($alert['sepaIban']) ? '<span class="alert error">' . html($alert['sepaIban']) . '</span>' : '' ?>
+          </div>
+          <div class="field">
+            <label for="sepaBic">
+              BIC
+            </label>
+            <input type="text" id="sepaBic" name="sepaBic" value="<?= $data['sepaBic'] ?? '' ?>" required>
+            <?= isset($alert['sepaBic']) ? '<span class="alert error">' . html($alert['sepaBic']) . '</span>' : '' ?>
+          </div>
+        </div>
+        
+
+          <input type="submit" name="submit" value="Absenden" class="button">
       </form>
     <?php endif ?>
   </section>

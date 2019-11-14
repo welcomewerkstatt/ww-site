@@ -432,8 +432,23 @@ nav .active > a {
 
 #memberForm .radio {
   flex: 1;
-  border: 1px solid var(--primary-blue);
+  border: 1px solid rgba(35,41,49,0.2);
   padding: 1em;
+  display: flex;
+  align-items: flex-start;
+}
+
+#memberForm .radio:nth-of-type(even) {
+  margin-left: 2em;
+}
+
+#memberForm .radio input {
+  margin: 0.5em 0.9em 0 0;
+}
+
+#memberForm .radioLabelsContainer {
+  display: flex;
+  flex-direction: column;
 }
 
 #memberForm .formRow label:first-of-type {
@@ -443,4 +458,5 @@ nav .active > a {
 #memberForm .secondaryLabel {
   display: block;
   font-style: italic;
+  line-height: 1.3em;
 }
