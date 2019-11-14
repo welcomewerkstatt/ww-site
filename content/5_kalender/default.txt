@@ -1,0 +1,5 @@
+Title: Kalender
+
+----
+
+Text: (embed: <iframe style="margin-bottom: 2em" src="https://calendar.google.com/calendar/embed?height=800&amp;wkst=2&amp;bgcolor=%23f1f1f1&amp;ctz=Europe%2FBerlin&amp;src=dW5iMjZrZnYybGRwMzEwaGs1ZjUwZTlldWlnbTQxZWpAaW1wb3J0LmNhbGVuZGFyLmdvb2dsZS5jb20&amp;color=%237CB342&amp;showPrint=0&amp;showTz=0&amp;showTabs=0&amp;showCalendars=0&amp;showDate=1&amp;showTitle=0&amp;hl=de" style="border-width:0" width="1260" height="800" frameborder="0" scrolling="no"></iframe>)
