@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title><?= $site->title() ?> | <?= $page->title() ?></title>
   <?= css(['assets/css/normalize.css','assets/css/style.css', '@auto']) ?>
+  <?= css('assets/css/print.css', 'print') ?>
 </head>
 
 <body>

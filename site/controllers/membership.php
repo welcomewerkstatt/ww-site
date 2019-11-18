@@ -12,10 +12,18 @@ return function ($kirby, $pages, $page) {
     }
 
     $data = [
-      'name'  => get('name'),
+      'firstName'  => get('firstName'),
+      'lastName'  => get('lastName'),
+      'street'  => get('street'),
+      'houseNumber'  => get('houseNumber'),
+      'plz'  => get('plz'),
+      'city'  => get('city'),
       'email' => get('email'),
-      'text'  => get('text')
+      'phone'  => get('phone')
     ];
+
+
+    var_dump($data);
 
     $rules = [
       'name'  => ['required', 'min' => 3],

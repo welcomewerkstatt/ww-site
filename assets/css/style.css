@@ -1,5 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900&display=swap");
-@import url("https://fonts.googleapis.com/css?family=PT+Sans:400,700&display=swap");
+@import "fonts.css";
 
 :root {
   --primary-blue: #232931;
@@ -404,23 +403,33 @@ nav .active > a {
 #memberForm .formRow {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
 }
 
-#memberForm .formRow .field:first-child {
-  margin-right: 2rem;
+@media only screen and (min-device-width: 800px) {
+  #memberForm > .formRow > .field:first-child {
+    margin-right: 2rem;
+  }
 }
 
 #memberForm .formRow .field {
   display: flex;
   flex: 1;
   justify-content: space-between;
+  align-items: baseline;
 }
 
 #memberForm .field > input {
   flex: 2;
 }
 
+#memberForm input:required ~ label:after {
+    content: ' *';
+    display:inline;
+}
+
 #memberForm .field > label {
+  min-width: 7.5rem;
   flex: 1;
 }
 
@@ -432,8 +441,30 @@ nav .active > a {
 
 #memberForm .radio {
   flex: 1;
-  border: 1px solid var(--primary-blue);
+  border: 1px solid rgba(35,41,49,0.2);
   padding: 1em;
+  display: flex;
+  align-items: flex-start;
+}
+
+#memberForm .radio:nth-of-type(even) {
+  margin-top: 2em;
+}
+
+@media only screen and (min-device-width: 800px) {
+  #memberForm .radio:nth-of-type(even) {
+    margin-top: 0;
+    margin-left: 2em;
+  }
+}
+
+#memberForm .radio input {
+  margin: 0.5em 0.9em 0 0;
+}
+
+#memberForm .radioLabelsContainer {
+  display: flex;
+  flex-direction: column;
 }
 
 #memberForm .formRow label:first-of-type {
@@ -443,4 +474,5 @@ nav .active > a {
 #memberForm .secondaryLabel {
   display: block;
   font-style: italic;
+  line-height: 1.3em;
 }
