@@ -24,45 +24,48 @@ return function ($page, $site, $kirby) {
     curl_setopt($curlHandler, CURLOPT_RETURNTRANSFER, true);
     $calendar = curl_exec($curlHandler);
 
-    // Parse Calendar
-    $vcalendar = VObject\Reader::read($calendar);
+    try {
+      // Parse Calendar
+      $vcalendar = VObject\Reader::read($calendar);
+      $now = new DateTime();
+      $threeMonthsFromNow = (new DateTime())->add(new DateInterval('P3M'));
+      // Expand recurring events to be looped over
+      $expandedVCalendar = $vcalendar->expand($now, $threeMonthsFromNow);
+    } catch (Exception $e) {
+      $expandedVCalendar = array();
+    }
 
-    $now = new DateTime();
-    $threeMonthsFromNow = (new DateTime())->add(new DateInterval('P3M'));
-
-    // Expand recurring events to be looped over
-    $expandedVCalendar = $vcalendar->expand($now, $threeMonthsFromNow);
     // echo "<pre>";
     // print_r($expandedVCalendar->serialize());
     // echo "</pre>";
 
     $eventArray = array();
+    if (!empty($expandedVCalendar)) {
+      foreach ($expandedVCalendar->VEVENT as $event) {
+        $localStartTime = $event->DTSTART->getDateTime()->setTimezone(new DateTimeZone('Europe/Berlin'));
+        $localEndTime = $event->DTEND->getDateTime()->setTimezone(new DateTimeZone('Europe/Berlin'));
 
-    foreach ($expandedVCalendar->VEVENT as $event) {
-      $localStartTime = $event->DTSTART->getDateTime()->setTimezone(new DateTimeZone('Europe/Berlin'));
-      $localEndTime = $event->DTEND->getDateTime()->setTimezone(new DateTimeZone('Europe/Berlin'));
+        array_push($eventArray, array(
+          'summary' => (string) $event->SUMMARY,
+          'startTs' => $localStartTime->getTimestamp(),
+          'startDateString' => (string) strftime("%a, %e.%m.", $localStartTime->getTimestamp()),
+          'startTimeString' => (string) $localStartTime->format('G:i'),
+          'endTimeString' => (string) $localEndTime->format('G:i'),
+          'url' => (string) $event->URL
+        ));
+      }
 
-      array_push($eventArray, array(
-        'summary' => (string) $event->SUMMARY,
-        'startTs' => $localStartTime->getTimestamp(),
-        'startDateString' => (string) strftime("%a, %e.%m.", $localStartTime->getTimestamp()),
-        'startTimeString' => (string) $localStartTime->format('G:i'),
-        'endTimeString' => (string) $localEndTime->format('G:i'),
-        'url' => (string) $event->URL
-      ));
+
+      // Sort by time
+      uasort($eventArray, function ($a, $b) {
+        return $a['startTs'] <=> $b['startTs'];
+      });
+
+      // Only use first entries
+      $eventArray = array_slice($eventArray, 0, $eventsToDisplay);
     }
 
-
-    // Sort by time
-    uasort($eventArray, function ($a, $b) {
-      return $a['startTs'] <=> $b['startTs'];
-    });
-
-    // Only use first entries
-    $eventArray = array_slice($eventArray, 0, $eventsToDisplay);
-
     // var_dump($eventArray);  
-
     file_put_contents($cacheFile, json_encode($eventArray), LOCK_EX);
   }
 
