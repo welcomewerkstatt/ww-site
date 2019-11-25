@@ -7,8 +7,9 @@ Kirby::plugin('werkstatt/button', [
         'caption'
       ],
       'html' => function($tag) {
+        $target = Url::to($tag->value);
 
-        return '<a class="button" href="' . $tag->value . '"/>'.$tag->caption.'</a>';
+        return '<a class="button" href="' . $target . '"/>'.$tag->caption.'</a>';
 
       }
     ],
