@@ -19,7 +19,11 @@ return function ($kirby, $pages, $page) {
       'plz'  => get('plz'),
       'city'  => get('city'),
       'email' => get('email'),
-      'phone'  => get('phone')
+      'phone'  => get('phone'),
+      'sepaOwner'  => get('sepaOwner'),
+      'sepaBank'  => get('sepaBank'),
+      'sepaIban'  => get('sepaIban'),
+      'sepaBic'  => get('sepaBic'),
     ];
 
 

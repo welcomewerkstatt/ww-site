@@ -3,7 +3,7 @@
   <script>
     // Show JavaScript elements only when JS is enabled
     window.addEventListener('DOMContentLoaded', event => {
-      document.querySelector('#hideNoScript').style.display='inline'
+      document.querySelector('#hideNoScript').style.display = 'inline'
     });
 
     const tierSelectHandler = element => {
@@ -36,22 +36,23 @@
 
         <div class="honeypot">
           <label for="website">Website <abbr title="required">*</abbr></label>
-          <input type="website" id="website" name="website">
+          <input type="website" id="website" name="website" />
         </div>
+
 
         <div class="formRow">
           <div class="field">
             <label for="firstName">
               Vorname
             </label>
-            <input type="text" id="firstName" name="firstName" value="<?= $data['firstName'] ?? '' ?>" required>
+            <input type="text" id="firstName" name="firstName" value="<?= $data['firstName'] ?? '' ?>" required />
             <?= isset($alert['firstName']) ? '<span class="alert error">' . html($alert['firstName']) . '</span>' : '' ?>
           </div>
           <div class="field">
             <label for="lastName">
               Nachname
             </label>
-            <input type="text" id="lastName" name="lastName" value="<?= $data['lastName'] ?? '' ?>" required>
+            <input type="text" id="lastName" name="lastName" value="<?= $data['lastName'] ?? '' ?>" required />
             <?= isset($alert['lastName']) ? '<span class="alert error">' . html($alert['lastName']) . '</span>' : '' ?>
           </div>
         </div>
@@ -60,14 +61,14 @@
             <label for="street">
               Straße
             </label>
-            <input type="text" id="street" name="street" value="<?= $data['street'] ?? '' ?>" required>
+            <input type="text" id="street" name="street" value="<?= $data['street'] ?? '' ?>" required />
             <?= isset($alert['street']) ? '<span class="alert error">' . html($alert['street']) . '</span>' : '' ?>
           </div>
           <div class="field">
             <label for="houseNumber">
               Hausnummer
             </label>
-            <input type="text" id="houseNumber" name="houseNumber" value="<?= $data['houseNumber'] ?? '' ?>" required>
+            <input type="text" id="houseNumber" name="houseNumber" value="<?= $data['houseNumber'] ?? '' ?>" required />
             <?= isset($alert['houseNumber']) ? '<span class="alert error">' . html($alert['houseNumber']) . '</span>' : '' ?>
           </div>
         </div>
@@ -76,14 +77,14 @@
             <label for="plz">
               PLZ
             </label>
-            <input type="text" id="plz" name="plz" value="<?= $data['plz'] ?? '' ?>" required>
+            <input type="text" id="plz" name="plz" value="<?= $data['plz'] ?? '' ?>" required />
             <?= isset($alert['plz']) ? '<span class="alert error">' . html($alert['plz']) . '</span>' : '' ?>
           </div>
           <div class="field">
             <label for="city">
               Ort
             </label>
-            <input type="text" id="city" name="city" value="<?= $data['city'] ?? '' ?>" required>
+            <input type="text" id="city" name="city" value="<?= $data['city'] ?? '' ?>" required />
             <?= isset($alert['city']) ? '<span class="alert error">' . html($alert['city']) . '</span>' : '' ?>
           </div>
         </div>
@@ -92,14 +93,14 @@
             <label for="email">
               E-Mail
             </label>
-            <input type="email" id="email" name="email" value="<?= $data['email'] ?? '' ?>" required>
+            <input type="email" id="email" name="email" value="<?= $data['email'] ?? '' ?>" required />
             <?= isset($alert['email']) ? '<span class="alert error">' . html($alert['email']) . '</span>' : '' ?>
           </div>
           <div class="field">
             <label for="phone">
               Telefon
             </label>
-            <input type="text" id="phone" name="phone" value="<?= $data['phone'] ?? '' ?>" required>
+            <input type="text" id="phone" name="phone" value="<?= $data['phone'] ?? '' ?>" required />
             <?= isset($alert['phone']) ? '<span class="alert error">' . html($alert['phone']) . '</span>' : '' ?>
           </div>
         </div>
@@ -116,7 +117,7 @@
         <div class="formRow">
 
           <div class="radio">
-            <input type="radio" id="regular" name="membership" value="regular">
+            <input type="radio" id="regular" name="membership" value="regular" />
             <div class="radioLabelsContainer">
               <label for="regular">Ordentliche Mitgliedschaft</label>
               <label class="secondaryLabel" for="regular">Ordentliche Mitglieder zahlen den vollen Mitgliedsbeitrag und haben ein Stimmrecht auf allen Mitgliederversammlungen des Vereins. </label>
@@ -124,7 +125,7 @@
           </div>
 
           <div class="radio">
-            <input type="radio" id="extra" name="membership" value="extra">
+            <input type="radio" id="extra" name="membership" value="extra" />
             <div class="radioLabelsContainer">
               <label for="extra">Fördermitgliedschaft</label>
               <label class="secondaryLabel" for="extra">Fördermitglieder unterstützen den Verein finanziell durch einen frei gewählten Monatsbeitrag. Sie haben kein Stimmrecht auf Mitgliederversammlungen. </label>
@@ -147,7 +148,7 @@
           <label for="partnerName">
             Name des Partners:
           </label>
-          <input type="text" id="partnerName" name="partnerName" value="<?= $data['partnerName'] ?? '' ?>">
+          <input type="text" id="partnerName" name="partnerName" value="<?= $data['partnerName'] ?? '' ?>" />
           <?= isset($alert['partnerName']) ? '<span class="alert error">' . html($alert['partnerName']) . '</span>' : '' ?>
         </div>
 
@@ -163,23 +164,34 @@
         <div class="formRow">
 
           <div class="radio">
-            <input type="radio" id="bankTransfer" name="payment" value="bankTransfer">
+            <input type="radio" id="bankTransfer" name="payment" value="bankTransfer" />
             <div class="radioLabelsContainer">
               <label for="bankTransfer">Banküberweisung/Dauerauftrag</label>
               <label class="secondaryLabel" for="bankTransfer">Ich überweise die Beiträge manuell beziehungsweise kümmere mich um die Einrichtung eines Dauerauftrags. </label>
-              <div>
-                <p>Bitte richte deine Überweisung an folgendes Konto:<br /><br />
-                  <strong>Inhaber:</strong> Welcome Werkstatt e.V.<br />
-                  <strong>IBAN:</strong> DE31 2005 0550 1240 1316 70<br />
-                  <strong>BIC:</strong> HASPDEHHXXX<br />
-                  <strong>Bank:</strong> Hamburger Sparkasse
-                </p>
+              <div class="accountInfo">
+                Bitte richte deine Überweisung an folgendes Konto:<br /><br />
+                <div class="line">
+                  <div>Inhaber:&nbsp;</div>
+                  <div>Welcome Werkstatt e.V.</div>
+                </div>
+                <div class="line">
+                  <div>IBAN:&nbsp;</div>
+                  <div>DE31 2005 0550 1240 1316 70</div>
+                </div>
+                <div class="line">
+                  <div>BIC:&nbsp;</div>
+                  <div>HASPDEHHXXX</div>
+                </div>
+                <div class="line">
+                  <div>Bank:&nbsp;</div>
+                  <div>Hamburger Sparkasse</div>
+                </div>
               </div>
             </div>
           </div>
 
           <div class="radio">
-            <input type="radio" id="sepaRecurring" name="payment" value="sepaRecurring">
+            <input type="radio" id="sepaRecurring" name="payment" value="sepaRecurring" />
             <div class="radioLabelsContainer">
               <label for="sepaRecurring">SEPA-Lastschriftmandat</label>
               <label class="secondaryLabel" for="sepaRecurring">Ich erstelle ein SEPA-Mandat und die Beiträge werden automatisch von meinem Konto abgebucht.</label>
@@ -188,28 +200,28 @@
                   <label for="sepaOwner">
                     Kontoinhaber
                   </label>
-                  <input type="text" id="sepaOwner" name="sepaOwner" value="<?= $data['sepaOwner'] ?? '' ?>">
+                  <input type="text" id="sepaOwner" name="sepaOwner" value="<?= $data['sepaOwner'] ?? '' ?>" />
                   <?= isset($alert['sepaOwner']) ? '<span class="alert error">' . html($alert['sepaOwner']) . '</span>' : '' ?>
                 </div>
                 <div class="field">
                   <label for="sepaBank">
                     Bank
                   </label>
-                  <input type="text" id="sepaBank" name="sepaBank" value="<?= $data['sepaBank'] ?? '' ?>">
+                  <input type="text" id="sepaBank" name="sepaBank" value="<?= $data['sepaBank'] ?? '' ?>" />
                   <?= isset($alert['sepaBank']) ? '<span class="alert error">' . html($alert['sepaBank']) . '</span>' : '' ?>
                 </div>
                 <div class="field">
                   <label for="sepaIban">
                     IBAN
                   </label>
-                  <input type="text" id="sepaIban" name="sepaIban" value="<?= $data['sepaIban'] ?? '' ?>">
+                  <input type="text" id="sepaIban" name="sepaIban" value="<?= $data['sepaIban'] ?? '' ?>" />
                   <?= isset($alert['sepaIban']) ? '<span class="alert error">' . html($alert['sepaIban']) . '</span>' : '' ?>
                 </div>
                 <div class="field">
                   <label for="sepaBic">
                     BIC
                   </label>
-                  <input type="text" id="sepaBic" name="sepaBic" value="<?= $data['sepaBic'] ?? '' ?>">
+                  <input type="text" id="sepaBic" name="sepaBic" value="<?= $data['sepaBic'] ?? '' ?>" />
                   <?= isset($alert['sepaBic']) ? '<span class="alert error">' . html($alert['sepaBic']) . '</span>' : '' ?>
                 </div>
               </div>
@@ -218,7 +230,7 @@
           </div>
         </div>
 
-        <input type="submit" name="submit" value="Absenden" class="button">
+        <input type="submit" name="submit" value="Absenden" class="button" />
 
 
       </form>

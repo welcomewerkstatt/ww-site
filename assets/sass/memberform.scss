@@ -1,0 +1,96 @@
+@use 'variables';
+
+#memberForm {
+  display: flex;
+  flex-direction: column;
+
+  .formRow {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  @media only screen and (min-device-width: variables.$breakpoint) {
+    & > .formRow > .field:first-child {
+      margin-right: 2rem;
+    }
+  }
+
+  .formRow .field {
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+  }
+
+  .field > input {
+    flex: 2;
+  }
+
+  input:required ~ label:after {
+    content: " *";
+    display: inline;
+  }
+
+  .field > label {
+    min-width: 7.5rem;
+    flex: 1;
+  }
+
+  .checkbox > label > input {
+    position: relative;
+    vertical-align: middle;
+    bottom: 3px;
+  }
+
+  .radio {
+    flex: 1;
+    border: 1px solid rgba(35, 41, 49, 0.2);
+    padding: 1em;
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .radio:nth-of-type(even) {
+    margin-top: 2em;
+  }
+
+  @media only screen and (min-device-width: variables.$breakpoint) {
+    .radio:nth-of-type(even) {
+      margin-top: 0;
+      margin-left: 2em;
+    }
+  }
+
+  .radio > input {
+    margin: 0.5em 0.9em 0 0;
+  }
+
+  .radioLabelsContainer {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .formRow label:first-of-type {
+    font-weight: bold;
+  }
+
+  .secondaryLabel {
+    display: block;
+    font-style: italic;
+    line-height: 1.3em;
+    margin-bottom: 0.5em;
+  }
+
+  .accountInfo {
+    .line {
+      display: flex;
+      flex-wrap: wrap;
+
+      div:first-child {
+        font-weight: bold;
+      }
+    }
+  }
+}
