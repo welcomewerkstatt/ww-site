@@ -3,6 +3,7 @@
 @use 'normalize';
 @use 'grid';
 @use 'memberform';
+@use 'footer';
 
 /* Generic */
 :root {
@@ -212,7 +213,7 @@ nav ul li ul li {
     height: 8em;
   }
 
-  /* Desktop Menu */
+  /* Desktop Menu and Footer */
   nav ul {
     display: flex;
     flex-wrap: wrap;
@@ -306,8 +307,6 @@ nav .open {
   display: block;
 }
 
-
-
 nav .open.active > a {
   display: block;
 }
@@ -316,8 +315,6 @@ nav .active > a {
   margin: 0 auto;
   color: black;
 }
-
-
 
 /* -- */
 

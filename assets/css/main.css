@@ -515,6 +515,36 @@ main {
   font-weight: bold;
 }
 
+footer nav {
+  display: flex;
+  justify-content: space-between;
+}
+footer nav ul {
+  display: flex;
+}
+footer nav ul li {
+  display: block;
+}
+footer nav ul li:not(:last-child) {
+  margin-right: 1em;
+}
+footer nav .socialMediaIcons {
+  padding: 1em 0;
+  display: flex;
+}
+footer nav .socialMediaIcons .socialMediaIcon svg {
+  display: block;
+  fill: white;
+  width: 1.5em;
+  height: 1.5em;
+}
+footer nav .socialMediaIcons .socialMediaIcon a {
+  color: white;
+}
+footer nav .socialMediaIcons .socialMediaIcon:not(:first-child) {
+  margin-left: 1em;
+}
+
 /* Generic */
 :root {
   --primary-blue: #232931;
@@ -714,7 +744,7 @@ nav ul li ul li {
     height: 8em;
   }
 
-  /* Desktop Menu */
+  /* Desktop Menu and Footer */
   nav ul {
     display: flex;
     flex-wrap: wrap;
