@@ -1,5 +1,7 @@
 <?php
 
+// Usage: (button: link/target caption: My button)
+
 Kirby::plugin('werkstatt/button', [
   'tags' => [
     'button' => [

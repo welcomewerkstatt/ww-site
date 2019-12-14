@@ -4,44 +4,15 @@ Title: Home
 
 Text:
 
-[
-    {
-        "attrs": [],
-        "content": "Herzlich Willkommen bei der Welcome Werkstatt e. V. in Barmbek-S\u00fcd!",
-        "id": "_avEG52w2T",
-        "type": "paragraph"
-    },
-    {
-        "attrs": [],
-        "content": "Wir sind eine Werkstatt zum Mitmachen. Wir stehen noch ganz am Anfang, allerdings gibt es schon die M\u00f6glichkeit Holzprojekte zu realisieren. Weitere Bereiche sollen nach und nach folgen. Hier kannst du dich abends und am Wochenende handwerklich austoben.",
-        "id": "_k97dEydj4",
-        "type": "paragraph"
-    },
-    {
-        "attrs": [],
-        "content": "Wir z\u00e4hlen auf das Engagement unserer Mitglieder beim Aufbau und der Weiterentwicklung der Werkstatt und w\u00fcrden uns freuen Dich bald dazuz\u00e4hlen zu k\u00f6nnen.",
-        "id": "_amN5lN0GE",
-        "type": "paragraph"
-    },
-    {
-        "attrs": [],
-        "content": "Auf den Folgeseiten kannst du mehr \u00fcber uns erfahren. Am besten kommst du uns aber direkt mal besuchen: So findest du uns!",
-        "id": "_iqhFLebJK",
-        "type": "paragraph"
-    },
-    {
-        "attrs": [],
-        "content": "<a href=\"http://www.google.de/\">Mitglied werden!</a>",
-        "id": "_tHz8Nb9mC",
-        "type": "paragraph"
-    },
-    {
-        "attrs": [],
-        "content": "Wir freuen uns auf dich!",
-        "id": "_XXomXmPK0",
-        "type": "paragraph"
-    }
-]
+Herzlich Willkommen bei der Welcome Werkstatt e. V. in Barmbek-Süd!
+
+Wir sind eine offene Werkstatt zum Mitmachen. Unser Konzept ist, dass wir Platz und Werkzeug bereitstellen, damit ihr eure handwerklichen Projekte realisieren könnt. Bei uns kannst du dich abends und am Wochenende handwerklich austoben und mit Gleichgesinnten austauschen.
+
+Wir zählen auf das Engagement unserer Mitglieder beim Aufbau und der Weiterentwicklung der Werkstatt und würden uns freuen, Dich bald dazuzählen zu können.
+
+(button: verein/mitgliedsantrag caption: Mitglied werden!)
+
+Auf den Folgeseiten kannst du mehr über uns erfahren. Am besten kommst du uns aber einfach mal besuchen.
 
 ----
 
