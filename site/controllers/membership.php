@@ -20,6 +20,8 @@ return function ($kirby, $pages, $page) {
       'city'  => get('city'),
       'email' => get('email'),
       'phone'  => get('phone'),
+      'agree1'  => get('agree1'),
+      'partner'  => get('partner'),
       'sepaOwner'  => get('sepaOwner'),
       'sepaBank'  => get('sepaBank'),
       'sepaIban'  => get('sepaIban'),
@@ -30,15 +32,36 @@ return function ($kirby, $pages, $page) {
     var_dump($data);
 
     $rules = [
-      'name'  => ['required', 'min' => 3],
+      'firstName'  => ['required', 'min' => 2],
+      'lastName'  => ['required', 'min' => 2],
+      'street'  => ['required', 'min' => 2],
+      'houseNumber'  => ['required', 'alphanum'],
+      'plz'  => ['required', 'num', 'size' => 5],
+      'city'  => ['required', 'min' => 2],
       'email' => ['required', 'email'],
-      'text'  => ['required', 'min' => 3, 'max' => 3000],
+      'phone'  => ['required', 'min' => 4],
+      'agree1'  => ['accepted'],
+      'partner'  => ['accepted'],
+      'sepaOwner'  => ['min' => 2],
+      'sepaBank'  => ['min' => 2],
+      'sepaIban'  => ['min' => 2],
+      'sepaBic'  => ['min' => 2]
     ];
 
     $messages = [
-      'name'  => 'Please enter a valid name',
-      'email' => 'Please enter a valid email address',
-      'text'  => 'Please enter a text between 3 and 3000 characters'
+      'firstName'  => 'Bitte gib einen gültigen Vornamen ein.',
+      'lastName'  => 'Bitte gib einen gültigen Nachnamen ein.',
+      'street'  => 'Bitte gib eine gültige Straße ein.',
+      'houseNumber'  => 'Bitte gib eine gültige Hausnummer ein.',
+      'plz'  => 'Bitte gib eine gültige Postleitzahl ein.',
+      'city'  => 'Bitte gib eine gültige Stadt ein.',
+      'email' => 'Bitte gib eine gültige Mailadresse ein.',
+      'phone'  => 'Bitte gib eine gültige Telefonnummer ein.',
+      'agree1'  => 'Bitte akzeptiere die Datenweitergabe.',
+      'sepaOwner'  => 'Bitte gib einen gültigen Kontoinhaber ein.',
+      'sepaBank'  => 'Bitte gib eine gültige Bank ein.',
+      'sepaIban'  => 'Bitte gib eine gültige IBAN ein.',
+      'sepaBic'  => 'Bitte gib eine gültige BIC ein.'
     ];
 
     // some of the data is invalid
