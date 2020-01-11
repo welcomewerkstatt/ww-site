@@ -10,13 +10,13 @@
               </li>
             <?php endforeach ?>
           </ul>
-          <div class="socialMediaIcons">
-            <div class="socialMediaIcon">
+          <div class="social-media-icons">
+            <div class="social-media-icon">
               <a href="https://www.facebook.com/welcome.werkstatt/">
                 <?= svg("assets/img/facebook_icon.svg") ?>
               </a>
             </div>
-            <div class="socialMediaIcon">
+            <div class="social-media-icon">
               <a href="https://twitter.com/WelcomeWerk">
                 <?= svg("assets/img/twitter_icon.svg") ?>
               </a>

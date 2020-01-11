@@ -1,22 +1,22 @@
 @use 'variables';
 
-#memberForm {
+#member-form {
   display: flex;
   flex-direction: column;
 
-  .formRow {
+  .form-row {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
   }
 
   @media only screen and (min-device-width: variables.$breakpoint) {
-    & > .formRow > .field:first-child {
+    & > .form-row > .field:first-child {
       margin-right: 2rem;
     }
   }
 
-  .formRow .field {
+  .form-row .field {
     display: flex;
     flex: 1;
     justify-content: space-between;
@@ -72,18 +72,18 @@
     flex-direction: column;
   }
 
-  .formRow label:first-of-type {
+  .form-row label:first-of-type {
     font-weight: bold;
   }
 
-  .secondaryLabel {
+  .secondary-label {
     display: block;
     font-style: italic;
     line-height: 1.3em;
     margin-bottom: 0.5em;
   }
 
-  .accountInfo {
+  .account-info {
     .line {
       display: flex;
       flex-wrap: wrap;

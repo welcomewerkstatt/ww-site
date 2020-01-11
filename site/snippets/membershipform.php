@@ -6,18 +6,28 @@
       document.querySelector('#hideNoScript').style.display = 'inline'
     });
 
-    const tierSelectHandler = element => {
-      const selectedFee = element.options[element.selectedIndex].dataset.fee;
-      const selectedValue = element.options[element.selectedIndex].value;
+    const updateFee = () => {
+      const intervalFeeDisplayElement = document.querySelector('#feeInterval');
       const feeDisplayElement = document.querySelector('#fee');
+
+      const tierSelectElement = document.querySelector('#tier-select');
+      const intervalSelectElement = document.querySelector('#interval-select');
+
       const partnerNameContainer = document.querySelector('#partnerNameContainer');
+
+      const selectedInterval = intervalSelectElement.options[intervalSelectElement.selectedIndex].dataset.multiplicator;
+      const selectedFee = tierSelectElement.options[tierSelectElement.selectedIndex].dataset.fee;
+      const selectedValue = tierSelectElement.options[tierSelectElement.selectedIndex].value;
 
       if (selectedValue === 'partner') {
         partnerNameContainer.style.display = 'block';
       } else {
         partnerNameContainer.style.display = 'none';
       }
-      feeDisplayElement.innerHTML = selectedFee;
+
+      intervalFeeDisplayElement.innerHTML = parseFloat(selectedFee) * parseInt(selectedInterval) + " Euro";
+      feeDisplayElement.innerHTML = selectedFee + " Euro";
+
     }
   </script>
   <section class="content">
@@ -32,7 +42,7 @@
       <?php endif ?>
       <p>Durch das Übersenden des folgenden Formulars beantrage ich die Mitgliedschaft im Verein Welcome Werkstatt e.V.:</p>
       <h4>Persönliche Daten</h4>
-      <form id="memberForm" method="post" action="<?= $page->url() ?>">
+      <form id="member-form" method="post" action="<?= $page->url() ?>">
 
         <div class="honeypot">
           <label for="website">Website <abbr title="required">*</abbr></label>
@@ -40,7 +50,7 @@
         </div>
 
 
-        <div class="formRow">
+        <div class="form-row">
           <div class="field">
             <label for="firstName">
               Vorname
@@ -56,7 +66,7 @@
             <?= isset($alert['lastName']) ? '<span class="alert error">' . html($alert['lastName']) . '</span>' : '' ?>
           </div>
         </div>
-        <div class="formRow">
+        <div class="form-row">
           <div class="field">
             <label for="street">
               Straße
@@ -72,7 +82,7 @@
             <?= isset($alert['houseNumber']) ? '<span class="alert error">' . html($alert['houseNumber']) . '</span>' : '' ?>
           </div>
         </div>
-        <div class="formRow">
+        <div class="form-row">
           <div class="field">
             <label for="plz">
               PLZ
@@ -88,7 +98,7 @@
             <?= isset($alert['city']) ? '<span class="alert error">' . html($alert['city']) . '</span>' : '' ?>
           </div>
         </div>
-        <div class="formRow">
+        <div class="form-row">
           <div class="field">
             <label for="email">
               E-Mail
@@ -104,7 +114,7 @@
             <?= isset($alert['phone']) ? '<span class="alert error">' . html($alert['phone']) . '</span>' : '' ?>
           </div>
         </div>
-        <div class="formRow">
+        <div class="form-row">
           <div class="checkbox">
             <label>
               <input type="checkbox" name="agree1" value="true" /> Ich stimme zu, dass die oben genannten persönlichen Daten mit anderen Vereinsmitgliedern geteilt werden dürfen (optional).</label>
@@ -114,13 +124,13 @@
         <h4>Mitgliedschaft</h4>
         <p>Die einmalige Aufnahmegebühr beträgt zehn Euro. Der Mitgliedsbeitrag wird monatlich gemäß der <a href="beitragsordnung">Beitragsordnung zum Zeitpunkt dieses Antrags</a> berechnet.</p>
         <p>Ich wähle die folgende Mitgliedschaft:</p>
-        <div class="formRow">
+        <div class="form-row">
 
           <div class="radio">
             <input type="radio" id="regular" name="membership" value="regular" />
             <div class="radioLabelsContainer">
               <label for="regular">Ordentliche Mitgliedschaft</label>
-              <label class="secondaryLabel" for="regular">Ordentliche Mitglieder zahlen den vollen Mitgliedsbeitrag und haben ein Stimmrecht auf allen Mitgliederversammlungen des Vereins. </label>
+              <label class="secondary-label" for="regular">Ordentliche Mitglieder zahlen den vollen Mitgliedsbeitrag und haben ein Stimmrecht auf allen Mitgliederversammlungen des Vereins. </label>
             </div>
           </div>
 
@@ -128,18 +138,18 @@
             <input type="radio" id="extra" name="membership" value="extra" />
             <div class="radioLabelsContainer">
               <label for="extra">Fördermitgliedschaft</label>
-              <label class="secondaryLabel" for="extra">Fördermitglieder unterstützen den Verein finanziell durch einen frei gewählten Monatsbeitrag. Sie haben kein Stimmrecht auf Mitgliederversammlungen. </label>
+              <label class="secondary-label" for="extra">Fördermitglieder unterstützen den Verein finanziell durch einen frei gewählten Monatsbeitrag. Sie haben kein Stimmrecht auf Mitgliederversammlungen. </label>
             </div>
           </div>
 
         </div>
         <p>Ich wähle den Tarif für:
-          <select name="tier" id="tier-select" onchange="tierSelectHandler(this)">
-            <option value="adult" data-fee="25 Euro">Erwachsene (ab 18)</option>
-            <option value="partner" data-fee="7,50 Euro">Partner/Familie (im selben Haushalt)</option>
-            <option value="youth" data-fee="15 Euro">Jugendliche (ab 14)</option>
-            <option value="child" data-fee="7,50 Euro">Kinder (unter 14)</option>
-            <option value="senior" data-fee="15 Euro">Senioren (ab 65)</option>
+          <select name="tier" id="tier-select" onchange="updateFee()">
+            <option value="adult" data-fee="25">Erwachsene (ab 18)</option>
+            <option value="partner" data-fee="7.50">Partner/Familie (im selben Haushalt)</option>
+            <option value="youth" data-fee="15">Jugendliche (ab 14)</option>
+            <option value="child" data-fee="7.50">Kinder (unter 14)</option>
+            <option value="senior" data-fee="15">Senioren (ab 65)</option>
           </select>. <span id="hideNoScript" style="display:none;">Der monatliche Mitgliedsbeitrag beläuft sich demnach auf <span id="fee" style="font-weight: bold">25 Euro</span>.</span>
         </p>
 
@@ -155,20 +165,20 @@
 
         <h4>Zahlungsweise</h4>
         <p>Ich möchte meinen Mitgliedsbeitrag
-          <select name="interval" id="interval-select">
-            <option value="monthly">monatlich</option>
-            <option value="quarterly">quartalsweise</option>
-            <option value="halfyear">halbjährlich</option>
-            <option value="yearly">jährlich</option>
-          </select> bezahlen, und zwar via:</p>
-        <div class="formRow">
+          <select name="interval" id="interval-select" onchange="updateFee()">
+            <option value="monthly" data-multiplicator="1">monatlich</option>
+            <option value="quarterly" data-multiplicator="3">quartalsweise</option>
+            <option value="halfyear" data-multiplicator="6">halbjährlich</option>
+            <option value="yearly" data-multiplicator="12">jährlich</option>
+          </select> bezahlen. Für das gewählte Interval beläuft sich der Mitgliedsbeitrag auf <span id="feeInterval" style="font-weight: bold">25 Euro</span>. Ich möchte bezahlen via:</p>
+        <div class="form-row">
 
           <div class="radio">
             <input type="radio" id="bankTransfer" name="payment" value="bankTransfer" />
             <div class="radioLabelsContainer">
               <label for="bankTransfer">Banküberweisung/Dauerauftrag</label>
-              <label class="secondaryLabel" for="bankTransfer">Ich überweise die Beiträge manuell beziehungsweise kümmere mich um die Einrichtung eines Dauerauftrags. </label>
-              <div class="accountInfo">
+              <label class="secondary-label" for="bankTransfer">Ich überweise die Beiträge manuell beziehungsweise kümmere mich um die Einrichtung eines Dauerauftrags. </label>
+              <div class="account-info">
                 Bitte richte deine Überweisung an folgendes Konto:<br /><br />
                 <div class="line">
                   <div>Inhaber:&nbsp;</div>
@@ -190,11 +200,11 @@
             </div>
           </div>
 
-          <div class="radio">
+          <!-- <div class="radio">
             <input type="radio" id="sepaRecurring" name="payment" value="sepaRecurring" />
             <div class="radioLabelsContainer">
               <label for="sepaRecurring">SEPA-Lastschriftmandat</label>
-              <label class="secondaryLabel" for="sepaRecurring">Ich erstelle ein SEPA-Mandat und die Beiträge werden automatisch von meinem Konto abgebucht.</label>
+              <label class="secondary-label" for="sepaRecurring">Ich erstelle ein SEPA-Mandat und die Beiträge werden automatisch von meinem Konto abgebucht.</label>
               <div>
                 <div class="field">
                   <label for="sepaOwner">
@@ -227,8 +237,10 @@
               </div>
             </div>
 
-          </div>
+          </div> -->
+
         </div>
+        <div><span style="font-weight: bold">Hinweis:</span> Momentan können wir leider nur die Zahlung via Überweisung anbieten. Wir arbeiten an der Einführung weiterer Zahlungsarten.</div>
 
         <input type="submit" name="submit" value="Absenden" class="button" />
 

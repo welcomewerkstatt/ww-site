@@ -438,80 +438,80 @@ main {
   background-color: var(--background-white);
 }
 
-#memberForm {
+#member-form {
   display: flex;
   flex-direction: column;
 }
-#memberForm .formRow {
+#member-form .form-row {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 }
 @media only screen and (min-device-width: 800px) {
-  #memberForm > .formRow > .field:first-child {
+  #member-form > .form-row > .field:first-child {
     margin-right: 2rem;
   }
 }
-#memberForm .formRow .field {
+#member-form .form-row .field {
   display: flex;
   flex: 1;
   justify-content: space-between;
   align-items: baseline;
   flex-wrap: wrap;
 }
-#memberForm .field > input {
+#member-form .field > input {
   flex: 2;
 }
-#memberForm input:required ~ label:after {
+#member-form input:required ~ label:after {
   content: " *";
   display: inline;
 }
-#memberForm .field > label {
+#member-form .field > label {
   min-width: 7.5rem;
   flex: 1;
 }
-#memberForm .checkbox > label > input {
+#member-form .checkbox > label > input {
   position: relative;
   vertical-align: middle;
   bottom: 3px;
 }
-#memberForm .radio {
+#member-form .radio {
   flex: 1;
   border: 1px solid rgba(35, 41, 49, 0.2);
   padding: 1em;
   display: flex;
   align-items: flex-start;
 }
-#memberForm .radio:nth-of-type(even) {
+#member-form .radio:nth-of-type(even) {
   margin-top: 2em;
 }
 @media only screen and (min-device-width: 800px) {
-  #memberForm .radio:nth-of-type(even) {
+  #member-form .radio:nth-of-type(even) {
     margin-top: 0;
     margin-left: 2em;
   }
 }
-#memberForm .radio > input {
+#member-form .radio > input {
   margin: 0.5em 0.9em 0 0;
 }
-#memberForm .radioLabelsContainer {
+#member-form .radioLabelsContainer {
   display: flex;
   flex-direction: column;
 }
-#memberForm .formRow label:first-of-type {
+#member-form .form-row label:first-of-type {
   font-weight: bold;
 }
-#memberForm .secondaryLabel {
+#member-form .secondary-label {
   display: block;
   font-style: italic;
   line-height: 1.3em;
   margin-bottom: 0.5em;
 }
-#memberForm .accountInfo .line {
+#member-form .account-info .line {
   display: flex;
   flex-wrap: wrap;
 }
-#memberForm .accountInfo .line div:first-child {
+#member-form .account-info .line div:first-child {
   font-weight: bold;
 }
 
@@ -528,20 +528,20 @@ footer nav ul li {
 footer nav ul li:not(:last-child) {
   margin-right: 1em;
 }
-footer nav .socialMediaIcons {
+footer nav .social-media-icons {
   padding: 1em 0;
   display: flex;
 }
-footer nav .socialMediaIcons .socialMediaIcon svg {
+footer nav .social-media-icons .social-media-icon svg {
   display: block;
   fill: white;
   width: 1.5em;
   height: 1.5em;
 }
-footer nav .socialMediaIcons .socialMediaIcon a {
+footer nav .social-media-icons .social-media-icon a {
   color: white;
 }
-footer nav .socialMediaIcons .socialMediaIcon:not(:first-child) {
+footer nav .social-media-icons .social-media-icon:not(:first-child) {
   margin-left: 1em;
 }
 
