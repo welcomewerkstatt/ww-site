@@ -67,7 +67,7 @@
     margin: 0.5em 0.9em 0 0;
   }
 
-  .radioLabelsContainer {
+  .radio-labels-container {
     display: flex;
     flex-direction: column;
   }
@@ -92,5 +92,21 @@
         font-weight: bold;
       }
     }
+  }
+
+  input,
+  textarea {
+    border-radius: 0.25rem;
+    border: 1px solid var(--border-grey);
+    padding: 0.375rem 0.75rem;
+  }
+
+  .field {
+    margin: 1rem 0;
+  }
+
+  .honeypot {
+    position: absolute;
+    left: -9999px;
   }
 }

@@ -11,25 +11,24 @@ return function ($kirby, $pages, $page) {
       exit;
     }
 
+    var_dump(get());
+
     $data = [
-      'firstName'  => get('firstName'),
-      'lastName'  => get('lastName'),
+      'firstName'  => get('first-name'),
+      'lastName'  => get('last-name'),
       'street'  => get('street'),
-      'houseNumber'  => get('houseNumber'),
+      'houseNumber'  => get('house-number'),
       'plz'  => get('plz'),
       'city'  => get('city'),
       'email' => get('email'),
       'phone'  => get('phone'),
       'agree1'  => get('agree1'),
       'partner'  => get('partner'),
-      'sepaOwner'  => get('sepaOwner'),
-      'sepaBank'  => get('sepaBank'),
-      'sepaIban'  => get('sepaIban'),
-      'sepaBic'  => get('sepaBic'),
+      'sepaOwner'  => get('sepa-owner'),
+      'sepaBank'  => get('sepa-bank'),
+      'sepaIban'  => get('sepa-iban'),
+      'sepaBic'  => get('sepa-bic'),
     ];
-
-
-    var_dump($data);
 
     $rules = [
       'firstName'  => ['required', 'min' => 2],

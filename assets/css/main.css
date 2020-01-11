@@ -494,7 +494,7 @@ main {
 #member-form .radio > input {
   margin: 0.5em 0.9em 0 0;
 }
-#member-form .radioLabelsContainer {
+#member-form .radio-labels-container {
   display: flex;
   flex-direction: column;
 }
@@ -513,6 +513,19 @@ main {
 }
 #member-form .account-info .line div:first-child {
   font-weight: bold;
+}
+#member-form input,
+#member-form textarea {
+  border-radius: 0.25rem;
+  border: 1px solid var(--border-grey);
+  padding: 0.375rem 0.75rem;
+}
+#member-form .field {
+  margin: 1rem 0;
+}
+#member-form .honeypot {
+  position: absolute;
+  left: -9999px;
 }
 
 footer nav {
@@ -684,22 +697,6 @@ nav a:hover {
   right: 0;
   top: 1em;
   z-index: 1;
-}
-
-input,
-textarea {
-  border-radius: 0.25rem;
-  border: 1px solid var(--border-grey);
-  padding: 0.375rem 0.75rem;
-}
-
-.field {
-  margin-bottom: 2rem;
-}
-
-.honeypot {
-  position: absolute;
-  left: -9999px;
 }
 
 nav .open > a {

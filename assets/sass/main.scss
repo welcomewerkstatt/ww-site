@@ -155,22 +155,6 @@ nav {
   z-index: 1;
 }
 
-input,
-textarea {
-  border-radius: 0.25rem;
-  border: 1px solid var(--border-grey);
-  padding: 0.375rem 0.75rem;
-}
-
-.field {
-  margin-bottom: 2rem;
-}
-
-.honeypot {
-  position: absolute;
-  left: -9999px;
-}
-
 nav .open > a {
   display: none;
 }
