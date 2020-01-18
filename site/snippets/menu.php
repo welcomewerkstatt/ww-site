@@ -25,7 +25,7 @@
       </li>
     <?php endforeach ?>
 
-    <li><a href="https://forum.welcome-werkstatt.de/">Forum</a></li>
+    <!-- <li><a href="https://forum.welcome-werkstatt.de/">Forum</a></li> -->
 
   </ul>
 </nav>
