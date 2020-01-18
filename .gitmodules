@@ -3,4 +3,4 @@
 	url = https://github.com/getkirby/kirby.git
 [submodule "content"]
 	path = content
-	url = git@github.com:welcomewerkstatt/ww-content.git
+	url = https://github.com/welcomewerkstatt/ww-content.git
