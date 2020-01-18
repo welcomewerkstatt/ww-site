@@ -1,0 +1,27 @@
+Title: Home
+
+----
+
+Text:
+
+Herzlich Willkommen bei der Welcome Werkstatt e. V. in Barmbek-Süd!
+
+Wir sind eine offene Werkstatt zum Mitmachen. Unser Konzept ist, dass wir Platz und Werkzeug bereitstellen, damit ihr eure handwerklichen Projekte realisieren könnt. Bei uns kannst du dich abends und am Wochenende handwerklich austoben und mit Gleichgesinnten austauschen.
+
+Wir zählen auf das Engagement unserer Mitglieder beim Aufbau und der Weiterentwicklung der Werkstatt und würden uns freuen, Dich bald dazuzählen zu können.
+
+(button: verein/mitgliedsantrag caption: Mitglied werden!)
+
+Auf den Folgeseiten kannst du mehr über uns erfahren. Am besten kommst du uns aber einfach mal besuchen.
+
+----
+
+Headline: Moin!
+
+----
+
+Sidebar:
+
+#### Nächste Veranstaltungen
+
+Blablubb

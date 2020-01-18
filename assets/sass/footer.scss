@@ -1,0 +1,39 @@
+footer {
+  nav {
+    display: flex;
+    justify-content: space-between;
+
+    ul {
+      display: flex;
+
+      li {
+        display: block;
+      }
+
+      li:not(:last-child) {
+        margin-right: 1em;
+      }
+    }
+
+    .social-media-icons {
+      padding: 1em 0;
+      display: flex;
+
+      .social-media-icon {
+        svg {
+          display: block;
+          fill: white;
+          width: 1.5em;
+          height: 1.5em;
+        }
+
+        a {
+          color: white;
+        }
+      }
+      .social-media-icon:not(:first-child) {
+        margin-left: 1em;
+      }
+    }
+  }
+}

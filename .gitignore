@@ -40,7 +40,7 @@ Icon
 # Custom
 # ---------------
 # Don't check in Kirby website content
-/content/*
+#/content/*
 
 /vendor/*
 
