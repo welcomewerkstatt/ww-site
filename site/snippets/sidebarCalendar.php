@@ -1,5 +1,5 @@
 <?php if ($calendar) : ?>
-  <h4>Veranstaltungen</h4>
+  <h4>Aktuelle Veranstaltungen</h4>
   <ul class="calendar">
     <?php foreach ($calendar as $event) : ?>
       <li>

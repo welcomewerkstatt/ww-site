@@ -9,7 +9,7 @@ use Sabre\VObject;
  * a Kirby template.
  */
 return function ($page, $site, $kirby) {
-  $calendarUrl = 'https://cloud.welcome-werkstatt.de/remote.php/dav/public-calendars/8t4DqWy9CHZDnBym?export';
+  $calendarUrl = 'https://cloud.welcome-werkstatt.de/remote.php/dav/public-calendars/xWWZXzBkDtzWgTPA?export';
   $cacheFile = 'site/cache/calendar.json';
   $eventsToDisplay = 4;
 
