@@ -16,7 +16,7 @@
     <div class="slider-row full-column blue flex-container space-between">
       
       <?php if ($page->files()->isNotEmpty()) : ?>
-        <?php foreach ($page->files() as $image) : ?>
+        <?php foreach ($page->files()->sortBy('sort') as $image) : ?>
           <img src="<?= $image->mediaUrl() ?>" />
         <?php endforeach ?>
       <?php else : ?>
