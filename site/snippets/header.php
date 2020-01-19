@@ -17,12 +17,12 @@
 
       <?php if ($page->files()->isNotEmpty()) : ?>
         <?php foreach ($page->files()->sortBy('sort') as $image) : ?>
-          <img src="<?= $image->mediaUrl() ?>" />
+          <?= $image->thumb('header') ?>
         <?php endforeach ?>
       <?php else : ?>
         <?php if ($site->files()->isNotEmpty()) : ?>
           <?php foreach ($site->files()->sortBy('sort') as $image) : ?>
-            <img src="<?= $image->mediaUrl() ?>" />
+            <?= $image->thumb('header') ?>
           <?php endforeach ?>
         <?php else : ?>
           <img src="https://picsum.photos/1280/720?random=1">

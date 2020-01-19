@@ -11,5 +11,10 @@ return [
     'debug' => true,
     'panel' => [
         'language' => 'de'
+    ],
+    'thumbs' => [
+        'presets' => [
+            'header' => ['width' => 600, 'quality' => 80]
+        ]
     ]
 ];
