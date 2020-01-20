@@ -639,6 +639,7 @@ header {
 
 nav {
   position: relative;
+  color: white;
 }
 nav ul {
   font-family: "Raleway", sans-serif;

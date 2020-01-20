@@ -8,14 +8,24 @@
 
     foreach ($menuItems as $menuItem) :
       $subMenuItems = $menuItem->children()->listed();
+      $isCategory = ($menuItem->template() == 'category');
       $isActiveClass = $menuItem->isActive() ? 'active ' : '';
       $isOpenClass = $menuItem->isOpen() ? 'open' : '';
-      $classes = $isActiveClass.$isOpenClass;
-      ?>
+      $classes = $isActiveClass . $isOpenClass;
+    ?>
 
-      <li <?php e(!empty($classes), ' class="'.$classes.'"') ?>><a href="<?= $menuItem->url() ?>"><?= $menuItem->title()->html() ?><?php e($subMenuItems->isNotEmpty(), ' <i class="arr-down"></i>') ?></a>
+      <li <?php e(!empty($classes), ' class="' . $classes . '"') ?>>
+
+        <?php if (!$isCategory) : ?>
+          <a href="<?= $menuItem->url() ?>">
+        <?php endif ?>
+        <?= $menuItem->title()->html() ?>
+        <?php e($subMenuItems->isNotEmpty(), ' <i class="arr-down"></i>') ?>
+        <?php if (!$isCategory) : ?>
+          </a>
+        <?php endif ?>
         <?php
-          if ($subMenuItems->isNotEmpty()) : ?>
+        if ($subMenuItems->isNotEmpty()) : ?>
           <ul>
             <?php foreach ($subMenuItems as $subMenuItem) : ?>
               <li <?php e($subMenuItem->isActive(), ' class="active"') ?>><a href="<?= $subMenuItem->url() ?>"><?= $subMenuItem->title()->html() ?></a></li>
