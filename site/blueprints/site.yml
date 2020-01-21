@@ -12,7 +12,8 @@ sections:
     type: pages
     headline: Seiten
 
-  files:
+  header:
+    type: files
     headline: Globaler Header
     template: cover
     layout: cards

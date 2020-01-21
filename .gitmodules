@@ -3,4 +3,7 @@
 	url = https://github.com/getkirby/kirby.git
 [submodule "content"]
 	path = content
-	url = https://github.com/welcomewerkstatt/ww-content.git
+	url = git@github.com/welcomewerkstatt/ww-content.git
+[submodule "site/plugins/kirby-builder"]
+	path = site/plugins/kirby-builder
+	url = git@github.com:TimOetting/kirby-builder.git
