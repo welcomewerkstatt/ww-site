@@ -11,7 +11,7 @@ use Sabre\VObject;
 return function ($page, $site, $kirby) {
   $calendarUrl = 'https://cloud.welcome-werkstatt.de/remote.php/dav/public-calendars/xWWZXzBkDtzWgTPA?export';
   $cacheFile = 'site/cache/calendar.json';
-  $eventsToDisplay = 4;
+  $eventsToDisplay = 3;
 
   setlocale(LC_ALL, 'de_DE');
 

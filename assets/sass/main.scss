@@ -165,6 +165,14 @@ nav ul li ul li {
   margin-left: 1em;
 }
 
+.sidebar {
+  img {
+    width: 100%;
+  }
+}
+
+
+
 @media only screen and (min-device-width: variables.$breakpoint) {
   .two-columns-on-desktop {
     display: flex;

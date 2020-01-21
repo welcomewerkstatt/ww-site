@@ -1,0 +1,1 @@
+/* This template is empty on purpose. Category pages should not be accessible in the frontend, so this will never be rendered */
