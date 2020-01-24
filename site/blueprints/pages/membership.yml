@@ -1,0 +1,9 @@
+title: Mitgliedsantrag
+icon: 🎓
+
+fields:
+  info:
+    label: Info
+    type: info
+    text: |
+      Der Mitgliedsantrag wird statisch generiert und kann nicht in der Admin-Oberfläche angepasst werden.

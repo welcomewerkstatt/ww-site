@@ -1,4 +1,4 @@
-title: Ohne Sidebar
+title: Ohne Überschrift
 
 icon: 📝
 
@@ -14,10 +14,6 @@ status:
 preset: page
 pages: false
 fields:
-  headline:
-    label: Headline
-    type: text
-    placeholder: "{{ page.title }}"
   text:
     required: true
     autofocus: true
