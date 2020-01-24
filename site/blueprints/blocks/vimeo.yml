@@ -1,0 +1,10 @@
+name: Vimeo Embed
+fields:
+  headline:
+    label: Titel
+    type: text
+    required: true
+  url:
+    label: Video URL
+    type: url
+    required: true

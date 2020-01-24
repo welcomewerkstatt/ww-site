@@ -3,11 +3,6 @@
 title: Welcome Werkstatt
 
 sections:
-  # The `pages` pages section shows other main pages of the site
-  # Using the `templates` option, we limit which types of pages are shown
-  # Using the `create` option, we limit the type of page that can be created when a new page is created
-  # Note that the `sandbox` page and the `error` page that also exist in the content folder but use different blueprints thus do not show up in the list
-  # Since the error page's blueprint is set to `read: false`, it wouldn't show up here even if you added the error blueprint to the templates list
   pages:
     type: pages
     headline: Seiten
@@ -19,4 +14,9 @@ sections:
     layout: cards
     max: 4
     help: Wenn eine Unterseite über keine eigenen Headerbilder verfügt, werden diese globalen Bilder verwendet.
+
+
+
+
+
 

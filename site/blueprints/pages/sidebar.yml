@@ -1,0 +1,53 @@
+title: Mit Sidebar
+
+icon: 📝
+
+status:
+  draft: true
+  unlisted:
+    label: Nicht gelistet
+    text: Die Seite taucht nicht im Menü auf
+  listed:
+    label: Gelistet
+    text: Die Seite taucht im Menü auf
+
+columns:
+  left:
+    width: 2/3
+    sections:
+      content:
+        type: fields
+        fields:
+          text:
+            label: Content
+            type: textarea
+            size: huge
+  right:
+    width: 1/3
+    sections:
+      sidebar:
+        type: fields
+        fields:
+          mybuilder:
+            label: Sidebar
+            type: builder
+            columns: 1
+            max: 6
+            fieldsets:
+              textblock: blocks/textblock
+              vimeo:  blocks/vimeo
+              images: blocks/images
+              calendar: blocks/calendar
+
+  bottom:
+    width: 1/1
+    sections:
+      header:
+        type: files
+        headline: Headerbilder
+        layout: cards
+        size: tiny
+        template: headerimage
+        required: false
+        max: 4
+

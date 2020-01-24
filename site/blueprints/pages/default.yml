@@ -1,4 +1,4 @@
-title: Seite mit Sidebar
+title: Ohne Sidebar
 
 icon: 📝
 
@@ -11,63 +11,12 @@ status:
     label: Gelistet
     text: Die Seite taucht im Menü auf
 
-columns:
-  top:
-    width: 1/1
-    sections:
-      title:
-        type: fields
-        fields:
-          headline:
-            label: Titel
-            type: text
-
-      header:
-        type: files
-        headline: Headerbilder
-        layout: cards
-        size: tiny
-        required: false
-        max: 4
-
-  left:
-    width: 2/3
-    sections:
-      content:
-        type: fields
-        fields:
-          text:
-            label: Content
-            type: textarea
-            size: huge
-  right:
-    width: 1/3
-    sections:
-      sidebar:
-        type: fields
-        fields:
-          mybuilder:
-            label: Sidebar
-            type: builder
-            columns: 1
-            max: 6
-            fieldsets:
-              textblock:
-                name: Text
-                fields:
-                  headline:
-                    label: Titel
-                    type: text
-                  content:
-                    label: Text
-                    type: textarea
-              vimeo:
-                name: Vimeo Embed
-                fields:
-                  headline:
-                    label: Titel
-                    type: text
-                  url:
-                    label: Video URL
-                    type: url
-
+preset: page
+files: false
+fields:
+  headline:
+    label: Headline
+    type: text
+  text:
+    label: Text
+    type: textarea

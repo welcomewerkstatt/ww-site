@@ -1,0 +1,10 @@
+title: Redakteur
+description: Kann die Seite bearbeiten
+permissions:
+  site:
+    update: false
+  pages:
+    delete: false
+  users: false
+  user:
+    changeRole: false

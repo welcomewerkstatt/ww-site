@@ -15,8 +15,8 @@
     <header class="logo-row main-column"></header>
     <div class="slider-row full-column blue flex-container space-between">
 
-      <?php if ($page->files()->isNotEmpty()) : ?>
-        <?php foreach ($page->files()->sortBy('sort') as $image) : ?>
+      <?php if ($page->files()->template('headerimage')->isNotEmpty()) : ?>
+        <?php foreach ($page->files()->template('headerimage')->sortBy('sort') as $image) : ?>
           <?= $image->thumb('header') ?>
         <?php endforeach ?>
       <?php else : ?>

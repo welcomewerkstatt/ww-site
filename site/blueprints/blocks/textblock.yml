@@ -1,0 +1,10 @@
+name: Text
+fields:
+  headline:
+    label: Titel
+    type: text
+    required: true
+  text:
+    label: Text
+    type: textarea
+    required: true

@@ -1,5 +1,5 @@
-<?php if ($calendar) : ?>
-  <h4>Aktuelle Veranstaltungen</h4>
+<?php if (isset($calendar)) : ?>
+  <h4><?= $data->headline()->html() ?></h4>
   <ul class="calendar">
     <?php foreach ($calendar as $event) : ?>
       <li>

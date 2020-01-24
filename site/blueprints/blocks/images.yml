@@ -1,0 +1,10 @@
+name: Bilder
+fields:
+  headline:
+    label: Titel
+    type: text
+    required: true
+  imageset:
+    type: files
+    uploads: sidebarimage
+    label: Bilder
