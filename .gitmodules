@@ -7,3 +7,6 @@
 [submodule "site/plugins/kirby-builder"]
 	path = site/plugins/kirby-builder
 	url = git@github.com:TimOetting/kirby-builder.git
+[submodule "site/plugins/meta-tags"]
+	path = site/plugins/meta-tags
+	url = git@github.com:pedroborges/kirby-meta-tags.git
