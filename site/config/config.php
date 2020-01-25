@@ -21,7 +21,7 @@ return [
         return [
             'title' => $page->title() . ' | ' . $site->title(),
             'meta' => [
-                'description' => $site->description()
+                'description' => $page->text()->short(300)
             ],
             'link' => [
                 'canonical' => $page->url()
@@ -32,7 +32,8 @@ return [
                 'site_name' => $site->title(),
                 'url' => $page->url(),
                 'image' => $page->hasImages() ? $page->images()->first()->thumb('header') : $site->images()->first()->thumb('header'),
-                'description' => $site->description()
+                'description' => $page->text()->short(300),
+                'locale' => 'de_DE'
             ],
             'twitter' => [
                 'site' => '@WelcomeWerk'
