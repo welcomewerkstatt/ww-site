@@ -42,6 +42,8 @@ Icon
 # Don't check in Kirby website content
 #/content/*
 
+/site/config/config.php
+
 /vendor/*
 
 /.vscode/*

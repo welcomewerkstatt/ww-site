@@ -388,7 +388,6 @@ template {
 
 /* Main Grid */
 main {
-  overflow-x: hidden;
   display: grid;
   height: 100vh;
   grid-template-columns: [full-start] minmax(1.2em, auto) [main-start] repeat(3, minmax(0, var(--column-width))) [main-end] minmax(1.2em, auto) [full-end];

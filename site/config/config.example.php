@@ -41,7 +41,7 @@ return [
 
         ];
     },
-    'sylvainjule.matomo.url'        => 'https://stats.welcome-werkstatt.de/',
-    'sylvainjule.matomo.id'         => '1',
-    'sylvainjule.matomo.token'      => 'b26bc3f66b6c0deaec73552b05170df4',
+    'sylvainjule.matomo.url'        => 'xxx',
+    'sylvainjule.matomo.id'         => 'xxx',
+    'sylvainjule.matomo.token'      => 'xxx',
 ];
