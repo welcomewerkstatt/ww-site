@@ -4,6 +4,7 @@
 
 /* Main Grid */
 main {
+  overflow-x: hidden;
   display: grid;
   height: 100vh;
   grid-template-columns:

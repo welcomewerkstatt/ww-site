@@ -13,12 +13,9 @@
   --border-grey: #ced4da;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-body {
+  font-size: 20px;
   font-family: "PT Sans", sans-serif;
   color: var(--primary-blue);
-  font-size: 20px;
   line-height: 32px;
 }
 
@@ -52,11 +49,24 @@ button {
   font-family: "Raleway", sans-serif;
 }
 
+h1 {
+  font-size: 1.8rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
 h4 {
   border-bottom: 4px solid var(--highlight-green);
   margin-bottom: 0.6em;
   font-weight: 600;
-  font-size: 1.2em;
+  font-size: 1.2rem;
 }
 
 .space-between {

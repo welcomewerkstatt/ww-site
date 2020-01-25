@@ -4,7 +4,7 @@ fields:
     label: Titel
     type: text
     required: true
-  imageset:
-    type: files
-    uploads: sidebarimage
-    label: Bilder
+  info:
+    type: info
+    label: Info
+    text: Upload und Sortierung der Bilder erfolgt im unteren Bereich dieser Seite.

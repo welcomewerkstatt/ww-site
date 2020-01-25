@@ -60,4 +60,12 @@ columns:
         template: headerimage
         required: false
         max: 4
+      sidebarimages:
+        type: files
+        headline: Sidebar Bilder
+        layout: cards
+        size: tiny
+        template: sidebarimage
+        required: false
+        max: 8
 
