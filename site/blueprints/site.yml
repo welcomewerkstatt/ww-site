@@ -2,18 +2,36 @@
 # The `site.yml` blueprint defines the look of the start page (Dashboard) of the Panel.
 title: Welcome Werkstatt
 
-sections:
-  pages:
-    type: pages
-    headline: Seiten
+tabs:
+  content:
+    label: Inhalte
+    icon: text
+    columns:
+      - width: 1/1
+        sections:
+          pages:
+            type: pages
+            headline: Seiten
 
-  header:
-    type: files
-    headline: Globaler Header
-    template: headerimage
-    layout: cards
-    max: 4
-    help: Wenn eine Unterseite über keine eigenen Headerbilder verfügt, werden diese globalen Bilder verwendet.
+          header:
+            type: files
+            headline: Globaler Header
+            template: headerimage
+            layout: cards
+            max: 4
+            help: Wenn eine Unterseite über keine eigenen Headerbilder verfügt, werden diese globalen Bilder verwendet.
+  analytics:
+    label: Analytics
+    icon: cog
+    columns:
+      - width: 3/4
+        sections:
+          main:
+            type: matomo-main
+      - width: 1/4
+        sections:
+          sidebar:
+            type: matomo-sidebar
 
 
 
