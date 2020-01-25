@@ -10,7 +10,7 @@ sections:
   header:
     type: files
     headline: Globaler Header
-    template: cover
+    template: headerimage
     layout: cards
     max: 4
     help: Wenn eine Unterseite über keine eigenen Headerbilder verfügt, werden diese globalen Bilder verwendet.

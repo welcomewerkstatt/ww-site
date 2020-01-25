@@ -16,5 +16,28 @@ return [
         'presets' => [
             'header' => ['width' => 600, 'quality' => 80]
         ]
-    ]
+    ],
+    'pedroborges.meta-tags.default' => function ($page, $site) {
+        return [
+            'title' => $page->title() . ' | ' . $site->title(),
+            'meta' => [
+                'description' => $site->description()
+            ],
+            'link' => [
+                'canonical' => $page->url()
+            ],
+            'og' => [
+                'title' => $page->title(),
+                'type' => 'website',
+                'site_name' => $site->title(),
+                'url' => $page->url(),
+                'image' => $page->hasImages() ? $page->images()->first()->thumb('header') : $site->images()->first()->thumb('header'),
+                'description' => $site->description()
+            ],
+            'twitter' => [
+                'site' => '@WelcomeWerk'
+            ]
+
+        ];
+    }
 ];
