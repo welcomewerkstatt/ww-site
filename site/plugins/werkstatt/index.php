@@ -24,7 +24,7 @@ Kirby::plugin('welcome-werkstatt/werkstatt', [
     ],
     'embed' => [
       'html' => function ($tag) {
-        return '<div class="embed">' . $tag->value . '</div>';
+        return '<div class="embed-container">' . $tag->value . '</div>';
       }
     ]
   ]
