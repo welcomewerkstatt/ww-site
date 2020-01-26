@@ -1,3 +1,11 @@
+:root {
+  --primary-blue: #232931;
+  --highlight-green: #12b27f;
+  --background-white: #f1f1f1;
+  --border-grey: #ced4da;
+  --link-blue: #5e9ef5;
+}
+
 /* raleway-regular - latin */
 @font-face {
   font-family: "Raleway";
@@ -565,11 +573,6 @@ footer nav .social-media-icons .social-media-icon:not(:first-child) {
 
 /* Generic */
 :root {
-  --primary-blue: #232931;
-  --highlight-green: #12b27f;
-  --background-white: #f1f1f1;
-  --border-grey: #ced4da;
-  --link-blue: #5e9ef5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 20px;
@@ -602,6 +605,7 @@ td {
   padding: 10px;
 }
 
+/* Headlines */
 h1,
 h2,
 h3,
@@ -643,7 +647,6 @@ h4 {
 .slider-row img:not(:first-of-type) {
   display: none;
 }
-
 .slider-row > img {
   flex: 1;
   width: 100%;
@@ -904,6 +907,9 @@ nav .active > a {
 .undecoratedLink {
   color: var(--primary-blue);
   text-decoration: none;
+}
+.undecoratedLink:hover {
+  text-decoration: underline;
 }
 
 .icon {
