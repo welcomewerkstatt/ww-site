@@ -1,9 +1,28 @@
-@use 'variables';
+//@use '_variables';
 @use 'fonts';
 @use 'normalize';
 @use 'grid';
-@use 'memberform';
+// @use 'memberform';
 @use 'footer';
+
+$breakpoint: 800px;
+
+@mixin desktop {
+  @media only screen and (min-width : #{$breakpoint}) {
+      @content;
+  }
+}
+
+:root {
+  --primary-blue: #232931;
+  --highlight-green: #12b27f;
+  --background-white: #f1f1f1;
+  --border-grey: #ced4da;
+  --link-blue: #5e9ef5;
+}
+
+
+
 
 /* Generic */
 :root {
@@ -71,6 +90,7 @@ h4 {
   font-size: 1.2rem;
 }
 
+/* Responsive Embeds for Google Maps, Calendar, etc. */
 .embed-container {
   position: relative;
   overflow: hidden;
@@ -92,7 +112,9 @@ h4 {
 }
 
 .flex-container {
-  display: flex;
+  @include desktop {
+    display: flex;
+  }
 }
 
 .slider-row {
@@ -104,6 +126,11 @@ h4 {
     flex: 1;
     width: 100%;
     height: auto;
+    @include desktop {
+      max-width: 25vw;
+      max-height: 35vh;
+      object-fit: cover;
+    }
   }
 }
 
@@ -205,7 +232,7 @@ nav ul li ul li {
   }
 }
 
-@media only screen and (min-device-width: variables.$breakpoint) {
+@include desktop {
   .two-columns-on-desktop {
     display: flex;
   }
@@ -219,11 +246,6 @@ nav ul li ul li {
   .sidebar {
     flex-basis: 0;
     flex-grow: 1;
-  }
-
-  .slider-row > img {
-    max-width: 25vw;
-    max-height: 35vh;
   }
 
   button {

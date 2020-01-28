@@ -1,5 +1,11 @@
 $breakpoint: 800px;
 
+@mixin desktop {
+  @media only screen and (min-width : #{$breakpoint}) {
+      @content;
+  }
+}
+
 :root {
   --primary-blue: #232931;
   --highlight-green: #12b27f;

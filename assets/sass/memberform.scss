@@ -1,4 +1,4 @@
-@use 'variables';
+@use '_variables';
 
 #member-form {
   display: flex;
@@ -10,7 +10,7 @@
     flex-wrap: wrap;
   }
 
-  @media only screen and (min-device-width: variables.$breakpoint) {
+  @include desktop {
     & > .form-row > .field:first-child {
       margin-right: 2rem;
     }
@@ -56,7 +56,7 @@
     margin-top: 2em;
   }
 
-  @media only screen and (min-device-width: variables.$breakpoint) {
+  @include desktop {
     .radio:nth-of-type(even) {
       margin-top: 0;
       margin-left: 2em;
