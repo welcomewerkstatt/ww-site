@@ -1,28 +1,9 @@
-//@use '_variables';
+@use 'variables';
 @use 'fonts';
 @use 'normalize';
 @use 'grid';
 // @use 'memberform';
 @use 'footer';
-
-$breakpoint: 800px;
-
-@mixin desktop {
-  @media only screen and (min-width : #{$breakpoint}) {
-      @content;
-  }
-}
-
-:root {
-  --primary-blue: #232931;
-  --highlight-green: #12b27f;
-  --background-white: #f1f1f1;
-  --border-grey: #ced4da;
-  --link-blue: #5e9ef5;
-}
-
-
-
 
 /* Generic */
 :root {
@@ -112,7 +93,7 @@ h4 {
 }
 
 .flex-container {
-  @include desktop {
+  @include variables.desktop {
     display: flex;
   }
 }
@@ -125,8 +106,10 @@ h4 {
   > img {
     flex: 1;
     width: 100%;
-    height: auto;
-    @include desktop {
+    height: 28vh;
+    object-fit: cover;
+
+    @include variables.desktop {
       max-width: 25vw;
       max-height: 35vh;
       object-fit: cover;
@@ -137,9 +120,9 @@ h4 {
 header {
   background-image: url("../img/ww_website_logo_mobile.svg");
   background-repeat: no-repeat;
-  background-size: 16em;
+  background-size: 13em;
   background-position: center center;
-  height: 8em;
+  height: 7em;
 }
 
 nav {
@@ -232,7 +215,7 @@ nav ul li ul li {
   }
 }
 
-@include desktop {
+@include variables.desktop {
   .two-columns-on-desktop {
     display: flex;
   }

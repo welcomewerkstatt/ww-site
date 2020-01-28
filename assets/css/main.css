@@ -1,3 +1,11 @@
+:root {
+  --primary-blue: #232931;
+  --highlight-green: #12b27f;
+  --background-white: #f1f1f1;
+  --border-grey: #ced4da;
+  --link-blue: #5e9ef5;
+}
+
 /* raleway-regular - latin */
 @font-face {
   font-family: "Raleway";
@@ -414,7 +422,12 @@ main {
 
 .slider-row {
   grid-row: slider;
-  padding-bottom: 30px;
+  padding-bottom: 0px;
+}
+@media only screen and (min-width: 800px) {
+  .slider-row {
+    padding-bottom: 30px;
+  }
 }
 
 .menu-row {
@@ -422,7 +435,7 @@ main {
 }
 
 .content-row {
-  padding: 1.5em 0;
+  padding: 1em 0;
   grid-row: content;
 }
 
@@ -471,14 +484,6 @@ footer nav .social-media-icons .social-media-icon a {
 }
 footer nav .social-media-icons .social-media-icon:not(:first-child) {
   margin-left: 1em;
-}
-
-:root {
-  --primary-blue: #232931;
-  --highlight-green: #12b27f;
-  --background-white: #f1f1f1;
-  --border-grey: #ced4da;
-  --link-blue: #5e9ef5;
 }
 
 /* Generic */
@@ -578,7 +583,8 @@ h4 {
 .slider-row > img {
   flex: 1;
   width: 100%;
-  height: auto;
+  height: 28vh;
+  object-fit: cover;
 }
 @media only screen and (min-width: 800px) {
   .slider-row > img {
@@ -591,9 +597,9 @@ h4 {
 header {
   background-image: url("../img/ww_website_logo_mobile.svg");
   background-repeat: no-repeat;
-  background-size: 16em;
+  background-size: 13em;
   background-position: center center;
-  height: 8em;
+  height: 7em;
 }
 
 nav {
