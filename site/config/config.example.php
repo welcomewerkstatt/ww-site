@@ -31,7 +31,7 @@ return [
                 'type' => 'website',
                 'site_name' => $site->title(),
                 'url' => $page->url(),
-                'image' => $page->hasImages() ? $page->images()->first()->thumb('header') : $site->images()->first()->thumb('header'),
+                'image' => $page->hasImages() ? $page->images()->first()->thumb('header')->url() : $site->images()->first()->thumb('header')->url(),
                 'description' => $page->text()->short(300),
                 'locale' => 'de_DE'
             ],
