@@ -19,10 +19,10 @@
   },
   "scripts": {
     "build": [
-      "sass assets/sass/main.scss assets/css/main.css"
+      "sass assets/sass/main.scss assets/css/main.css --style compressed"
     ],
     "watch": [
-      "sass --watch assets/sass/main.scss assets/css/main.css"
+      "sass --watch assets/sass/main.scss assets/css/main.css --style compressed"
     ]
   }
 }
