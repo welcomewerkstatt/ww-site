@@ -57,6 +57,6 @@ AddOutputFilterByType DEFLATE application/x-javascript
 </IfModule>
 
 # Add caching for static file types
-<filesMatch ".(ico|pdf|jpg|jpeg|png|gif|js|css)$">
-    Header set Cache-Control "max-age=84600, public"
+<filesMatch ".(ico|pdf|jpg|jpeg|png|gif|js|css|svg|eot|ttf|woff|woff2)$">
+    Header set Cache-Control "max-age=15552000, public"
 </filesMatch>
