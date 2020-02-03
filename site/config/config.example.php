@@ -15,7 +15,7 @@ return [
     'cache' => [
         'pages' => [
             'active' => true,
-            'ignore' => ['kalender']
+            'ignore' => ['home', 'kalender']
         ]
     ],
     'thumbs' => [
