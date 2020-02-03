@@ -38,6 +38,11 @@ Kirby::plugin(
           go('/werkstatt/holzarbeiten', 301);
         }
       ]
+    ],
+    'options' => [
+      'cache' => true,
+      'calendarUrl' => 'https://cloud.welcome-werkstatt.de/remote.php/dav/public-calendars/xWWZXzBkDtzWgTPA?export',
+      'eventsToDisplay' => 3
     ]
   ]
 );
