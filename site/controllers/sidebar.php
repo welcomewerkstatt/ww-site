@@ -77,8 +77,8 @@ return function ($page, $kirby) {
       $eventArray = $cachedContent;
     }
 
-    return [
-      'calendar' => $eventArray
-    ];
   }
+  return [
+    'calendar' => $eventArray
+  ];
 };
