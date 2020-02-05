@@ -1,0 +1,180 @@
+@use 'variables';
+
+nav {
+  position: relative;
+  color: white;
+
+  ul {
+    font-family: "Raleway", sans-serif;
+    list-style-type: none;
+
+    /** Hide all menu items on default. Show them selectively in media queries **/
+    li {
+      display: none;
+    }
+
+    img {
+      display: inline-block;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+  }
+
+  a {
+    color: white;
+  }
+
+  // Fake border on hover in menu
+  a:hover {
+    text-shadow: 0 0 1px white;
+  }
+}
+
+nav ul {
+  padding: 0;
+  position: relative;
+}
+
+nav .active {
+  font-weight: bold;
+  display: block;
+}
+
+nav .open {
+  display: block;
+}
+
+nav .open.active > a {
+  display: block;
+}
+
+nav .active > a {
+  margin: 0 auto;
+  color: black;
+}
+
+nav .open > a {
+  display: none;
+}
+
+nav ul li ul li {
+  font-weight: normal;
+  margin-left: 1em;
+}
+
+.hamburger-icon {
+  background-image: url("../img/hamburger.svg");
+  background-size: auto 100%;
+  width: 32px;
+  height: 32px;
+  background-repeat: no-repeat;
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  top: 1em;
+  z-index: 1;
+}
+
+/* Hamburger Menu */
+#hamburger-checkbox {
+  display: none;
+
+  &:checked + .hamburger-icon {
+    background-image: url("../img/close.svg");
+  }
+
+  &:checked ~ ul > li {
+    display: block;
+    padding-bottom: 0.5em;
+  }
+
+  &:checked ~ ul > li > ul > li {
+    display: block;
+  }
+}
+
+@include variables.desktop {
+  /* Desktop Menu and Footer */
+  nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    align-items: center;
+    margin: 0;
+  }
+
+  nav > ul > li {
+    padding: 1em;
+  }
+
+  nav > ul > li > ul > li {
+    padding: 0.5em 1em;
+  }
+
+  nav > ul > li:first-child {
+    padding-left: 0;
+  }
+
+  nav > ul > li:last-child {
+    padding-right: 0;
+  }
+
+  nav ul li {
+    position: relative;
+  }
+
+  /** Sub Menu **/
+  nav ul li ul {
+    display: none;
+    position: absolute;
+    top: 2.75em;
+    background-color: var(--highlight-green);
+    min-width: 80%;
+    white-space: nowrap;
+    margin-left: -1em;
+    box-shadow: 6px 6px 12px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+  }
+
+  nav ul li:hover ul {
+    display: block;
+  }
+
+  nav ul li:active ul {
+    display: block;
+  }
+
+  footer > nav {
+    font-size: 0.8em;
+  }
+
+  nav .active > a {
+    color: black;
+    font-weight: bold;
+  }
+
+  nav .open > a {
+    display: block;
+  }
+
+  nav ul > li {
+    display: block;
+  }
+
+  nav ul img {
+    display: none;
+  }
+
+  nav ul li ul li {
+    margin-left: 0;
+  }
+
+  .hamburger-icon {
+    display: none;
+  }
+
+  .slider-row img:not(:first-of-type) {
+    display: block;
+  }
+}

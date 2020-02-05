@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <?= $page->metaTags() ?>
   <?= css(['assets/css/main.css', '@auto']) ?>
-  <?= css('assets/css/print.css', 'print') ?>
+  <!-- <?= css('assets/css/print.css', 'print') ?> -->
 </head>
 
 <body>

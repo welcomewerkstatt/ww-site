@@ -18,20 +18,22 @@
 
         <?php if (!$isCategory) : ?>
           <a href="<?= $menuItem->url() ?>">
-        <?php endif ?>
-        <?= $menuItem->title()->html() ?>
-        <?php e($subMenuItems->isNotEmpty(), ' <i class="arr-down"></i>') ?>
-        <?php if (!$isCategory) : ?>
-          </a>
-        <?php endif ?>
-        <?php
-        if ($subMenuItems->isNotEmpty()) : ?>
-          <ul>
-            <?php foreach ($subMenuItems as $subMenuItem) : ?>
-              <li <?php e($subMenuItem->isActive(), ' class="active"') ?>><a href="<?= $subMenuItem->url() ?>"><?= $subMenuItem->title()->html() ?></a></li>
-            <?php endforeach ?>
-          </ul>
-        <?php endif ?>
+          <?php else : ?>
+            <a href="#">
+            <?php endif ?>
+            <?= $menuItem->title()->html() ?>
+            <?php e($subMenuItems->isNotEmpty(), ' <i class="arr-down"></i>') ?>
+
+            </a>
+
+            <?php
+            if ($subMenuItems->isNotEmpty()) : ?>
+              <ul>
+                <?php foreach ($subMenuItems as $subMenuItem) : ?>
+                  <li <?php e($subMenuItem->isActive(), ' class="active"') ?>><a href="<?= $subMenuItem->url() ?>"><?= $subMenuItem->title()->html() ?></a></li>
+                <?php endforeach ?>
+              </ul>
+            <?php endif ?>
       </li>
     <?php endforeach ?>
 
