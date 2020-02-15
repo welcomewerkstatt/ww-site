@@ -14,23 +14,24 @@
     <div class="logo-row full-column blue"></div>
     <header class="logo-row main-column"></header>
     <div class="slider-row full-column blue flex-container space-between">
-
-      <?php if ($page->files()->template('headerimage')->isNotEmpty()) : ?>
-        <?php foreach ($page->files()->template('headerimage')->sortBy('sort') as $image) : ?>
-          <?= $image->thumb('header') ?>
-        <?php endforeach ?>
-      <?php else : ?>
-        <?php if ($site->files()->isNotEmpty()) : ?>
-          <?php foreach ($site->files()->sortBy('sort') as $image) : ?>
-            <?= $image->thumb('header') ?>
-          <?php endforeach ?>
-        <?php else : ?>
-          <img src="https://picsum.photos/1280/720?random=1">
-          <img src="https://picsum.photos/1280/853?random=2">
-          <img src="https://picsum.photos/600/600?random=3">
-          <img src="https://picsum.photos/1280/720?random=4">
-        <?php endif ?>
-      <?php endif ?>
-
+      <?php
+      $images = [];
+      if ($page->files()->template('headerimage')->isNotEmpty()) {
+        $images = $page->files()->template('headerimage')->sortBy('sort');
+      } else if ($site->files()->isNotEmpty()) {
+        $images = $site->files()->sortBy('sort');
+      }
+      $index = 0;
+      foreach ($images as $image) : ?>
+        <picture>
+          <?php if ($index == 0) : ?>
+            <source srcset="<?= $image->thumb('header')->url() ?>" />
+          <?php else : ?>
+            <source media="(max-width: 799px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
+            <source media="(min-width: 800px)" srcset="<?= $image->thumb('header')->url() ?>" />
+          <?php endif ?>
+          <img src="<?= $image->thumb('header')->url() ?>" />
+        </picture>
+      <?php endforeach ?>
     </div>
     <div class="slider-row main-column"></div>

@@ -14,17 +14,16 @@
       $classes = $isActiveClass . $isOpenClass;
     ?>
 
-      <li <?php e(!empty($classes), ' class="' . $classes . '"') ?>>
+      <li <?php e(!$classes, ' class="' . $classes . '"') ?>>
 
         <?php if (!$isCategory) : ?>
           <a href="<?= $menuItem->url() ?>">
-          <?php else : ?>
-            <a href="#">
-            <?php endif ?>
+        <?php else : ?>
+          <a href="#">
+        <?php endif ?>
             <?= $menuItem->title()->html() ?>
             <?php e($subMenuItems->isNotEmpty(), ' <i class="arr-down"></i>') ?>
-
-            </a>
+          </a>
 
             <?php
             if ($subMenuItems->isNotEmpty()) : ?>

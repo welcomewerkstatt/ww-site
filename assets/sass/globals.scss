@@ -94,11 +94,17 @@ h4 {
 }
 
 .slider-row {
-  img:not(:first-of-type) {
+  picture:not(:first-of-type) img {
     display: none;
   }
+  @include variables.desktop {
+    picture:not(:first-of-type) img {
+      display: block;
+    }
 
-  > img {
+  }
+
+  > picture img {
     flex: 1;
     width: 100%;
     height: 28vh;
@@ -110,6 +116,7 @@ h4 {
       object-fit: cover;
     }
   }
+
 }
 
 header {
