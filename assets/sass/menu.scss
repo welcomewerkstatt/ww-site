@@ -4,6 +4,17 @@ nav {
   position: relative;
   color: white;
 
+  .hideOnDesktop {
+    font-weight: bold;
+    display: block;
+    a {
+      color: black;
+    }
+    @include variables.desktop {
+      display: none;
+    }
+  }
+
   ul {
     font-family: "Raleway", sans-serif;
     list-style-type: none;

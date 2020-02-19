@@ -9,7 +9,7 @@
     if ($page->isUnlisted()) :
 
     ?>
-      <li class="active"><a href="#"><?= $page->title()->html() ?></a></li>
+      <li class="hideOnDesktop"><a href="#"><?= $page->title()->html() ?></a></li>
     <?php endif ?>
     <?php
     foreach ($menuItems as $menuItem) :
