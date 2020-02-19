@@ -6,6 +6,12 @@
     <?php
     $menuItems = $site->children()->listed();
 
+    if ($page->isUnlisted()) :
+
+    ?>
+      <li class="active"><a href="#"><?= $page->title()->html() ?></a></li>
+    <?php endif ?>
+    <?php
     foreach ($menuItems as $menuItem) :
       $subMenuItems = $menuItem->children()->listed();
       $isCategory = ($menuItem->template() == 'category');
@@ -14,16 +20,16 @@
       $classes = $isActiveClass . $isOpenClass;
     ?>
 
-      <li <?php e(!$classes, ' class="' . $classes . '"') ?>>
+      <li <?php e($classes, ' class="' . $classes . '"') ?>>
 
         <?php if (!$isCategory) : ?>
           <a href="<?= $menuItem->url() ?>">
-        <?php else : ?>
-          <a href="#">
-        <?php endif ?>
+          <?php else : ?>
+            <a href="#">
+            <?php endif ?>
             <?= $menuItem->title()->html() ?>
             <?php e($subMenuItems->isNotEmpty(), ' <i class="arr-down"></i>') ?>
-          </a>
+            </a>
 
             <?php
             if ($subMenuItems->isNotEmpty()) : ?>
@@ -35,8 +41,6 @@
             <?php endif ?>
       </li>
     <?php endforeach ?>
-
-    <!-- <li><a href="https://forum.welcome-werkstatt.de/">Forum</a></li> -->
 
   </ul>
 </nav>
