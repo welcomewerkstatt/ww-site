@@ -1,5 +1,4 @@
-@use 'variables';
-@import "../mapbox-gl.css";
+@import "mapbox-gl.css";
 
 #map {
   width: 100%;
@@ -8,7 +7,7 @@
   box-sizing: border-box;
 
   .marker {
-    background-image: url(../../img/marker.svg);
+    background-image: url('../marker.svg');
     width: 27px;
     height: 41px;
     background-size: contain;
@@ -29,7 +28,7 @@
     .hideOnMobile {
       display: none;
 
-      @include variables.desktop {
+      @media only screen and (min-width : 800px) {
         display: block;
       }
     }
@@ -45,7 +44,7 @@
         padding: 11px 13px 10px 10px;
 
         &:hover {
-          background-color: var(--border-grey);
+          background-color: #ced4da;
           border-radius: 50%;
           overflow: visible;
         }

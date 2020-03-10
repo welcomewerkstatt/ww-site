@@ -20,8 +20,7 @@ Kirby::plugin(
       ],
       'external' => [
         'html' => function ($tag) {
-          $external = file_get_contents($tag->value);
-          return $external;
+          return file_get_contents($tag->value);
         }
       ],
       'embed' => [
@@ -29,15 +28,17 @@ Kirby::plugin(
           return '<div class="embed-container">' . $tag->value . '</div>';
         }
       ],
+
     ],
-    // Redirects from old website
     'routes' => [
+      // Redirects from old website
       [
         'pattern' => 'raeume',
         'action' => function () {
           go('/werkstatt/holzarbeiten', 301);
         }
       ],
+      // Sitemap for Google 
       [
         'pattern' => 'sitemap.xml',
         'action'  => function () {
