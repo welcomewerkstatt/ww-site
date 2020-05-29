@@ -26,24 +26,26 @@ return function ($page, $kirby) {
   if ($hasCalendar) {
     $cache = $kirby->cache('welcome-werkstatt.werkstatt');
     $cachedContent = $cache->get('calendar');
-    
+
     if (!$cachedContent) {
       // Cache miss
-      
+
       // Curl Request
       $curlHandler = curl_init($kirby->option('welcome-werkstatt.werkstatt.calendarUrl'));
       curl_setopt($curlHandler, CURLOPT_RETURNTRANSFER, true);
       $calendar = curl_exec($curlHandler);
 
-      try {
-        // Parse Calendar
-        $vcalendar = VObject\Reader::read($calendar);
-        $now = new DateTime();
-        $threeMonthsFromNow = (new DateTime())->add(new DateInterval('P3M'));
-        // Expand recurring events to be looped over
-        $expandedVCalendar = $vcalendar->expand($now, $threeMonthsFromNow);
-      } catch (Exception $e) {
-        $expandedVCalendar = array();
+      if ($calendar) {
+        try {
+          // Parse Calendar
+          $vcalendar = VObject\Reader::read($calendar);
+          $now = new DateTime();
+          $threeMonthsFromNow = (new DateTime())->add(new DateInterval('P3M'));
+          // Expand recurring events to be looped over
+          $expandedVCalendar = $vcalendar->expand($now, $threeMonthsFromNow);
+        } catch (Exception $e) {
+          $expandedVCalendar = array();
+        }
       }
 
       if ($expandedVCalendar) {
@@ -76,7 +78,6 @@ return function ($page, $kirby) {
       // Cache hit
       $eventArray = $cachedContent;
     }
-
   }
   return [
     'calendar' => $eventArray
