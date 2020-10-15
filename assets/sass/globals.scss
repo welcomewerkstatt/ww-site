@@ -101,7 +101,6 @@ h4 {
     picture:not(:first-of-type) img {
       display: block;
     }
-
   }
 
   > picture img {
@@ -116,7 +115,6 @@ h4 {
       object-fit: cover;
     }
   }
-
 }
 
 header {
@@ -128,8 +126,10 @@ header {
 }
 
 .button {
+  border: 0;
   background-color: var(--highlight-green);
   font-weight: bold;
+  font-family: "Raleway", sans-serif;
   color: white;
   padding: 0.5em 3em;
   text-align: center;
@@ -174,8 +174,6 @@ header {
     height: 8em;
   }
 }
-
-
 
 /* -- */
 
