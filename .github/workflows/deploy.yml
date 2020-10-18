@@ -20,7 +20,7 @@ jobs:
         run: ls -la
 
       - name: Install dependencies
-        run: npm i -g sass
+        run: npm i sass
 
       - name: Run SASS
         run: sass --version
