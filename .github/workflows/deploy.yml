@@ -1,7 +1,5 @@
 name: Deploy to Uberspace
 
-# Controls when the action will run. Triggers the workflow on push or pull request
-# events but only for the master branch
 on:
   push:
     branches: [master]
@@ -10,18 +8,15 @@ on:
 
 jobs:
   build:
-    name: Build
+    name: Build and Deploy
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
         with:
           submodules: "true"
 
-      - name: Run a one-line script
-        run: ls -la
-
-      - name: Install dependencies
-        run: npm i sass
+      - name: Install build dependencies
+        run: npm i
 
       - name: Compile SASS Stylesheets
         run: ./node_modules/sass/sass.js assets/sass/main.scss assets/css/main.css --style=compressed
@@ -29,7 +24,7 @@ jobs:
       - name: Deploy to Uberspace
         uses: easingthemes/ssh-deploy@v2.1.5
         env:
-          ARGS: "-avzr"
+          ARGS: "-avzr --delete --progress --exclude 'node_modules'"
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
           REMOTE_USER: ${{ secrets.REMOTE_USER }}
