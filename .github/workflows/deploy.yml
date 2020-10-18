@@ -24,7 +24,7 @@ jobs:
       - name: Deploy to Uberspace
         uses: easingthemes/ssh-deploy@v2.1.5
         env:
-          ARGS: "-avzr --delete --progress --exclude 'node_modules'"
+          ARGS: "-avzr --delete-before --info=progress2 --exclude 'node_modules'"
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
           REMOTE_USER: ${{ secrets.REMOTE_USER }}
