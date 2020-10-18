@@ -23,4 +23,4 @@ jobs:
         run: npm i sass
 
       - name: Run SASS
-        run: sass --version
+        run: ./node_modules/sass/sass.js --version
