@@ -10,6 +10,7 @@ on:
 
 jobs:
   build:
+    name: Build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -22,5 +23,5 @@ jobs:
       - name: Install dependencies
         run: npm i sass
 
-      - name: Run SASS
-        run: ./node_modules/sass/sass.js --version
+      - name: Compile SASS Stylesheets
+        run: ./node_modules/sass/sass.js assets/sass/main.scss assets/css/main.css --style=compressed
