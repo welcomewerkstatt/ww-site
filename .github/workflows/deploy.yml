@@ -4,9 +4,9 @@ name: Deploy to Uberspace
 # events but only for the master branch
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
   build:
@@ -14,10 +14,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          submodules: 'true'
+          submodules: "true"
 
       - name: Run a one-line script
         run: ls -la
-      
+
       - name: Install dependencies
-        run: composer install
+        run: npm i -g sass
+
+      - name: Run SASS
+        run: sass --version
