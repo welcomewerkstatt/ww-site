@@ -29,6 +29,7 @@ jobs:
       - name: Deploy to Uberspace
         uses: easingthemes/ssh-deploy@v2.1.5
         env:
+          ARGS: "-avzr"
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
           REMOTE_USER: ${{ secrets.REMOTE_USER }}
