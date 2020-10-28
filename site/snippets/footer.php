@@ -11,6 +11,11 @@
             <?php endforeach ?>
           </ul>
           <div class="social-media-icons">
+          <div class="social-media-icon">
+              <a href="https://www.instagram.com/welcome.werkstatt/">
+                <?= svg("assets/img/instagram_icon.svg") ?>
+              </a>
+            </div>
             <div class="social-media-icon">
               <a href="https://www.facebook.com/welcome.werkstatt/">
                 <?= svg("assets/img/facebook_icon.svg") ?>
