@@ -11,12 +11,16 @@ jobs:
     name: Build and Deploy
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout repo from GitHub
+        uses: actions/checkout@v2
         with:
-          submodules: "true"
+          submodules: true
 
-      - name: Install build dependencies
+      - name: Install NPM build dependencies
         run: npm i
+
+      - name: Install Composer dependencies
+        run: composer install
 
       - name: Compile SASS Stylesheets
         run: ./node_modules/sass/sass.js assets/sass/main.scss assets/css/main.css --style=compressed
@@ -24,8 +28,8 @@ jobs:
       - name: Deploy to Uberspace
         uses: easingthemes/ssh-deploy@v2.1.5
         env:
-          ARGS: "-avzr --delete-before --info=progress2 --exclude 'node_modules'"
+          ARGS: "-avzrh --delete-before --exclude '/node_modules/' --exclude '/content/'"
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
           REMOTE_USER: ${{ secrets.REMOTE_USER }}
-          TARGET: "/home/welcome/testdeploy"
+          TARGET: "/var/www/virtual/welcome/www.welcome-werkstatt.de"
