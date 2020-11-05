@@ -17,7 +17,6 @@ tabs:
               - sidebar
             type: pages
             headline: Seiten
-
           header:
             type: files
             headline: Globaler Header
@@ -43,10 +42,9 @@ tabs:
     columns:
       - width: 1/1
         sections:
-          pages:
+          inventory:
             templates:
               - inventory
             type: pages
             headline: Inventar
             create: false
-            layout: list
