@@ -10,6 +10,11 @@ tabs:
       - width: 1/1
         sections:
           pages:
+            templates:
+              - category
+              - default
+              - noheadline
+              - sidebar
             type: pages
             headline: Seiten
 
@@ -32,9 +37,16 @@ tabs:
         sections:
           sidebar:
             type: matomo-sidebar
-
-
-
-
-
-
+  inventory:
+    label: Inventar
+    icon: box
+    columns:
+      - width: 1/1
+        sections:
+          pages:
+            templates:
+              - inventory
+            type: pages
+            headline: Inventar
+            create: false
+            layout: list
