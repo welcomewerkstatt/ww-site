@@ -22,6 +22,9 @@ fields:
       location:
       owner:
       category:
+      images:
+      notes:
+      discharge:
     fields:
       registered:
         label: Registriert am
