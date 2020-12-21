@@ -6,27 +6,18 @@ tabs:
   content:
     label: Inhalte
     icon: text
-    columns:
-      - width: 1/1
-        sections:
-          pages:
-            templates:
-              - category
-              - default
-              - noheadline
-              - sidebar
-            type: pages
-            headline: Seiten
-          header:
-            type: files
-            headline: Globaler Header
-            template: headerimage
-            layout: cards
-            max: 4
-            help: Wenn eine Unterseite über keine eigenen Headerbilder verfügt, werden diese globalen Bilder verwendet.
+    sections:
+      pages:
+        templates:
+          - category
+          - default
+          - noheadline
+          - sidebar
+        type: pages
+        headline: Seiten
   analytics:
     label: Analytics
-    icon: cog
+    icon: globe
     columns:
       - width: 3/4
         sections:
@@ -39,12 +30,35 @@ tabs:
   inventory:
     label: Inventar
     icon: box
-    columns:
-      - width: 1/1
-        sections:
-          inventory:
-            templates:
-              - inventory
-            type: pages
-            headline: Inventar
-            create: false
+     
+  global:
+    label: Global
+    icon: cog
+    sections:
+      header:
+        type: files
+        headline: Headerbilder
+        template: headerimage
+        layout: cards
+        max: 4
+        help: Wenn eine Unterseite über keine eigenen Headerbilder verfügt, werden diese globalen Bilder verwendet.
+      socialmedia:
+        type: fields
+        fields:
+          facebook:
+            width: 1/3
+            label: Facebook
+            type: url
+          twitter:
+            width: 1/3
+            label: Twitter
+            type: url
+          instagram:
+            width: 1/3
+            label: Instagram
+            type: url
+          info:
+            label: Info
+            type: info
+            text: |
+              Die angegebenen Social-Media-Seiten werden im Footer der Seite als Icon verlinkt. Ein leeres Feld sorgt dafür, dass das zugehörige Icon nicht mehr angezeigt wird.
