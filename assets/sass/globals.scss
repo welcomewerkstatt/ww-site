@@ -93,6 +93,11 @@ h4 {
   }
 }
 
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
 .slider-row {
   picture:not(:first-of-type) img {
     display: none;
