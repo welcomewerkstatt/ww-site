@@ -6,7 +6,7 @@
         <div><?= $event['startDateString'] ?></div>
         <div style="text-align: right">
           <?php if ($event['url']) : ?>
-            <a href="<?= $event['url'] ?>" class="undecoratedLink">
+            <a href="<?= $event['url'] ?>" class="undecorated-link">
             <?php endif ?>
             <span style="font-weight: bold">
               <?= $event['summary'] ?>

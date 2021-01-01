@@ -18,7 +18,7 @@ a {
   }
 }
 
-/* Tables */
+/* Tables e.g. in external Markdown content */
 table {
   border-collapse: collapse;
 }
@@ -35,7 +35,6 @@ td {
 }
 
 /* Headlines */
-
 h1,
 h2,
 h3,
@@ -87,13 +86,22 @@ h4 {
   justify-content: space-between;
 }
 
-.flex-container {
+.flex {
   @include variables.desktop {
     display: flex;
   }
 }
 
+.flex-column {
+  flex-direction: column;
+}
+
 .content {
+  display: flex;
+  flex-direction: column;
+}
+
+.content-layout {
   display: flex;
   flex-direction: column;
 }
@@ -162,6 +170,10 @@ header {
     margin-right: 0.6em;
   }
 
+  .content-layout {
+    flex-direction: row;
+  }
+
   .sidebar {
     flex-basis: 0;
     flex-grow: 1;
@@ -210,7 +222,7 @@ header {
   margin-bottom: 20px;
 }
 
-.undecoratedLink {
+.undecorated-link {
   color: var(--primary-blue);
   text-decoration: none;
 

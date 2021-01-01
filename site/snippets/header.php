@@ -5,14 +5,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <?= $page->metaTags() ?>
-  <?= css(['assets/css/main.css']) ?>
+  <?= css(['assets/css/main.css', 'media/plugins/preya/link-button-block/link-button.css']) ?>
 </head>
 
 <body>
   <main>
     <div class="logo-row full-column blue"></div>
     <header class="logo-row main-column"></header>
-    <div class="slider-row full-column blue flex-container space-between">
+    <div class="slider-row full-column blue flex space-between">
       <?php
       $images = [];
       if ($page->files()->template('headerimage')->isNotEmpty()) {
