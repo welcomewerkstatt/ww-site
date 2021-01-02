@@ -31,7 +31,15 @@ tabs:
   inventory:
     label: Inventar
     icon: box
-     
+    columns:
+      - width: 1/1
+        sections:
+          inventory:
+            templates:
+              - inventory
+            type: pages
+            headline: Inventar
+            create: false
   global:
     label: Global
     icon: cog
