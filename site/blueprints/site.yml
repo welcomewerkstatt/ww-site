@@ -58,14 +58,17 @@ tabs:
             width: 1/3
             label: Facebook
             type: url
+            icon: facebook
           twitter:
             width: 1/3
             label: Twitter
             type: url
+            icon: twitter
           instagram:
             width: 1/3
             label: Instagram
             type: url
+            icon: instagram
           info:
             label: Info
             type: info
