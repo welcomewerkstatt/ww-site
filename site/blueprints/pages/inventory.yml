@@ -59,6 +59,7 @@ fields:
           hall: Halle
           machineroom: Maschinenraum
           electronicarea: Elektronikbereich
+          bikearea: Fahrradecke
       amount:
         width: 1/3
         label: Anzahl
