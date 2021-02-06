@@ -45,3 +45,5 @@ fields:
       - code
       - markdown
       - link-button
+      - notification-box
+      - next-events

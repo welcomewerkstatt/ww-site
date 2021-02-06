@@ -18,6 +18,10 @@ a {
   }
 }
 
+figure {
+  margin: 0;
+}
+
 /* Tables e.g. in external Markdown content */
 table {
   border-collapse: collapse;
@@ -63,13 +67,19 @@ h4 {
   margin-bottom: 0.6em;
   font-weight: 600;
   font-size: 1.2rem;
+  margin-top: 0;
 }
+
+
 
 /* Responsive Embeds for Google Maps, Calendar, etc. */
 .embed-container {
   position: relative;
   overflow: hidden;
+  height: 0;
+  padding-bottom: 0;
   padding-top: 56.25%;
+  margin-bottom: 1.6rem;
 
   iframe {
     position: absolute;
@@ -159,7 +169,15 @@ header {
   }
 }
 
+.block {
+  margin-bottom: 1rem;
+}
+
 @include variables.desktop {
+  .blocks:not(:last-child) {
+    margin-right: 1rem;
+  }
+  
   .two-columns-on-desktop {
     display: flex;
   }
