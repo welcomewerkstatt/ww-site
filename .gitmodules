@@ -19,3 +19,6 @@
 [submodule "site/plugins/kirby-next-events-block"]
 	path = site/plugins/kirby-next-events-block
 	url = https://github.com/pReya/kirby-next-events-block.git
+[submodule "site/plugins/kirby-notification-box-block"]
+	path = site/plugins/kirby-notification-box-block
+	url = https://github.com/welcomewerkstatt/kirby-notification-box-block.git

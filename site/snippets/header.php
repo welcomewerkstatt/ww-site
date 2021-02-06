@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <?= $page->metaTags() ?>
-  <?= css(['assets/css/main.css', 'media/plugins/preya/link-button-block/link-button.css', 'media/plugins/welcome-werkstatt/notification-box-block/notification-box.css', 'media/plugins/preya/kirby-next-events-block/next-events.css']) ?>
+  <?= css(['assets/css/main.css', 'media/plugins/preya/link-button-block/link-button.css', 'media/plugins/welcome-werkstatt/kirby-notification-box-block/notification-box.css', 'media/plugins/preya/kirby-next-events-block/next-events.css']) ?>
 </head>
 
 <body>
