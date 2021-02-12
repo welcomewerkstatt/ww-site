@@ -122,16 +122,16 @@
         },
         {
             "name": "getkirby/cms",
-            "version": "3.5.2",
+            "version": "3.5.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/getkirby/kirby.git",
-                "reference": "dbd8d2216eeec429d0f19ebea430de8347e7f073"
+                "reference": "317f494ee5166f36e32f9acf286f69786de30512"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/getkirby/kirby/zipball/dbd8d2216eeec429d0f19ebea430de8347e7f073",
-                "reference": "dbd8d2216eeec429d0f19ebea430de8347e7f073",
+                "url": "https://api.github.com/repos/getkirby/kirby/zipball/317f494ee5166f36e32f9acf286f69786de30512",
+                "reference": "317f494ee5166f36e32f9acf286f69786de30512",
                 "shasum": ""
             },
             "require": {
@@ -190,7 +190,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2021-02-09T15:43:43+00:00"
+            "time": "2021-02-11T10:38:27+00:00"
         },
         {
             "name": "getkirby/composer-installer",
@@ -709,16 +709,16 @@
         },
         {
             "name": "sabre/vobject",
-            "version": "4.3.4",
+            "version": "4.3.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sabre-io/vobject.git",
-                "reference": "3168acd7c22fa3c96cb115539f93b59818ba1f06"
+                "reference": "d8a0a9ae215a8acfb51afc29101c7344670b9c83"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sabre-io/vobject/zipball/3168acd7c22fa3c96cb115539f93b59818ba1f06",
-                "reference": "3168acd7c22fa3c96cb115539f93b59818ba1f06",
+                "url": "https://api.github.com/repos/sabre-io/vobject/zipball/d8a0a9ae215a8acfb51afc29101c7344670b9c83",
+                "reference": "d8a0a9ae215a8acfb51afc29101c7344670b9c83",
                 "shasum": ""
             },
             "require": {
@@ -809,7 +809,7 @@
                 "issues": "https://github.com/sabre-io/vobject/issues",
                 "source": "https://github.com/fruux/sabre-vobject"
             },
-            "time": "2021-02-04T09:59:59+00:00"
+            "time": "2021-02-12T06:28:04+00:00"
         },
         {
             "name": "sabre/xml",
