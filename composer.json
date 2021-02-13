@@ -11,8 +11,7 @@
   ],
   "require": {
     "php": ">=7.1.0",
-    "getkirby/cms": "^3.0",
-    "sabre/vobject": "~4.1"
+    "getkirby/cms": "^3.0"
   },
   "config": {
     "optimize-autoloader": true
