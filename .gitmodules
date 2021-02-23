@@ -16,9 +16,6 @@
 [submodule "site/plugins/kirby-notification-box-block"]
 	path = site/plugins/kirby-notification-box-block
 	url = https://github.com/welcomewerkstatt/kirby-notification-box-block.git
-[submodule "site/plugins/kirby-video-embed"]
-	path = site/plugins/kirby-video-embed
-	url = https://github.com/welcomewerkstatt/kirby-video-embed.git
 [submodule "kirby"]
 	path = kirby
 	url = https://github.com/getkirby/kirby.git
