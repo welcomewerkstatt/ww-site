@@ -1,7 +1,9 @@
 title: Kategorie
 icon: 📂
 
+status:
+  listed: Aktiv
+
 sections:
   pages:
     headline: Unterseiten
-

@@ -27,7 +27,7 @@ return [
         return [
             'title' => $page->title() . ' | ' . $site->title(),
             'meta' => [
-                'description' => $page->text()->short(300)
+                'description' => $page->text()->toBlocks()->filterBy('type', 'text')->excerpt(300)
             ],
             'link' => [
                 'canonical' => $page->url()
@@ -38,13 +38,12 @@ return [
                 'site_name' => $site->title(),
                 'url' => $page->url(),
                 'image' => $page->hasImages() ? $page->images()->sortBy('sort')->first()->thumb('header')->url() : $site->images()->sortBy('sort')->first()->thumb('header')->url(),
-                'description' => $page->text()->short(300),
+                'description' => $page->text()->toBlocks()->filterBy('type', 'text')->excerpt(300),
                 'locale' => 'de_DE'
             ],
             'twitter' => [
                 'site' => '@WelcomeWerk'
             ]
-
         ];
     },
     'sylvainjule.matomo.url'        => 'xxx',
