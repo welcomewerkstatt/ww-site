@@ -19,3 +19,6 @@
 [submodule "kirby"]
 	path = kirby
 	url = https://github.com/getkirby/kirby.git
+[submodule "site/plugins/kirby-accordion-block"]
+	path = site/plugins/kirby-accordion-block
+	url = https://github.com/pReya/kirby-accordion-block.git
