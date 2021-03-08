@@ -9,6 +9,7 @@ tabs:
         templates:
           - category
           - default
+          - faq
         type: pages
         headline: Seiten
   analytics:
