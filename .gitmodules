@@ -22,3 +22,6 @@
 [submodule "site/plugins/kirby-accordion-block"]
 	path = site/plugins/kirby-accordion-block
 	url = https://github.com/pReya/kirby-accordion-block.git
+[submodule "site/plugins/kirby-team-box-block"]
+	path = site/plugins/kirby-team-box-block
+	url = https://github.com/pReya/kirby-team-box-block.git

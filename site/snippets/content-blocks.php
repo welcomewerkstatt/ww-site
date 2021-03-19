@@ -1,5 +1,5 @@
 <div class="content-row full-column grey"></div>
-<div class="content-row main-column flex-column">
+<div class="content-row content main-column flex-column">
   <?php if ($page->headline()->isNotEmpty()) : ?>
     <h1><?= $page->headline()->html() ?></h1>
   <?php else : ?>
@@ -10,9 +10,7 @@
       <?php foreach ($layout->columns() as $column) : ?>
         <div class="blocks" style="flex: <?= $column->span() ?>">
           <?php foreach ($column->blocks() as $block) : ?>
-            <div class="block">
-              <?= $block ?>
-            </div>
+            <?= $block ?>
           <?php endforeach ?>
         </div>
       <?php endforeach ?>
