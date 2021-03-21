@@ -180,6 +180,10 @@ header {
   width: 100%;
 }
 
+.column p {
+  margin-top: 0;
+}
+
 
 @include variables.desktop {
   .grid {
