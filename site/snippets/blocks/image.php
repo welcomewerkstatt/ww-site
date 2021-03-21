@@ -22,10 +22,10 @@ $class    = $ratio != 'auto' ? 'img' : 'auto';
 $src      = null;
 
 if ($block->location() == 'web') {
-    $src = $block->src();
+  $src = $block->src();
 } elseif ($image = $block->image()->toFile()) {
-    $alt = $alt ?? $image->alt();
-    $src = $image->thumb('sidebar')->url();
+  $alt = $alt ?? $image->alt();
+  $src = $image->thumb('sidebar')->url();
 }
 
 if ($ratio !== 'auto') {
@@ -38,22 +38,24 @@ $attrs = attr([
   'class'         => $class,
   'data-contain'  => $contain,
   'style'         => '--w:' . $w . '; --h:' . $h,
+  'href'          => $link,
 ]);
-if ($link->isNotEmpty()) {
-  $attrs['href'] = $link;
-}
 
 ?>
-<?php if ($src): ?>
-<figure>
-  <a <?= $attrs ?>>
-    <img src="<?= $src ?>" alt="<?= $alt ?>">
-  </a>
+<?php if ($src) : ?>
+  <figure>
+    <?php if ($link->isNotEmpty()) : ?>
+      <a <?= $attrs ?>>
+      <?php endif ?>
+      <img src="<?= $src ?>" alt="<?= $alt ?>">
+      <?php if ($link->isNotEmpty()) : ?>
+      </a>
+    <?php endif ?>
 
-  <?php if ($caption->isNotEmpty()): ?>
-  <figcaption class="img-caption">
-    <?= $caption ?>
-  </figcaption>
-  <?php endif ?>
-</figure>
+    <?php if ($caption->isNotEmpty()) : ?>
+      <figcaption class="img-caption">
+        <?= $caption ?>
+      </figcaption>
+    <?php endif ?>
+  </figure>
 <?php endif ?>
