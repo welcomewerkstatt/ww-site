@@ -114,14 +114,13 @@ li p {
   flex-direction: column;
 }
 
-.content {
+.layouts-content {
   display: flex;
   flex-direction: column;
 }
 
-.content-layout {
+.layout {
   display: flex;
-  flex-direction: column;
 }
 
 .slider-row {
@@ -168,41 +167,31 @@ header {
   margin: 1em 0;
 }
 
-.sidebar {
-  img {
-    width: 100%;
-  }
-  p {
-    margin-top: 0;
-  }
+.grid {
+  --columns: 12;
+  --gutter: 1.5rem;
+  display: grid;
+  grid-gap: 0 var(--gutter);
+  grid-template-columns: 1fr;
+  margin-bottom: var(--gutter)
 }
 
-.blocks {
-  margin-bottom: 1rem;
-}
-
-// .block {
-//   // height: 100%;
-//   
-// }
-
-.blocks img {
+.column img {
   width: 100%;
 }
 
-// .blocks {
-//   height: auto;
-// }
 
 @include variables.desktop {
-  .blocks:not(:last-child) {
-    margin-right: 1rem;
+  .grid {
+    grid-template-columns: repeat(12, 1fr);
   }
-  
-  .two-columns-on-desktop {
-    display: flex;
+  .grid > .column {
+    grid-column: span var(--columns);
   }
 
+}
+
+@include variables.desktop {
   .content {
     flex-basis: 0;
     flex-grow: 2;
@@ -211,11 +200,6 @@ header {
 
   .content-layout {
     flex-direction: row;
-  }
-
-  .sidebar {
-    flex-basis: 0;
-    flex-grow: 1;
   }
 
   button {

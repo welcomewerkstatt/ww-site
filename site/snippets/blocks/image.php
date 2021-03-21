@@ -43,6 +43,7 @@ $attrs = attr([
 
 ?>
 <?php if ($src) : ?>
+
   <figure>
     <?php if ($link->isNotEmpty()) : ?>
       <a <?= $attrs ?>>
@@ -58,4 +59,5 @@ $attrs = attr([
       </figcaption>
     <?php endif ?>
   </figure>
+
 <?php endif ?>
