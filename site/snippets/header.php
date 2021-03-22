@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <?= $page->metaTags() ?>
   <?= js('@auto', true) ?>
-  <?= css(['@auto', 'assets/css/main.css', 'media/plugins/preya/link-button-block/link-button.css', 'media/plugins/welcome-werkstatt/kirby-notification-box-block/notification-box.css', 'media/plugins/preya/kirby-next-events-block/next-events.css', 'media/plugins/preya/kirby-accordion-block/accordion.css', 'media/plugins/preya/kirby-team-box-block/team-box.css']) ?>
+  <?= css(['@auto', 'assets/css/main.css', 'media/plugins/preya/kirby-link-button-block/link-button.css', 'media/plugins/welcome-werkstatt/kirby-notification-box-block/notification-box.css', 'media/plugins/preya/kirby-next-events-block/next-events.css', 'media/plugins/preya/kirby-accordion-block/accordion.css', 'media/plugins/preya/kirby-team-box-block/team-box.css']) ?>
 </head>
 
 <body>
