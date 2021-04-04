@@ -1,0 +1,4 @@
+title: Member
+permissions:
+  access:
+    panel: false

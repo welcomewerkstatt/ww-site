@@ -1,0 +1,10 @@
+title: Interner Bereich
+preset: page
+fields:
+  text:
+    label: Text
+    type: textarea
+    size: large
+
+pages:
+  template: internal

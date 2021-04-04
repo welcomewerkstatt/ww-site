@@ -36,6 +36,17 @@ tabs:
             type: pages
             headline: Inventar
             create: false
+  internal:
+    label: Intern
+    icon: road-sign
+    columns:
+      - width: 1/1
+        sections:
+          internal:
+            templates:
+              - internal
+            type: pages
+            headline: Intern
   global:
     label: Global
     icon: cog
