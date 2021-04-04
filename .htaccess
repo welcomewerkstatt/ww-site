@@ -60,3 +60,9 @@ AddOutputFilterByType DEFLATE application/x-javascript
 <filesMatch ".(ico|pdf|jpg|jpeg|png|gif|js|css|svg|eot|ttf|woff|woff2)$">
     Header set Cache-Control "max-age=15552000, public"
 </filesMatch>
+
+# Fix for https://httpoxy.org vulnerability
+<IfModule mod_headers.c>
+  RequestHeader unset Proxy
+  Header set Content-Security-Policy "frame-ancestors 'self' https://*.welcome-werkstatt.de;"
+</IfModule>

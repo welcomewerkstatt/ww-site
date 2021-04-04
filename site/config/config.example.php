@@ -15,7 +15,16 @@ return [
     'cache' => [
         'pages' => [
             'active' => true,
-            'ignore' => ['home', 'kalender']
+            'ignore' => function ($page) {
+                $prefixes = ['kalender', 'home', 'internes'];
+                foreach ($prefixes as $prefix) {
+                    $startsWithPrefix = !boolval(strncmp($page, $prefix, strlen($prefix)));
+                    if ($startsWithPrefix) {
+                      return $startsWithPrefix;
+                    }
+                }
+                return false;
+            }
         ]
     ],
     'thumbs' => [
