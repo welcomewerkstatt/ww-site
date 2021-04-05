@@ -1,4 +1,3 @@
-
 <?php if (!$kirby->user()) go('/') ?>
 
 <?php snippet('internal/header') ?>

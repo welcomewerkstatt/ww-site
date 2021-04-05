@@ -6,15 +6,25 @@ return function ($kirby) {
   $error = false;
 
   if ($kirby->request()->is('GET')) {
-    try {
-      $auth = $kirby->request()->auth();
-      if ($auth) {
+    // Try looking for params first
+    $user = urldecode(param('user'));
+    $password = urldecode(param('pass'));
+
+    // If no params are found, try auth header
+    if (is_null($user) || is_null($password)) {
+      if ($auth = $kirby->request()->auth()) {
         $user = $auth()->username();
         $password = $auth()->password();
-        $kirby->auth()->login($user, $password);
+      } else {
+        // No params and no auth header
+        $error = true;
       }
-    } catch (Exception $e) {
-      $error = true;
+    } else {
+      try {
+        $kirby->auth()->login($user, $password);
+      } catch (Exception $e) {
+        $error = true;
+      }
     }
   }
 
