@@ -21,6 +21,11 @@ RewriteEngine on
 #
 RewriteBase /
 
+# Bust browsercache on CSS & JS files
+# More info: https://github.com/bvdputte/kirby-fingerprint
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.+)\.([0-9a-z]{32})\.(js|css|png|jpe?g|gif|svg|ico)$ $1.$3 [L]
+
 # block files and folders beginning with a dot, such as .git
 # except for the .well-known folder, which is used for Let's Encrypt and security.txt
 RewriteRule (^|/)\.(?!well-known\/) index.php [L]
@@ -61,6 +66,7 @@ AddOutputFilterByType DEFLATE application/x-javascript
     Header set Cache-Control "max-age=15552000, public"
 </filesMatch>
 
+# Allow embedding into Nextcloud
 # Fix for https://httpoxy.org vulnerability
 <IfModule mod_headers.c>
   RequestHeader unset Proxy
