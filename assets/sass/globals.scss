@@ -176,6 +176,19 @@ header {
   margin-bottom: var(--gutter)
 }
 
+.grid {
+  .column:not(:first-child) {
+    margin-top: 1em;
+  }
+}
+@include variables.desktop {
+  .grid {
+    .column:not(:first-child) {
+      margin-top: initial;
+    }
+  }
+}
+
 .column img {
   width: 100%;
 }
@@ -189,13 +202,11 @@ header {
   .grid {
     grid-template-columns: repeat(12, 1fr);
   }
+
   .grid > .column {
     grid-column: span var(--columns);
   }
 
-}
-
-@include variables.desktop {
   .content {
     flex-basis: 0;
     flex-grow: 2;
