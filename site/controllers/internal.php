@@ -30,6 +30,6 @@ return function ($kirby) {
 
   return [
     'error' => $error,
-    'debug' => json_encode(["Headers" => $headers, "RefererIsValid" => $refererIsValid, "User" => print_r($user, true)])
+    'debug' => json_encode(["Headers" => $headers, "RefererIsValid" => $refererIsValid, "RefererHeader" => print_r($kirby->request()->header('Referer'), true), "User" => print_r($user, true)])
   ];
 };
