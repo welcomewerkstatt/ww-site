@@ -4,7 +4,7 @@
 return function ($kirby) {
 
   $error = true;
-  $debug = json_encode($kirby->request()->headers());
+  $debug = $kirby->request()->headers();
 
   if ($kirby->request()->is('GET')) {
     $refererIsValid = strpos($kirby->request()->header('Referer'), "welcome-werkstatt.de");
@@ -15,6 +15,6 @@ return function ($kirby) {
 
   return [
     'error' => $error,
-    'debug' => $debug
+    'debug' => json_encode(["Headers" => $debug, "RefererIsValid" => $refererIsValid, "User" => $kirby->user()])
   ];
 };

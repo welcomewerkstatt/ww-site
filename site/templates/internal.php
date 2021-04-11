@@ -1,3 +1,7 @@
+<script>
+  console.log("Debug: ", <?= $debug ?>);
+</script>
+
 <?php if (!$kirby->user() || $error) go('/') ?>
 
 <?php snippet('internal/header') ?>
