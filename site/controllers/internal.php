@@ -4,7 +4,7 @@
 return function ($kirby) {
 
   $error = false;
-  $debug = $kirby->request()->headers();
+  $headers = $kirby->request()->headers();
   $session = $kirby->session();
   $user = false;
   $refererIsValid = false;
@@ -20,18 +20,16 @@ return function ($kirby) {
       }
     }
 
-    // Check referer
+    // Check referer for auth only if session did not yield user
     if (!$user) {
-      $refererIsValid = strpos($kirby->request()->header('Referer'), "welcome-werkstatt.de");
+      $refererIsValid = (bool) strpos($kirby->request()->header('Referer'), "welcome-werkstatt.de");
 
-      if (!$refererIsValid) {
-        $error = true;
-      }
+      $error = !$refererIsValid;
     }
   }
 
   return [
     'error' => $error,
-    'debug' => json_encode(["Headers" => $debug, "RefererIsValid" => $refererIsValid, "User" => print_r($user, true)])
+    'debug' => json_encode(["Headers" => $headers, "RefererIsValid" => $refererIsValid, "User" => print_r($user, true)])
   ];
 };
