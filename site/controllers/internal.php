@@ -1,31 +1,15 @@
 <?php
 
-// Make sure that basic auth header is present and has valid credentials
+// Check for valid "referer" value to show page or not
 return function ($kirby) {
 
-  $error = false;
+  $error = true;
   $debug = json_encode($kirby->request()->headers());
 
   if ($kirby->request()->is('GET')) {
-    // Try looking for params first
-    $user = urldecode(param('user'));
-    $password = urldecode(param('pass'));
-
-    // If no params are found, try auth header
-    if (is_null($user) || is_null($password)) {
-      if ($auth = $kirby->request()->auth()) {
-        $user = $auth()->username();
-        $password = $auth()->password();
-      } else {
-        // No params and no auth header
-        $error = true;
-      }
-    } else {
-      try {
-        $kirby->auth()->login($user, $password);
-      } catch (Exception $e) {
-        $error = true;
-      }
+    $refererIsValid = strpos($kirby->request()->header('Referer'), "welcome-werkstatt.de");
+    if ($refererIsValid) {
+      $error = false;
     }
   }
 

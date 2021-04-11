@@ -1,8 +1,5 @@
-<?php if (!$kirby->user()) go('/') ?>
+<?php if (!$kirby->user() || $error) go('/') ?>
 
 <?php snippet('internal/header') ?>
-<script>
-console.log("Headers: ", <?= $debug ?>);
-</script>
 <?php snippet('internal/content') ?>
 <?php snippet('internal/footer') ?>
