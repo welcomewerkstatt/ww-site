@@ -6,7 +6,8 @@ return function ($kirby) {
   $error = false;
   $debug = $kirby->request()->headers();
   $session = $kirby->session();
-  $user = null;
+  $user = false;
+  $refererIsValid = false;
 
 
   if ($kirby->request()->is('GET')) {
