@@ -4,6 +4,7 @@
 return function ($kirby) {
 
   $error = false;
+  $debug = json_encode($kirby->request()->headers());
 
   if ($kirby->request()->is('GET')) {
     // Try looking for params first
@@ -30,5 +31,6 @@ return function ($kirby) {
 
   return [
     'error' => $error,
+    'debug' => $debug
   ];
 };
