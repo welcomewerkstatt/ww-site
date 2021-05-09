@@ -55,7 +55,4 @@ return [
             ]
         ];
     },
-    'sylvainjule.matomo.url'        => 'xxx',
-    'sylvainjule.matomo.id'         => 'xxx',
-    'sylvainjule.matomo.token'      => 'xxx',
 ];
