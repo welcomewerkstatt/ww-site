@@ -4,9 +4,6 @@
 [submodule "site/plugins/meta-tags"]
 	path = site/plugins/meta-tags
 	url = git@github.com:pedroborges/kirby-meta-tags.git
-[submodule "site/plugins/matomo"]
-	path = site/plugins/matomo
-	url = git@github.com:sylvainjule/kirby-matomo.git
 [submodule "site/plugins/kirby-link-button-block"]
 	path = site/plugins/kirby-link-button-block
 	url = git@github.com:pReya/kirby-link-button-block.git
