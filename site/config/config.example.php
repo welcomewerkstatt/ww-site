@@ -12,7 +12,7 @@ return [
     'panel' => [
         'language' => 'de'
     ],
-    'sitemap.ignore' => ['internes'],
+    'sitemap.ignore' => ['internes', 'inventar'],
     'cache' => [
         'pages' => [
             'active' => true,

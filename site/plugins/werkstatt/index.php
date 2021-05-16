@@ -26,21 +26,27 @@ Kirby::plugin(
           go('/werkstatt/holzarbeiten', 301);
         }
       ],
-      // Sitemap for Google 
+      // Sitemap for Google
       [
         'pattern' => 'sitemap.xml',
         'action'  => function () {
           $pages = site()->pages()->index();
-
-          // fetch the pages to ignore from the config settings,
-          // if nothing is set, we ignore the error page
-          $ignore = kirby()->option('sitemap.ignore', ['error']);
-          $internal = page('internes')->children()->pluck('id', ',');
-          $ignore = array_merge($ignore, $internal);
-
+          $ignores = kirby()->option('sitemap.ignore', ['error']);
+          // Allow ignore option to include children via 'page/*' syntax
+          $ignoresExpanded = [];
+          foreach ($ignores as $ignore) {
+            if (str_ends_with($ignore, '/*')) {
+              $ignore = substr($ignore, 0, -2);
+              foreach ($pages as $page) {
+                if (str_starts_with($page, $ignore)) {
+                  array_push($ignoresExpanded, $page);
+                }
+              };
+            }
+          }
+          $ignore = array_merge($ignores, $ignoresExpanded);
           $content = snippet('sitemap', compact('pages', 'ignore'), true);
 
-          // return response with correct header type
           return new Kirby\Cms\Response($content, 'application/xml');
         }
       ],
