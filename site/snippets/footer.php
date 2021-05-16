@@ -38,6 +38,4 @@
 </footer>
 </main>
 </body>
-<?php echo snippet('matomo') ?>
-
 </html>

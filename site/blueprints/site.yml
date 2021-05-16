@@ -12,18 +12,6 @@ tabs:
           - faq
         type: pages
         headline: Seiten
-  analytics:
-    label: Analytics
-    icon: globe
-    columns:
-      - width: 3/4
-        sections:
-          main:
-            type: matomo-main
-      - width: 1/4
-        sections:
-          sidebar:
-            type: matomo-sidebar
   inventory:
     label: Inventar
     icon: box

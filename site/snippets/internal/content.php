@@ -4,6 +4,6 @@
     <section class="markdown-body">
       <h1><?= $page->title() ?></h1>
       <?= $page->text()->kt() ?>
+    </section>
   </div>
-  </section>
 </main>
