@@ -35,6 +35,8 @@ Kirby::plugin(
           // fetch the pages to ignore from the config settings,
           // if nothing is set, we ignore the error page
           $ignore = kirby()->option('sitemap.ignore', ['error']);
+          $internal = page('internes')->children()->pluck('id', ',');
+          $ignore = array_merge($ignore, $internal);
 
           $content = snippet('sitemap', compact('pages', 'ignore'), true);
 
