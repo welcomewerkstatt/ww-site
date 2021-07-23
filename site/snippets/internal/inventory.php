@@ -36,7 +36,7 @@ $options = [
           <?php endforeach ?>
         </tbody>
       </table>
-      <p class="last-edited">Zuletzt bearbeitet am <?= $page->modified('d.m.Y \u\m H:i \U\h\r') ?></p>
+      <p class="last-edited">Zuletzt bearbeitet am <?= $site->pages()->get('inventar')->modified('d.m.Y \u\m H:i \U\h\r') ?></p>
     </section>
   </div>
 </main>
