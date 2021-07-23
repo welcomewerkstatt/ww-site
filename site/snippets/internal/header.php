@@ -9,6 +9,7 @@
     'assets/css/templates/internal/internal.css',
     'assets/css/templates/internal/github-markdown.css',
   ]) ?>
+  <?= js('@auto', true) ?>
   <title><?= $page->title() ?></title>
 </head>
 

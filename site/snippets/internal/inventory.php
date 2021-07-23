@@ -15,22 +15,26 @@ $options = [
   <?php snippet('internal/menu') ?>
   <div class="content">
     <section class="markdown-body">
-      <h1><?= $page->title() ?></h1>
-      <table>
-        <tr>
-          <th>Hersteller</th>
-          <th>Modell</th>
-          <th>Name</th>
-          <th>Ort</th>
-        </tr>
-        <?php foreach ($items as $item) : ?>
+      <h1><?= $page->title() ?> (<?= $items->count() ?> Gegenstände)</h1>
+      <table class="sortable">
+        <thead>
           <tr>
-            <td><?= $item->manufacturer() ?></td>
-            <td><?= $item->model() ?></td>
-            <td><?= $item->name() ?></td>
-            <td><?= $options[$item->location()->value()] ?></td>
+            <th>Hersteller</th>
+            <th>Modell</th>
+            <th>Name</th>
+            <th>Ort</th>
           </tr>
-        <?php endforeach ?>
+        </thead>
+        <tbody>
+          <?php foreach ($items as $item) : ?>
+            <tr>
+              <td><?= $item->manufacturer() ?></td>
+              <td><?= $item->model() ?></td>
+              <td><?= $item->name() ?></td>
+              <td><?= $options[$item->location()->value()] ?></td>
+            </tr>
+          <?php endforeach ?>
+        </tbody>
       </table>
       <p class="last-edited">Zuletzt bearbeitet am <?= $page->modified('d.m.Y \u\m H:i \U\h\r') ?></p>
     </section>

@@ -127,3 +127,45 @@ main {
 .markdown-body figure figcaption {
   font-style: italic;
 }
+
+/* Sortable */
+
+.sortable td,
+.sortable th {
+  padding: 10px;
+}
+
+.sortable th:hover {
+  cursor: pointer;
+  color: #000;
+}
+
+.sortable th:hover::after {
+  color: inherit;
+  font-size: 1.2em;
+  content: ' \025B8';
+}
+
+.sortable th::after {
+  font-size: 1.2em;
+  color: transparent;
+  content: ' \025B8';
+}
+
+.sortable th.dir-d {
+  color: #000;
+}
+
+.sortable th.dir-d::after {
+  color: inherit;
+  content: ' \025BE';
+}
+
+.sortable th.dir-u {
+  color: #000;
+}
+
+.sortable th.dir-u::after {
+  color: inherit;
+  content: ' \025B4';
+}
