@@ -56,4 +56,12 @@ return [
             ]
         ];
     },
+    'bvdputte.fingerprint.parameter' => true,
+    'welcome-werkstatt.werkstatt' => [
+        'easyverein' => [
+            'apiKey' => 'abc123',
+            'apiBaseUrl' => 'https://easyverein.com/api/v1.2/',
+            'activeMembersGroupId' => '12345678',
+        ],
+    ],
 ];
