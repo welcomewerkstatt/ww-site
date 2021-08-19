@@ -7,4 +7,6 @@ fields:
     size: large
 
 pages:
-  template: internal
+  templates:
+    - internal
+    - internal-inventory

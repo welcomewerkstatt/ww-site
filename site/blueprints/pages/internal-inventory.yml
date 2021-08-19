@@ -1,0 +1,7 @@
+title: Interne Inventarliste
+fields:
+  info:
+    label: Info
+    type: info
+    text: |
+      Diese Seite wird dynamisch generiert. Manuelle Anpassungen sind hier nicht möglich.
