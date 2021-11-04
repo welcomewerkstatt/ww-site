@@ -10,7 +10,7 @@
       <section class="grid" id="<?= $layout->id() ?>">
         <?php foreach ($layout->columns() as $column) : ?>
           <div class="column" style="--columns:<?= $column->span() ?>">
-            <?php foreach ($column->blocks() as $block) : ?>
+            <?php foreach ($column->blocks()->filter('isHidden', false) as $block) : ?>
               <div class="block">
                 <?= $block ?>
               </div>
