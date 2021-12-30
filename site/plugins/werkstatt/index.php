@@ -50,8 +50,8 @@ Kirby::plugin(
                 $apiCache->set('membercount', $memberCount, 1440);
                 return $memberCount;
               }
-              return $tag->fallback ?? '';
             }
+            return $tag->fallback ?? '';
           } else {
             return $cachedData;
           }
