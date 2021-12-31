@@ -9,6 +9,10 @@ jobs:
     name: Build and Deploy
     runs-on: ubuntu-latest
     steps:
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.0'
       - name: Checkout repo from GitHub
         uses: actions/checkout@v2
         with:
