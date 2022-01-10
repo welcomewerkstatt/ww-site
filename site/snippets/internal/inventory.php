@@ -1,5 +1,8 @@
 <?php
-$items = $site->pages()->get('inventar')->items()->toStructure();
+
+// Filter out discharged items
+$items = $site->pages()->get('inventar')->items()->toStructure()->filterBy('discharge', 'maxlength', '0');
+
 $options = [
   'storage' => 'Lager',
   'office' => 'Büro',
