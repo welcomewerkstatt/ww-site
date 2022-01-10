@@ -1,7 +1,11 @@
 title: Interne Inventarliste
 fields:
+  text:
+    label: Text
+    type: textarea
+    size: small
   info:
     label: Info
     type: info
     text: |
-      Diese Seite wird dynamisch generiert. Manuelle Anpassungen sind hier nicht möglich.
+      Die Inventarliste wird hier automatisch eingefügt. Anpassungen an der Liste können über den "Inventar"-Tab vorgenommen werden.

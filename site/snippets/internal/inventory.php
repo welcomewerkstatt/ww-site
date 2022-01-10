@@ -16,6 +16,7 @@ $options = [
   <div class="content">
     <section class="markdown-body">
       <h1><?= $page->title() ?> (<?= $items->count() ?> Gegenstände)</h1>
+      <?= $page->text()->kt() ?>
       <table class="sortable">
         <thead>
           <tr>
