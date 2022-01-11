@@ -8,23 +8,22 @@ options:
   delete: false
   duplicate: false
   preview: false
-  
+
 
 fields:
   items:
     label: Gegenstände
     type: structure
-    columns: 
-      registered:
+    columns:
+      name:
       manufacturer:
       model:
-      name:
       location:
-      owner:
-      category:
       images:
+      owner:
       notes:
       discharge:
+      category:
     fields:
       registered:
         label: Registriert am

@@ -27,15 +27,17 @@ $options = [
             <th>Modell</th>
             <th>Name</th>
             <th>Ort</th>
+            <th>Eigentümer</th>
           </tr>
         </thead>
         <tbody>
           <?php foreach ($items as $item) : ?>
             <tr>
+              <td><?= $item->name() ?></td>
               <td><?= $item->manufacturer() ?></td>
               <td><?= $item->model() ?></td>
-              <td><?= $item->name() ?></td>
               <td><?= $options[$item->location()->value()] ?></td>
+              <td><?= $item->owner() ?></td>
             </tr>
           <?php endforeach ?>
         </tbody>
