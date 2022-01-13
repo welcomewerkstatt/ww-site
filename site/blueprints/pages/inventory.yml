@@ -97,4 +97,6 @@ fields:
         label: Bilder
         type: files
         layout: cards
+        uploads:
+          parent: page.children.find('images')
         size: small
