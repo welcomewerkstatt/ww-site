@@ -175,3 +175,11 @@ main {
   color: inherit;
   content: ' \025B4';
 }
+
+.parvus-zoom__indicator {
+  display: none;
+}
+
+.extra-wide {
+  width: 1080px;
+}
