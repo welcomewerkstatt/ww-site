@@ -4,7 +4,7 @@
   $items = $pages->template('internal')->first()->children();
   if ($items->isNotEmpty()) :
   ?>
-    <ul class="padding no-margin flex-1">
+    <ul class="padding no-margin flex-1 overflow-auto">
       <?php foreach ($items as $item) : ?>
         <li>
           <a<?php e($item->isActive(), ' class="active"') ?> href="<?= $item->url() ?>"><span><?= $item->title()->html() ?></span></a>

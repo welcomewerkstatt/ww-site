@@ -183,3 +183,7 @@ main {
 .extra-wide {
   width: 1080px;
 }
+
+.overflow-auto {
+  overflow: auto;
+}
