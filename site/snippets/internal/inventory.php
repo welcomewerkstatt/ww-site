@@ -41,7 +41,10 @@ $options = [
               <td><?= $item->owner() ?></td>
               <td>
                 <?php foreach ($item->images()->toFiles() as $image) : ?>
-                  <a href="<?= $image->url() ?>" data-caption="<?= $item->name() . " - " . $item->manufacturer() . " - " . $item->model() ?>" class="lightbox" data-group="<?= $item->name() ?>">
+                  <?php
+                  $caption = implode(" - ", array_filter([$item->name(), $item->manufacturer(), $item->model()], 'strlen'));
+                  ?>
+                  <a href="<?= $image->url() ?>" data-caption="<?= $caption ?>" class="lightbox" data-group="<?= $item->name() ?>">
                     <img src="<?= $image->resize(300, 200)->url() ?>" />
                   </a>
                 <?php endforeach ?>

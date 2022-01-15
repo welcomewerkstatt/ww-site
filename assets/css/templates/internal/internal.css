@@ -187,3 +187,7 @@ main {
 .overflow-auto {
   overflow: auto;
 }
+
+.parvus {
+  --parvus-overlay-color: hsla(23, 40%, 96%, 90%);
+}
