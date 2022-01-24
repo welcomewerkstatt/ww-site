@@ -37,7 +37,7 @@ $options = [
               <td><?= $item->name() ?></td>
               <td><?= $item->manufacturer() ?></td>
               <td><?= $item->model() ?></td>
-              <td><?= $options[$item->location()->value()] ?></td>
+              <td><?= $options[$item->location()->value()] ?? '' ?></td>
               <td><?= $item->owner() ?></td>
               <td>
                 <?php foreach ($item->images()->toFiles() as $image) : ?>
