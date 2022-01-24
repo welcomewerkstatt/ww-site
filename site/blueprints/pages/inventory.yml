@@ -95,6 +95,7 @@ fields:
       images:
         help: Bilder des Gegenstands
         label: Bilder
+        query: page.children.find('images').images
         type: files
         layout: cards
         uploads:
