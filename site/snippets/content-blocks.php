@@ -2,8 +2,6 @@
 <div class="content-row main-column flex-column">
   <?php if ($page->headline()->isNotEmpty()) : ?>
     <h1><?= $page->headline()->html() ?></h1>
-  <?php else : ?>
-    <h1><?= $page->title()->html() ?></h1>
   <?php endif ?>
   <div class="layouts-content">
     <?php foreach ($page->text()->toLayouts() as $layout) : ?>
