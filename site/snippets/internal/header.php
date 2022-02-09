@@ -11,7 +11,7 @@
     'assets/css/templates/internal/internal.css'
   ]) ?>
   <?= js(['assets/js/templates/internal-inventory.js', 'assets/js/templates/parvus.min.js']) ?>
-  <title><?= $page->title() ?></title>
+  <title><?= $page->title() ?> – Welcome Werkstatt Interner Bereich</title>
 </head>
 
 <body class="full-height">

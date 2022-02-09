@@ -1,14 +1,14 @@
-title: Interner Bereich
+title: Interner Bereich (Blocks)
 preset: page
 fields:
   text:
     label: Text
-    type: textarea
-    size: large
+    type: blocks
+    pretty: true
 files:
   template: internal
 pages:
   templates:
-    - internal-blocks
     - internal
+    - internal-blocks
     - internal-inventory
