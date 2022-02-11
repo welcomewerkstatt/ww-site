@@ -1,8 +1,8 @@
 <nav class="navigation flex-column">
   <div class="site-title padding no-margin"><?= $site->title() ?></div>
   <?php
-  $items = $pages->template('internal')->first()->children();
-  if ($items->isNotEmpty()) :
+    $items = $pages->template('internal')->first()->children()->listed();
+    if ($items->isNotEmpty()) :
   ?>
     <ul class="padding no-margin flex-1 overflow-auto">
       <?php foreach ($items as $item) : ?>
