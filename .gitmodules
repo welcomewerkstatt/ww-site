@@ -1,12 +1,12 @@
 [submodule "content"]
 	path = content
-	url = git@github.com:welcomewerkstatt/ww-content.git
+	url = https://github.com/welcomewerkstatt/ww-content.git
 [submodule "site/plugins/meta-tags"]
 	path = site/plugins/meta-tags
-	url = git@github.com:pedroborges/kirby-meta-tags.git
+	url = https://github.com/pedroborges/kirby-meta-tags.git
 [submodule "site/plugins/kirby-link-button-block"]
 	path = site/plugins/kirby-link-button-block
-	url = git@github.com:pReya/kirby-link-button-block.git
+	url = https://github.com/pReya/kirby-link-button-block.git
 [submodule "site/plugins/kirby-next-events-block"]
 	path = site/plugins/kirby-next-events-block
 	url = https://github.com/pReya/kirby-next-events-block.git
