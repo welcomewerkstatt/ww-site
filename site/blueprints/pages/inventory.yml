@@ -31,7 +31,7 @@ fields:
       autoid:
         translate: false
         type: autoid
-        label: Nummer
+        label: Nr.
         width: 1/4
       registered:
         label: Registriert am
