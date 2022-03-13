@@ -23,6 +23,7 @@ $options = [
       <table class="sortable">
         <thead>
           <tr>
+            <th>Nr.</th>
             <th>Name</th>
             <th>Hersteller</th>
             <th>Modell</th>
@@ -34,6 +35,7 @@ $options = [
         <tbody>
           <?php foreach ($items as $item) : ?>
             <tr>
+              <td><?= $item->autoid()->value() ?></td>
               <td><?= $item->name() ?></td>
               <td><?= $item->manufacturer() ?></td>
               <td><?= $item->model() ?></td>

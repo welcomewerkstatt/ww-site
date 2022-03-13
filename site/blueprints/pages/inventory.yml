@@ -14,7 +14,10 @@ fields:
   items:
     label: Gegenstände
     type: structure
+    sortBy: autoid desc
+    translate: false
     columns:
+      autoid:
       name:
       manufacturer:
       model:
@@ -25,21 +28,26 @@ fields:
       discharge:
       category:
     fields:
+      autoid:
+        translate: false
+        type: autoid
+        label: Nummer
+        width: 1/4
       registered:
         label: Registriert am
         type: date
         help: Datum an dem der Gegenstand ins Inventar aufgenommen wurde.
-        width: 1/3
+        width: 1/4
       manufacturer:
         label: Hersteller
         type: text
         help: Der Hersteller des Gegenstands.
-        width: 1/3
+        width: 1/4
       model:
         label: Modell / Artikelnummer
         type: text
         help: Eine konkrete Modell- oder Artikelnummer.
-        width: 1/3
+        width: 1/4
       name:
         label: Name
         type: text
