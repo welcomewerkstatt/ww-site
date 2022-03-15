@@ -25,6 +25,3 @@
 [submodule "kirby"]
 	path = kirby
 	url = https://github.com/getkirby/kirby.git
-[submodule "site/plugins/kirby3-autoid"]
-	path = site/plugins/kirby3-autoid
-	url = https://github.com/bnomei/kirby3-autoid.git

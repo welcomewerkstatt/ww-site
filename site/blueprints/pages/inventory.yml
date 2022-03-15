@@ -14,10 +14,9 @@ fields:
   items:
     label: Gegenstände
     type: structure
-    sortBy: autoid desc
-    translate: false
+    sortBy: invnum desc
     columns:
-      autoid:
+      invnum:
       name:
       manufacturer:
       model:
@@ -28,9 +27,8 @@ fields:
       discharge:
       category:
     fields:
-      autoid:
-        translate: false
-        type: autoid
+      invnum:
+        type: number
         label: Nr.
         width: 1/4
       registered:

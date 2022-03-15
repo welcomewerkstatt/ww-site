@@ -11,7 +11,6 @@ return [
     'debug' => true,
     'panel' => [
         'language' => 'de',
-        'css' => 'assets/css/panel.css'
     ],
     'sitemap.ignore' => ['internes', 'inventar'],
     'cache' => [
@@ -65,7 +64,4 @@ return [
             'activeMembersGroupId' => '12345678',
         ],
     ],
-    'bnomei.autoid.generator' => function () {
-        return (new \Bnomei\IncrementingGenerator(0))->generate();
-    },
 ];

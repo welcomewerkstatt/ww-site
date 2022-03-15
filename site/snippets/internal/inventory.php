@@ -35,7 +35,7 @@ $options = [
         <tbody>
           <?php foreach ($items as $item) : ?>
             <tr>
-              <td><?= $item->autoid()->value() ?></td>
+              <td><?= $item->invnum() ?></td>
               <td><?= $item->name() ?></td>
               <td><?= $item->manufacturer() ?></td>
               <td><?= $item->model() ?></td>
