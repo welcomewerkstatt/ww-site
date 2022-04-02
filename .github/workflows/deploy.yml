@@ -28,9 +28,9 @@ jobs:
         run: ./node_modules/sass/sass.js assets/sass/main.scss assets/css/main.css --style=compressed
 
       - name: Deploy to Uberspace
-        uses: easingthemes/ssh-deploy@v2.1.5
+        uses: easingthemes/ssh-deploy@v2.2
         env:
-          ARGS: "-avzrh --delete --exclude '/node_modules/' --exclude '/content/' --exclude '/site/sessions/' --exclude '/site/config/config.php' --exclude '/site/accounts/' --exclude '/site/cache/' --exclude '/media/'"
+          ARGS: "-avzrh --delete --exclude '/node_modules/' --exclude '/content/' --exclude '/site/sessions/' --exclude '/site/config/config.php' --exclude '/site/config/.license' --exclude '/site/accounts/' --exclude '/site/cache/' --exclude '/media/'"
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
           REMOTE_USER: ${{ secrets.REMOTE_USER }}
