@@ -25,7 +25,7 @@ if ($block->location() == 'web') {
   $src = $block->src();
 } elseif ($image = $block->image()->toFile()) {
   $alt = $alt ?? $image->alt();
-  $src = $image->thumb('sidebar')->url();
+  $src = $image->thumb('inline')->url();
 }
 
 if ($ratio !== 'auto') {
