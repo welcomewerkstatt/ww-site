@@ -20,11 +20,12 @@ $link     = $block->link();
 $ratio    = $block->ratio()->or('auto');
 $class    = $ratio != 'auto' ? 'img' : 'auto';
 $src      = null;
+$lightbox = $link->isEmpty();
 
 if ($block->location() == 'web') {
   $src = $block->src();
 } elseif ($image = $block->image()->toFile()) {
-  $alt = $alt ?? $image->alt();
+  $alt = $alt->or($image->alt());
   $src = $image->thumb('inline')->url();
 }
 
@@ -37,20 +38,24 @@ if ($ratio !== 'auto') {
 $attrs = attr([
   'class'         => $class,
   'data-contain'  => $contain,
-  'style'         => '--w:' . $w . '; --h:' . $h,
+  'data-lightbox' => $lightbox,
   'href'          => $link,
+  'style'         => '--w:' . $w . '; --h:' . $h,
 ]);
 
 ?>
 <?php if ($src) : ?>
-
   <figure>
     <?php if ($link->isNotEmpty()) : ?>
       <a <?= $attrs ?>>
-      <?php endif ?>
+    <?php else : ?>
+      <div <?= $attrs ?>>
+    <?php endif ?>
       <img src="<?= $src ?>" alt="<?= $alt ?>">
-      <?php if ($link->isNotEmpty()) : ?>
+    <?php if ($link->isNotEmpty()) : ?>
       </a>
+    <?php else : ?>
+      </div>
     <?php endif ?>
 
     <?php if ($caption->isNotEmpty()) : ?>
@@ -59,5 +64,4 @@ $attrs = attr([
       </figcaption>
     <?php endif ?>
   </figure>
-
 <?php endif ?>
