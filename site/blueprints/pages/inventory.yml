@@ -33,6 +33,7 @@ fields:
         width: 1/4
       registered:
         label: Registriert am
+        default: today
         type: date
         help: Datum an dem der Gegenstand ins Inventar aufgenommen wurde.
         width: 1/4
