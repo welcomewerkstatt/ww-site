@@ -1,2 +1,4 @@
 title: Bild
-accept: image/*
+accept:
+  - image/*
+  - application/pdf
