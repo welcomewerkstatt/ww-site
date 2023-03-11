@@ -24,4 +24,4 @@
 	url = https://github.com/bvdputte/kirby-fingerprint.git
 [submodule "kirby"]
 	path = kirby
-	url = https://github.com/getkirby/kirby.git
+	url = git@github.com:getkirby/kirby.git
