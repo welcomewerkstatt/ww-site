@@ -11,23 +11,30 @@
       <?php endforeach ?>
     </ul>
     <div class="social-media-icons">
+      <?php if ($site->mastodon()->isNotEmpty()) : ?>
+        <div class="social-media-icon">
+          <a href="<?= $site->mastodon()->html() ?>" title="Mastodon" target="_blank">
+            <?= svg("assets/img/mastodon_icon.svg") ?>
+          </a>
+        </div>
+      <?php endif ?>
       <?php if ($site->instagram()->isNotEmpty()) : ?>
         <div class="social-media-icon">
-          <a href="<?= $site->instagram()->html() ?>">
+          <a href="<?= $site->instagram()->html() ?>" title="Instagram" target="_blank">
             <?= svg("assets/img/instagram_icon.svg") ?>
           </a>
         </div>
       <?php endif ?>
       <?php if ($site->facebook()->isNotEmpty()) : ?>
         <div class="social-media-icon">
-          <a href="<?= $site->facebook()->html() ?>">
+          <a href="<?= $site->facebook()->html() ?>" title="Facebook" target="_blank">
             <?= svg("assets/img/facebook_icon.svg") ?>
           </a>
         </div>
       <?php endif ?>
       <?php if ($site->twitter()->isNotEmpty()) : ?>
         <div class="social-media-icon">
-          <a href="<?= $site->twitter()->html() ?>">
+          <a href="<?= $site->twitter()->html() ?>" title="Twitter" target="_blank">
             <?= svg("assets/img/twitter_icon.svg") ?>
           </a>
         </div>
@@ -38,4 +45,5 @@
 </footer>
 </main>
 </body>
+
 </html>
