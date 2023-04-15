@@ -13,7 +13,7 @@
     <div class="social-media-icons">
       <?php if ($site->mastodon()->isNotEmpty()) : ?>
         <div class="social-media-icon">
-          <a href="<?= $site->mastodon()->html() ?>" title="Mastodon" target="_blank">
+          <a href="<?= $site->mastodon()->html() ?>" rel="me" title="Mastodon" target="_blank">
             <?= svg("assets/img/mastodon_icon.svg") ?>
           </a>
         </div>
