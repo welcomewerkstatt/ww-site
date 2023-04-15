@@ -1,6 +1,7 @@
 footer {
   nav {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
 
     ul {
@@ -18,6 +19,7 @@ footer {
     .social-media-icons {
       padding: 1em 0;
       display: flex;
+      margin-left: auto;
 
       .social-media-icon {
         svg {
