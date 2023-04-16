@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de" class="overflow-x-hidden">
 
 <head>
   <meta charset="UTF-8">
@@ -14,4 +14,4 @@
   <title><?= $page->title() ?> – Welcome Werkstatt Interner Bereich</title>
 </head>
 
-<body class="full-height">
+<body class="h-full">

@@ -14,7 +14,7 @@ $options = [
 ];
 ?>
 
-<main class="full-height">
+<main class="h-full">
   <?php snippet('internal/menu') ?>
   <div class="content">
     <section class="markdown-body extra-wide">

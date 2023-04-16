@@ -1,15 +1,19 @@
 :root {
   height: 100%;
   --background-grey: rgb(250, 250, 250);
-  --border-grey: rgba(0, 0, 0, 0.07);
+/*  --border-grey: rgba(0, 0, 0, 0.07);*/
+  --border-grey: #ededed;
   --text-grey: #364149;
   --github-link-blue: #0366d6;
   --gitbook-link-blue: #008cff;
+  --mobile-breakpoint: 640px;
+  --sidebar-width: clamp(150px, 25vw, 300px);
 }
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial,
+    sans-serif, Apple Color Emoji, Segoe UI Emoji;
 }
 
 a {
@@ -23,8 +27,26 @@ main {
 
 /* Utilities */
 
-.full-height {
+.h-full {
   height: 100%;
+}
+
+
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.sticky {
+  position: sticky;
+}
+
+.top-0 {
+  top: 0;
+}
+
+.left-0 {
+  left: 0;
 }
 
 .padding {
@@ -53,10 +75,75 @@ main {
 .navigation {
   font-size: 0.9rem;
   color: var(--text-grey);
-  flex-shrink: 2;
-  flex-basis: content;
   background-color: var(--background-grey);
   border-right: 1px solid var(--border-grey);
+  overflow-y: scroll;
+  width: var(--sidebar-width);
+  position: absolute;
+  left: 0;
+  height: 100%;
+  transition: left .6s ease-in-out, height 0s ease-in-out .6s;
+}
+
+.collapse-button-shadow {
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+    0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+}
+
+.collapse-button {
+  opacity: 1;
+  cursor: pointer;
+  border: 1.5px solid var(--border-grey);
+  border-radius: 5px;
+  padding: 5px;
+  stroke: var(--text-grey);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  height: 1rem;
+  width: 1rem;
+  background-color: var(--background-grey);
+  transition: opacity .6s ease-in-out;
+}
+
+.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.collapse-button svg {
+  stroke: var(--text-grey);
+}
+
+.collapse-button:hover {
+  background-color: var(--border-grey);
+}
+
+.collapse-button:hover svg {
+  stroke: black;
+}
+
+.collapsed-navigation {
+  left: calc(var(--sidebar-width) * -1);
+}
+
+.flipped {
+  transform: rotate(180deg);
+}
+
+.floating {
+  transition: opacity .6s ease-in-out;
+  opacity: 1;
+}
+
+.floating-margin {
+  margin: 1rem 0 0 1rem;
+}
+
+.hidden {
+  opacity: 0;
+  pointer-events: none;
 }
 
 .navigation ul li {
@@ -85,6 +172,7 @@ main {
 
 .nested-list > li:hover {
   text-decoration: underline;
+  color: black;
 }
 
 .nested-list li:last-child {
@@ -93,16 +181,29 @@ main {
 
 .site-title {
   border-bottom: 1px solid var(--border-grey);
+  line-height: 1;
+  align-items: center;
 }
 
 .content {
-  flex: 5;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: absolute;
+  transition: left .6s ease-in-out, width .6s ease-in-out, height 0s ease-in-out .6s;
+  left: var(--sidebar-width);
+  height: 100%;
+  width: calc(100% - var(--sidebar-width));
 }
 
+.height-transition-delay-0 {
+  transition-delay: 0s,0s,0s;
+}
+
+.height-transition {
+  transition: left .6s ease-in-out, height 0s ease-in-out;
+}
 /* GitHub Markdown custom styles */
 
 .last-edited {
@@ -114,10 +215,11 @@ main {
 
 .markdown-body {
   box-sizing: border-box;
-  width: 980px;
+  max-width: 980px;
   margin: 0 auto;
   padding: 45px;
   flex: 1;
+  width: 100%;
 }
 
 @media (max-width: 767px) {
@@ -149,13 +251,13 @@ main {
 .sortable th:hover::after {
   color: inherit;
   font-size: 1.2em;
-  content: ' \025B8';
+  content: " \025B8";
 }
 
 .sortable th::after {
   font-size: 1.2em;
   color: transparent;
-  content: ' \025B8';
+  content: " \025B8";
 }
 
 .sortable th.dir-d {
@@ -164,7 +266,7 @@ main {
 
 .sortable th.dir-d::after {
   color: inherit;
-  content: ' \025BE';
+  content: " \025BE";
 }
 
 .sortable th.dir-u {
@@ -173,7 +275,7 @@ main {
 
 .sortable th.dir-u::after {
   color: inherit;
-  content: ' \025B4';
+  content: " \025B4";
 }
 
 .parvus-zoom__indicator {
@@ -188,6 +290,50 @@ main {
   overflow: auto;
 }
 
+.overflow-x-hidden {
+  overflow-x: hidden;
+}
+
+
 .parvus {
   --parvus-overlay-color: hsla(23, 40%, 96%, 90%);
+}
+
+button {
+  all: unset;
+}
+
+.flex {
+  display: flex;
+}
+
+.uncollapsed-content {
+  left: 0;
+}
+
+@media (max-width: 500px) {
+  .h-0-mobile {
+    height: 0;
+  }
+
+  .navigation {
+    width: 100%;
+  }
+
+  .content {
+    left: 100%;
+  }
+
+  .uncollapsed-content {
+    left: 0;
+  }
+
+  .collapsed-navigation {
+    left: -100%;
+    height: 0;
+  }
+}
+
+.w-full {
+  width: 100%;
 }
