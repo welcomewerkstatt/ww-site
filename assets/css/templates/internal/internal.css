@@ -77,7 +77,7 @@ main {
   color: var(--text-grey);
   background-color: var(--background-grey);
   border-right: 1px solid var(--border-grey);
-  overflow-y: scroll;
+  overflow-y: auto;
   width: var(--sidebar-width);
   position: absolute;
   left: 0;
