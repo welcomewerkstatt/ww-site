@@ -16,7 +16,8 @@ $options = [
 
 <main class="h-full">
   <?php snippet('internal/menu') ?>
-  <div class="content">
+  <div class="content h-0-mobile">
+    <?php snippet('internal/floating-button') ?>
     <section class="markdown-body extra-wide">
       <h1><?= $page->title() ?> (<?= $items->count() ?> Gegenstände)</h1>
       <?= $page->text()->kt() ?>
