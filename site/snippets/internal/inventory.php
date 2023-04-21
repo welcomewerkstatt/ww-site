@@ -18,10 +18,10 @@ $options = [
   <?php snippet('internal/menu') ?>
   <div class="content h-0-mobile">
     <?php snippet('internal/floating-button') ?>
-    <section class="markdown-body extra-wide">
+    <section class="markdown-body content-grid">
       <h1><?= $page->title() ?> (<?= $items->count() ?> Gegenstände)</h1>
       <?= $page->text()->kt() ?>
-      <table class="sortable">
+      <table class="sortable full-bleed">
         <thead>
           <tr>
             <th>Nr.</th>

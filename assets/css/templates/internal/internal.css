@@ -215,11 +215,14 @@ main {
 
 .markdown-body {
   box-sizing: border-box;
-  max-width: 980px;
   margin: 0 auto;
   padding: 45px;
   flex: 1;
   width: 100%;
+}
+
+.max-w-980 {
+  max-width: 980px;
 }
 
 @media (max-width: 767px) {
@@ -238,45 +241,53 @@ main {
 
 /* Sortable */
 
-.sortable td,
+@charset "UTF-8";
 .sortable th {
-  padding: 10px;
-}
-
-.sortable th:hover {
   cursor: pointer;
-  color: #000;
 }
-
-.sortable th:hover::after {
-  color: inherit;
-  font-size: 1.2em;
-  content: " \025B8";
+.sortable th.no-sort {
+  pointer-events: none;
 }
-
-.sortable th::after {
+.sortable th::after, .sortable th::before {
+  transition: color 0.1s ease-in-out;
   font-size: 1.2em;
   color: transparent;
-  content: " \025B8";
 }
-
-.sortable th.dir-d {
-  color: #000;
+.sortable th::after {
+  margin-left: 3px;
+  content: "▸";
 }
-
+.sortable th:hover::after {
+  color: inherit;
+}
 .sortable th.dir-d::after {
   color: inherit;
-  content: " \025BE";
+  content: "▾";
 }
-
-.sortable th.dir-u {
-  color: #000;
-}
-
 .sortable th.dir-u::after {
   color: inherit;
-  content: " \025B4";
+  content: "▴";
 }
+.sortable th.indicator-left::after {
+  content: "";
+}
+.sortable th.indicator-left::before {
+  margin-right: 3px;
+  content: "▸";
+}
+.sortable th.indicator-left:hover::before {
+  color: inherit;
+}
+.sortable th.indicator-left.dir-d::before {
+  color: inherit;
+  content: "▾";
+}
+.sortable th.indicator-left.dir-u::before {
+  color: inherit;
+  content: "▴";
+}
+
+
 
 .parvus-zoom__indicator {
   display: none;
@@ -336,4 +347,22 @@ button {
 
 .w-full {
   width: 100%;
+}
+
+
+.content-grid {
+  display: grid;
+  grid-template-columns:
+    1fr
+    min(65ch, 100%)
+    1fr;
+}
+
+.content-grid > * {
+  grid-column: 2;
+}
+
+.full-bleed {
+  width: 100%;
+  grid-column: 1 / 4;
 }
