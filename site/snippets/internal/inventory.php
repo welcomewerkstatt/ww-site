@@ -21,7 +21,7 @@ $options = [
     <section class="markdown-body content-grid">
       <h1><?= $page->title() ?> (<?= $items->count() ?> Gegenstände)</h1>
       <?= $page->text()->kt() ?>
-      <table class="sortable full-bleed">
+      <table class="sortable full-bleed-table">
         <thead>
           <tr>
             <th>Nr.</th>
@@ -42,14 +42,21 @@ $options = [
               <td><?= $item->model() ?></td>
               <td><?= $options[$item->location()->value()] ?? '' ?></td>
               <td><?= $item->owner() ?></td>
-              <td>
+              <td style="padding: 0;">
+                <?php
+                $index = 0;
+                ?>
                 <?php foreach ($item->images()->toFiles() as $image) : ?>
                   <?php
                   $caption = implode(" - ", array_filter([$item->name(), $item->manufacturer(), $item->model()], 'strlen'));
                   ?>
-                  <a href="<?= $image->url() ?>" data-caption="<?= $caption ?>" class="lightbox" data-group="<?= $item->name() ?>">
-                    <img src="<?= $image->resize(300, 200)->url() ?>" />
+                  <a href="<?= $image->url() ?>" data-caption="<?= $caption ?>" class="lightbox table-thumbnail-container <?php e($index !== 0, 'hidden', '') ?>" data-group="<?= $item->name() ?>">
+                    <img class="table-thumbnail" src="<?= $image->resize(300)->url() ?>" />
+                    <?php if (count($item->images()->toFiles()) > 1) : ?>
+                      <div style="position: absolute; bottom: 0; right: 0; border-radius: 9999px; background-color: white; width: 1.6rem; height: 1.6rem; margin: 5px; display: flex; justify-content: center; align-items: center;"><?= count($item->images()->toFiles()) ?></div>
+                    <?php endif ?>
                   </a>
+                  <?php $index++; ?>
                 <?php endforeach ?>
               </td>
             </tr>

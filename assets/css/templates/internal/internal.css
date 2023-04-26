@@ -362,7 +362,31 @@ button {
   grid-column: 2;
 }
 
-.full-bleed {
-  width: 100%;
+.full-bleed-table {
+  width: auto !important;
+  max-width: 100% !important;
   grid-column: 1 / 4;
+  margin: 0 auto;
+}
+
+.full-bleed-table td {
+  max-width: 300px;
+}
+
+.table-thumbnail-container {
+  position: relative;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  width: 300px;
+}
+
+.table-thumbnail {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.hidden {
+  display: none;
 }
