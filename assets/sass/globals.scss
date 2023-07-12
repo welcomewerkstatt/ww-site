@@ -22,6 +22,10 @@ a {
 
 figure {
   margin: 0;
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
 }
 
 /* Tables e.g. in external Markdown content */
@@ -193,6 +197,7 @@ header {
 
 .column {
   overflow-x: auto;
+  overflow-y: hidden;
 }
 
 .column img {
