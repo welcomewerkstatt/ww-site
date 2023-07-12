@@ -92,12 +92,18 @@ fields:
         label: Kategorie
         help: Zu welcher Kategorie gehört der Gegenstand?
         type: tags
+      discharge:
+        width: 2/3
+        label: Ausgemustert
+        type: text
+      shortlink:
+        width: 1/3
+        label: Shortlink
+        type: number
+        placeholder: '{{ page.manufacturer }}'
       notes:
         label: Notizen
         help: Zusätzliche Notizen.
-        type: text
-      discharge:
-        label: Ausgemustert
         type: text
       images:
         help: Bilder des Gegenstands
