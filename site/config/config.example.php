@@ -60,7 +60,7 @@ return [
     'welcome-werkstatt.werkstatt' => [
         'easyverein' => [
             'apiKey' => 'abc123',
-            'apiBaseUrl' => 'https://easyverein.com/api/v1.2/',
+            'apiBaseUrl' => 'https://easyverein.com/api/v1.6/',
             'activeMembersGroupId' => '12345678',
         ],
     ],
