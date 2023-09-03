@@ -35,17 +35,6 @@ tabs:
               - internal
             type: pages
             headline: Intern
-  shortlinks:
-    label: Shortlinks
-    icon: bookmark
-    columns:
-     - width: 1/1
-        sections:
-          links:
-            templates:
-              - shortlinks
-            type: pages
-            headline: Links
 
   global:
     label: Global
