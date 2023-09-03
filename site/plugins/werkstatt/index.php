@@ -27,7 +27,7 @@ Kirby::plugin(
           if ($cachedData === null) {
             // 'query={}' means that we're not returning any actual member information,
             // only empty objects and the overall count
-            $apiUrl = option('welcome-werkstatt.werkstatt.easyverein.apiBaseUrl') . 'member/?query={}&groups=' . option('welcome-werkstatt.werkstatt.easyverein.activeMembersGroupId');
+            $apiUrl = option('welcome-werkstatt.werkstatt.easyverein.apiBaseUrl') . 'member/?query={}&memberGroups=' . option('welcome-werkstatt.werkstatt.easyverein.activeMembersGroupId');
 
             $curl_session = curl_init();
             curl_setopt($curl_session, CURLOPT_URL, $apiUrl);
