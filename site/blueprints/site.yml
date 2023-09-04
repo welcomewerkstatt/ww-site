@@ -35,6 +35,7 @@ tabs:
               - internal
             type: pages
             headline: Intern
+
   global:
     label: Global
     icon: cog

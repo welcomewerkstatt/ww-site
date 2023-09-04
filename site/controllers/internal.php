@@ -1,5 +1,7 @@
 <?php
 
+use Kirby\Http\Url;
+
 // Check for valid "referer" value to show page or not
 return function ($kirby) {
 
@@ -7,6 +9,11 @@ return function ($kirby) {
   $session = $kirby->session();
   $user = false;
   $refererIsValid = false;
+  $hasMenu = true;
+
+  $urlOptions = $kirby->option('url');
+  $host = $kirby->environment()->host();
+  $shortlinkUrl = $urlOptions[$kirby->option('preya.kirby-ww-shortlinks.shortlinkUrlArrayIdx')];
 
 
   if ($kirby->request()->is('GET')) {
@@ -25,10 +32,18 @@ return function ($kirby) {
 
       $error = !$refererIsValid;
     }
+
+    
+
+    if ($host == Url::domain($shortlinkUrl)) {
+      $hasMenu = false;
+      $error = false;
+    }
   }
 
   return [
     'error' => $error,
     // 'debug' => json_encode(["Headers" => $kirby->request()->headers(), "RefererIsValid" => $refererIsValid, "RefererHeader" => print_r($kirby->request()->header('Referer'), true), "User" => print_r($user, true)])
+    'hasMenu' => $hasMenu
   ];
 };
