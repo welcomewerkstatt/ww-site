@@ -7,7 +7,7 @@
   <?= $page->metaTags() ?>
   <?= js('@auto', true) ?>
   <?= css(['@auto', 'assets/css/main.css', 'media/plugins/preya/kirby-link-button-block/link-button.css', 'media/plugins/welcome-werkstatt/kirby-notification-box-block/notification-box.css', 'media/plugins/preya/kirby-next-events-block/next-events.css', 'media/plugins/preya/kirby-accordion-block/accordion.css', 'media/plugins/preya/kirby-team-box-block/team-box.css']) ?>
-  <script async defer data-website-id="4ca23a6e-edb6-45c2-91d8-b982951d748c" src="https://analytics.welcome-werkstatt.de/umami.js"></script>
+  <script async src="https://analytics.welcome-werkstatt.de/script.js" data-website-id="4ca23a6e-edb6-45c2-91d8-b982951d748c"></script>
 </head>
 
 <body>
