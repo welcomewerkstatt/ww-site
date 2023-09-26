@@ -14,19 +14,22 @@
     <ul class="padding no-margin flex-1 overflow-auto">
       <?php foreach ($items as $item) : ?>
         <li>
-          <a<?php e($item->isActive(), ' class="active"') ?> href="<?= $item->url() ?>"><span><?= $item->title()->html() ?></span></a>
-            <?php
-            $subitems = $item->children()->listed();
-            if ($subitems->isNotEmpty()) :
-            ?>
-              <ul class="nested-list">
-                <?php foreach ($subitems as $subitem) : ?>
-                  <li>
-                    <a<?php e($subitem->isActive(), ' class="active"') ?> href="<?= $subitem->url() ?>"><?= $subitem->title()->html() ?></a>
-                  </li>
-                <?php endforeach ?>
-              </ul>
-            <?php endif ?>
+          <div class="flex justify-between items-center">
+            <a class="<?php e($item->isActive(), 'active ') ?>" href="<?= $item->url() ?>"><span><?= $item->title()->html() ?></span></a>
+            <?php e($item->hasChildren(), '<span class="collapsible">X</span> ') ?>
+          </div>
+          <?php
+          $subitems = $item->children()->listed();
+          if ($subitems->isNotEmpty()) :
+          ?>
+            <ul class="nested-list">
+              <?php foreach ($subitems as $subitem) : ?>
+                <li>
+                  <a<?php e($subitem->isActive(), ' class="active"') ?> href="<?= $subitem->url() ?>"><?= $subitem->title()->html() ?></a>
+                </li>
+              <?php endforeach ?>
+            </ul>
+          <?php endif ?>
         </li>
       <?php endforeach ?>
     </ul>

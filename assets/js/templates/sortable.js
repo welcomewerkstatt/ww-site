@@ -1,5 +1,5 @@
 /**
- * sortable v2.1.3
+ * sortable v2.3.2
  *
  * https://www.npmjs.com/package/sortable-tablesort
  * https://github.com/tofsjonas/sortable
@@ -45,11 +45,14 @@ document.addEventListener('click', function (e) {
       var descending_th_class_1 = 'dir-d';
       var ascending_th_class_1 = 'dir-u';
       var ascending_table_sort_class = 'asc';
+      var no_sort_class = 'no-sort';
+      var null_last_class = 'n-last';
       var table_class_name = 'sortable';
       var alt_sort_1 = e.shiftKey || e.altKey;
       var element = findElementRecursive(e.target, 'TH');
-      var tr = findElementRecursive(element, 'TR');
-      var table = findElementRecursive(tr, 'TABLE');
+      var tr = element.parentNode;
+      var thead = tr.parentNode;
+      var table = thead.parentNode;
       function reClassify(element, dir) {
           element.classList.remove(descending_th_class_1);
           element.classList.remove(ascending_th_class_1);
@@ -57,10 +60,14 @@ document.addEventListener('click', function (e) {
               element.classList.add(dir);
       }
       function getValue(element) {
-          var value = (alt_sort_1 && element.dataset.sortAlt) || element.dataset.sort || element.textContent;
+          var _a;
+          var value = alt_sort_1 ? element.dataset.sortAlt : (_a = element.dataset.sort) !== null && _a !== void 0 ? _a : element.textContent;
           return value;
       }
-      if (table.classList.contains(table_class_name)) {
+      if (thead.nodeName === 'THEAD' && // sortable only triggered in `thead`
+          table.classList.contains(table_class_name) &&
+          !element.classList.contains(no_sort_class) // .no-sort is now core functionality, no longer handled in CSS
+      ) {
           var column_index_1;
           var nodes = tr.cells;
           var tiebreaker_1 = parseInt(element.dataset.sortTbr);
@@ -82,12 +89,21 @@ document.addEventListener('click', function (e) {
           // Update the `th` class accordingly
           reClassify(element, dir);
           var reverse_1 = dir === ascending_th_class_1;
+          var sort_null_last_1 = table.classList.contains(null_last_class);
           var compare_1 = function (a, b, index) {
-              var x = getValue((reverse_1 ? a : b).cells[index]);
-              var y = getValue((reverse_1 ? b : a).cells[index]);
-              var temp = parseFloat(x) - parseFloat(y);
+              var x = getValue(b.cells[index]);
+              var y = getValue(a.cells[index]);
+              if (sort_null_last_1) {
+                  if (x === '' && y !== '') {
+                      return -1;
+                  }
+                  if (y === '' && x !== '') {
+                      return 1;
+                  }
+              }
+              var temp = Number(x) - Number(y);
               var bool = isNaN(temp) ? x.localeCompare(y) : temp;
-              return bool;
+              return reverse_1 ? -bool : bool;
           };
           // loop through all tbodies and sort them
           for (var i = 0; i < table.tBodies.length; i++) {

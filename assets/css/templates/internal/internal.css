@@ -36,6 +36,10 @@ main {
   justify-content: space-between;
 }
 
+.items-center {
+  align-items: center;
+}
+
 .sticky {
   position: sticky;
 }
@@ -106,11 +110,6 @@ main {
   transition: opacity 0.6s ease-in-out;
 }
 
-.hidden {
-  opacity: 0;
-  pointer-events: none;
-}
-
 .collapse-button svg {
   stroke: var(--text-grey);
 }
@@ -155,7 +154,7 @@ main {
   list-style-type: none;
 }
 
-.navigation > ul > li > a {
+.navigation > ul > li > div > a {
   font-weight: 600;
   font-size: 1rem;
 }
@@ -246,54 +245,6 @@ main {
   font-style: italic;
 }
 
-/* Sortable */
-
-@charset "UTF-8";
-.sortable th {
-  cursor: pointer;
-}
-.sortable th.no-sort {
-  pointer-events: none;
-}
-.sortable th::after,
-.sortable th::before {
-  transition: color 0.1s ease-in-out;
-  font-size: 1.2em;
-  color: transparent;
-}
-.sortable th::after {
-  margin-left: 3px;
-  content: "▸";
-}
-.sortable th:hover::after {
-  color: inherit;
-}
-.sortable th.dir-d::after {
-  color: inherit;
-  content: "▾";
-}
-.sortable th.dir-u::after {
-  color: inherit;
-  content: "▴";
-}
-.sortable th.indicator-left::after {
-  content: "";
-}
-.sortable th.indicator-left::before {
-  margin-right: 3px;
-  content: "▸";
-}
-.sortable th.indicator-left:hover::before {
-  color: inherit;
-}
-.sortable th.indicator-left.dir-d::before {
-  color: inherit;
-  content: "▾";
-}
-.sortable th.indicator-left.dir-u::before {
-  color: inherit;
-  content: "▴";
-}
 
 .parvus-zoom__indicator {
   display: none;
@@ -399,4 +350,8 @@ button {
 
 .hidden {
   display: none;
+}
+
+.collapsible {
+  cursor: pointer;
 }
