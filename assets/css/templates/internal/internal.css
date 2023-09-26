@@ -1,7 +1,7 @@
 :root {
   height: 100%;
   --background-grey: rgb(250, 250, 250);
-/*  --border-grey: rgba(0, 0, 0, 0.07);*/
+  /*  --border-grey: rgba(0, 0, 0, 0.07);*/
   --border-grey: #ededed;
   --text-grey: #364149;
   --github-link-blue: #0366d6;
@@ -31,8 +31,6 @@ main {
 .h-full {
   height: 100%;
 }
-
-
 
 .justify-between {
   justify-content: space-between;
@@ -83,7 +81,7 @@ main {
   position: absolute;
   left: 0;
   height: 100%;
-  transition: left .6s ease-in-out, height 0s ease-in-out .6s;
+  transition: left 0.6s ease-in-out, height 0s ease-in-out 0.6s;
 }
 
 .collapse-button-shadow {
@@ -105,7 +103,7 @@ main {
   height: 1rem;
   width: 1rem;
   background-color: var(--background-grey);
-  transition: opacity .6s ease-in-out;
+  transition: opacity 0.6s ease-in-out;
 }
 
 .hidden {
@@ -134,7 +132,7 @@ main {
 }
 
 .floating {
-  transition: opacity .6s ease-in-out;
+  transition: opacity 0.6s ease-in-out;
   opacity: 1;
 }
 
@@ -192,12 +190,12 @@ main {
   flex-direction: column;
   align-items: center;
   position: absolute;
-  transition: left .6s ease-in-out, width .6s ease-in-out, height 0s ease-in-out .6s;
+  transition: left 0.6s ease-in-out, width 0.6s ease-in-out,
+    height 0s ease-in-out 0.6s;
   left: var(--sidebar-width);
   height: 100%;
   width: calc(100% - var(--sidebar-width));
 }
-
 
 .content-no-menu {
   display: flex;
@@ -206,13 +204,12 @@ main {
   height: 100%;
 }
 
-
 .height-transition-delay-0 {
-  transition-delay: 0s,0s,0s;
+  transition-delay: 0s, 0s, 0s;
 }
 
 .height-transition {
-  transition: left .6s ease-in-out, height 0s ease-in-out;
+  transition: left 0.6s ease-in-out, height 0s ease-in-out;
 }
 /* GitHub Markdown custom styles */
 
@@ -258,7 +255,8 @@ main {
 .sortable th.no-sort {
   pointer-events: none;
 }
-.sortable th::after, .sortable th::before {
+.sortable th::after,
+.sortable th::before {
   transition: color 0.1s ease-in-out;
   font-size: 1.2em;
   color: transparent;
@@ -297,8 +295,6 @@ main {
   content: "▴";
 }
 
-
-
 .parvus-zoom__indicator {
   display: none;
 }
@@ -314,7 +310,6 @@ main {
 .overflow-x-hidden {
   overflow-x: hidden;
 }
-
 
 .parvus {
   --parvus-overlay-color: hsla(23, 40%, 96%, 90%);
@@ -359,6 +354,11 @@ button {
   width: 100%;
 }
 
+@media (min-width: 768px) {
+  .h-0-desktop {
+    height: 0;
+  }
+}
 
 .content-grid {
   display: grid;
