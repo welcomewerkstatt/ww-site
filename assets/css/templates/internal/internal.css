@@ -245,7 +245,6 @@ main {
   font-style: italic;
 }
 
-
 .parvus-zoom__indicator {
   display: none;
 }
@@ -354,4 +353,12 @@ button {
 
 .collapsible {
   cursor: pointer;
+}
+
+.animate-rotate {
+  transition: transform 0.3s;
+}
+
+.rotate-90 {
+  transform: rotate(90deg);
 }
