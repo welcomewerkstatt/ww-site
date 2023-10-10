@@ -30,7 +30,7 @@ $options = [
             <th>Modell</th>
             <th>Ort</th>
             <th>Eigentümer</th>
-            <th>Bilder</th>
+            <th class="no-sort">Bilder</th>
           </tr>
         </thead>
         <tbody>

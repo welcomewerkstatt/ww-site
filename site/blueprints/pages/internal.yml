@@ -5,6 +5,14 @@ fields:
     label: Text
     type: textarea
     size: large
+  collapsedByDefault:
+    type: toggle
+    label: Collapsed by default in menu?
+    help: Only relevant if there are child pages
+    text:
+      - "No"
+      - "Yes"
+    default: "No"
 files:
   template: internal
 pages:
