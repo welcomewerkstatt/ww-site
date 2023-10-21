@@ -1,4 +1,4 @@
-@use 'variables';
+@use "variables";
 
 /* Generic */
 :root {
@@ -80,8 +80,6 @@ li p {
   margin: 0;
 }
 
-
-
 /* Responsive Embeds for Google Maps, Calendar, etc. */
 .embed-container {
   position: relative;
@@ -154,11 +152,17 @@ li p {
 }
 
 header {
-  background-image: url("../img/ww_website_logo_mobile.svg");
-  background-repeat: no-repeat;
-  background-size: 13em;
-  background-position: center center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 7em;
+}
+
+.logo {
+  max-width: 13em;
+  height: fit-content;
+  width: 100%;
+  height: auto;
 }
 
 .button {
@@ -179,7 +183,7 @@ header {
   display: grid;
   grid-gap: 0 var(--gutter);
   grid-template-columns: 1fr;
-  margin-bottom: var(--gutter)
+  margin-bottom: var(--gutter);
 }
 
 .grid {
@@ -208,7 +212,6 @@ header {
   margin-top: 0;
 }
 
-
 @include variables.desktop {
   .grid {
     grid-template-columns: repeat(12, 1fr);
@@ -233,20 +236,15 @@ header {
   }
 
   header {
-    background-image: url("../img/ww_website_logo.svg");
-    background-repeat: no-repeat;
-    background-size: 25em;
-    background-position: left center;
+    justify-content: start;
     height: 8em;
+  }
+
+  .logo {
+    max-width: 25em;
   }
 }
 
-/* -- */
-
-.logo {
-  width: 35%;
-  margin: 40px 0;
-}
 
 /* Icons */
 .arr-down {
@@ -324,6 +322,6 @@ header {
 }
 .img-caption,
 .video-caption {
-  padding-top: .75rem;
+  padding-top: 0.75rem;
   line-height: 1.5em;
 }

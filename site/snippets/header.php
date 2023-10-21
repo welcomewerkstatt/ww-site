@@ -13,7 +13,14 @@
 <body>
   <main>
     <div class="logo-row full-column blue"></div>
-    <header class="logo-row main-column"></header>
+    <header class="logo-row main-column">
+      <a href="/">
+        <picture>
+          <source media="(min-width: 800px)" srcset="/assets/img/ww_website_logo.svg" />
+          <img class="logo" src="/assets/img/ww_website_logo_mobile.svg" alt="Welcome Werkstatt Logo" />
+        </picture>
+      </a>
+    </header>
     <div class="slider-row full-column blue flex justify-between">
       <?php
       $images = [];
