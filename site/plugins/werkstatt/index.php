@@ -7,6 +7,12 @@
 Kirby::plugin(
   'welcome-werkstatt/werkstatt',
   [
+    'blueprints' => [
+      'blocks/embed' => __DIR__ . '/blueprints/blocks/embed.yml'
+    ],
+    'snippets' => [
+      'blocks/embed' => __DIR__ . '/snippets/blocks/embed.php'
+    ],
     'tags' => [
       'external' => [
         'html' => function ($tag) {

@@ -1,0 +1,7 @@
+name: Embed
+icon: code
+fields:
+  code:
+    type: textarea
+    buttons: false
+    font: monospace
