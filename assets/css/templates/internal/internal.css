@@ -362,3 +362,7 @@ button {
 .rotate-90 {
   transform: rotate(90deg);
 }
+
+.shrink-0 {
+  flex-shrink: 0;
+}
