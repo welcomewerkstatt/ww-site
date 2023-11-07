@@ -18,7 +18,8 @@ $caption  = $block->caption();
 $contain  = $block->crop()->isFalse();
 $link     = $block->link();
 $ratio    = $block->ratio()->or('auto');
-$class    = $ratio != 'auto' ? 'img' : 'auto';
+$customClasses = $block->customClasses();
+$class    = ($ratio != 'auto' ? 'img' : 'auto');
 $src      = null;
 $lightbox = $link->isEmpty();
 
@@ -36,7 +37,7 @@ if ($ratio !== 'auto') {
 }
 
 $attrs = attr([
-  'class'         => $class,
+  'class'         => $class." ".$customClasses,
   'data-contain'  => $contain,
   'data-lightbox' => $lightbox,
   'href'          => $link,
