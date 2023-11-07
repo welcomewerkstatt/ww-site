@@ -37,7 +37,7 @@ if ($ratio !== 'auto') {
 }
 
 $attrs = attr([
-  'class'         => $class." ".$customClasses,
+  'class'         => $class,
   'data-contain'  => $contain,
   'data-lightbox' => $lightbox,
   'href'          => $link,
@@ -46,7 +46,7 @@ $attrs = attr([
 
 ?>
 <?php if ($src) : ?>
-  <figure>
+  <figure <?= attr(['class' => $customClasses]) ?>>
     <?php if ($link->isNotEmpty()) : ?>
       <a <?= $attrs ?>>
     <?php else : ?>
