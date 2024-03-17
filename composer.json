@@ -11,7 +11,7 @@
   ],
   "require": {
     "php": ">=8.0.0 <8.3.0",
-    "getkirby/cms": "^3.9.8"
+    "getkirby/cms": "3.9.8.1"
   },
   "config": {
     "optimize-autoloader": true,
