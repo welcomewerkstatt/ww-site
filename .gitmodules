@@ -22,3 +22,6 @@
 [submodule "site/plugins/kirby-fingerprint"]
 	path = site/plugins/kirby-fingerprint
 	url = git@github.com:bvdputte/kirby-fingerprint.git
+[submodule "kirby"]
+	path = kirby
+	url = git@github.com:getkirby/kirby.git
