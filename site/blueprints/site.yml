@@ -2,7 +2,7 @@ title: Welcome Werkstatt
 
 tabs:
   content:
-    label: Inhalte
+    label: Öffentlich
     icon: text
     sections:
       pages:
@@ -12,6 +12,17 @@ tabs:
           - faq
         type: pages
         headline: Seiten
+  internal:
+    label: Intern
+    icon: circle-nested
+    columns:
+      - width: 1/1
+        sections:
+          internal:
+            templates:
+              - internal
+            type: pages
+            headline: Intern
   inventory:
     label: Inventar
     icon: box
@@ -24,17 +35,6 @@ tabs:
             type: pages
             headline: Inventar
             create: false
-  internal:
-    label: Intern
-    icon: road-sign
-    columns:
-      - width: 1/1
-        sections:
-          internal:
-            templates:
-              - internal
-            type: pages
-            headline: Intern
 
   global:
     label: Global
