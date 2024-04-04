@@ -44,6 +44,7 @@
 
 </footer>
 </main>
+<?php snippet('seo/schemas'); ?>
 </body>
 
 </html>

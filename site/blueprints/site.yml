@@ -35,6 +35,7 @@ tabs:
             type: pages
             headline: Inventar
             create: false
+  seo: seo/site
 
   global:
     label: Global

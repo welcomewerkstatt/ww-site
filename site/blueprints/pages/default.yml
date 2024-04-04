@@ -16,37 +16,51 @@ options:
     - default
     - category
 
-preset: page
+
 pages: false
-fields:
-  headline:
-    label: Headline
-    type: text
-    placeholder: "{{ page.title }}"
-  text:
-    required: true
-    autofocus: true
-    label: Text
-    type: layout
-    layouts:
-      - "1/1"
-      - "1/2, 1/2"
-      - "2/3, 1/3"
-      - "1/3, 2/3"
-      - "1/3, 1/3, 1/3"
-      - "2/3, 1/3, 2/3, 1/3"
-    fieldsets:
-      - heading
-      - text
-      - list
-      - image
-      - gallery
-      - video
-      - code
-      - markdown
-      - link-button
-      - notification-box
-      - next-events
-      - accordion
-      - team-box
-      - embed
+tabs:
+  content:
+    columns:
+      left:
+        width: 2/3
+        fields:
+          headline:
+            label: Headline
+            type: text
+            placeholder: "{{ page.title }}"
+          text:
+            required: true
+            autofocus: true
+            label: Text
+            type: layout
+            layouts:
+              - "1/1"
+              - "1/2, 1/2"
+              - "2/3, 1/3"
+              - "1/3, 2/3"
+              - "1/3, 1/3, 1/3"
+              - "2/3, 1/3, 2/3, 1/3"
+            fieldsets:
+              - heading
+              - text
+              - list
+              - image
+              - gallery
+              - video
+              - code
+              - markdown
+              - link-button
+              - notification-box
+              - next-events
+              - accordion
+              - team-box
+              - embed
+      right:
+        width: 1/3
+        sections:
+
+          files:
+            type: files
+            label: Files
+
+  seo: seo/page
