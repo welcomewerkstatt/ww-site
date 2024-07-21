@@ -1,0 +1,24 @@
+title: Nextcloud User
+description: Via OAuth von der WW Nextcloud
+permissions:
+title: Editor
+permissions:
+  access:
+    *: false
+    panel: true
+    site: true
+  files:
+    *: false
+  languages:
+    *: false
+  pages:
+    *: false
+    access: true
+    list: true
+    read: true
+  site:
+    *: false
+  user:
+    *: false
+  users:
+    *: false

@@ -1,0 +1,11 @@
+.df-field {
+	padding: var(--spacing-3) var(--spacing-4);
+	height: 100%;
+}
+
+.k-header-buttons {
+  .k-panel[data-template='submission'] &,
+  .k-panel[data-template='forms'] & {
+    display: none;
+  }
+}

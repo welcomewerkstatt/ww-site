@@ -14,7 +14,7 @@ return function ($kirby) {
   $urlOptions = $kirby->option('url');
   $host = $kirby->environment()->host();
   $shortlinkUrl = $urlOptions[$kirby->option('preya.kirby-ww-shortlinks.shortlinkUrlArrayIdx')];
-
+  $refererHeader = $kirby->request()->header('Referer');
 
   if ($kirby->request()->is('GET')) {
     // Check session first for auth info
@@ -27,13 +27,12 @@ return function ($kirby) {
     }
 
     // Check referer for auth only if session did not yield user
-    if (!$user) {
+    if (!$user && !empty($refererHeader)) {
       $refererIsValid = (bool) strpos($kirby->request()->header('Referer'), "welcome-werkstatt.de");
 
       $error = !$refererIsValid;
     }
 
-    
 
     if ($host == Url::domain($shortlinkUrl)) {
       $hasMenu = false;
@@ -41,9 +40,11 @@ return function ($kirby) {
     }
   }
 
-  return [
+  $retVal = [
     'error' => $error,
     // 'debug' => json_encode(["Headers" => $kirby->request()->headers(), "RefererIsValid" => $refererIsValid, "RefererHeader" => print_r($kirby->request()->header('Referer'), true), "User" => print_r($user, true)])
     'hasMenu' => $hasMenu
   ];
+
+  return $retVal;
 };

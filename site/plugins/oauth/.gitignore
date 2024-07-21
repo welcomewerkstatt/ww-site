@@ -1,0 +1,16 @@
+# OS files
+.DS_Store
+
+# npm modules
+/node_modules
+
+# Parcel cache folder
+.cache
+.parcel-cache
+
+# Composer files
+/vendor
+
+# .lock files
+composer.lock
+yarn.lock

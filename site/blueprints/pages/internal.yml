@@ -20,3 +20,18 @@ pages:
     - internal-blocks
     - internal
     - internal-inventory
+options:
+  delete:
+    editor: false
+  changeTitle:
+    ncuser: true
+  create:
+    ncuser: true
+  update:
+    ncuser: true
+  move:
+    ncuser: true
+  duplicate:
+    ncuser: true
+  sort:
+    ncuser: true

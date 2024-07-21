@@ -47,9 +47,10 @@ Kirby::plugin(
               ]
             );
             $result = curl_exec($curl_session);
+            $http_status = curl_getinfo($curl_session, CURLINFO_RESPONSE_CODE);
             curl_close($curl_session);
 
-            if ($result) {
+            if ($result && ($http_status == 200)) {
               $result = json_decode($result, true);
               if ($memberCount = $result['count']) {
                 // 24 hours * 60 mins = 1440 mins

@@ -25,6 +25,3 @@
 [submodule "kirby"]
 	path = kirby
 	url = git@github.com:getkirby/kirby.git
-[submodule "site/plugins/seo"]
-	path = site/plugins/seo
-	url = https://github.com/tobimori/kirby-seo.git
