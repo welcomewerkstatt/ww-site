@@ -31,22 +31,6 @@ fields:
         type: number
         label: Nr.
         width: 1/4
-      registered:
-        label: Registriert am
-        default: today
-        type: date
-        help: Datum an dem der Gegenstand ins Inventar aufgenommen wurde.
-        width: 1/4
-      manufacturer:
-        label: Hersteller
-        type: text
-        help: Der Hersteller des Gegenstands.
-        width: 1/4
-      model:
-        label: Modell / Artikelnummer
-        type: text
-        help: Eine konkrete Modell- oder Artikelnummer.
-        width: 1/4
       amount:
         width: 1/4
         label: Anzahl
@@ -55,10 +39,11 @@ fields:
         step: 1
         default: 1
         min: 1
-      name:
-        label: Name
-        type: text
-        help: Eine generische Beschreibung des Gegenstands.
+      registered:
+        label: Registriert am
+        default: today
+        type: date
+        help: Datum an dem der Gegenstand ins Inventar aufgenommen wurde.
         width: 1/4
       location:
         label: Lagerort
@@ -74,6 +59,28 @@ fields:
           machineroom: Maschinenraum
           electronicarea: Elektronikbereich
           bikearea: Fahrradecke
+          weldingarea: Schweissecke
+          3dprint: 3D-Drucker-Raum
+      manufacturer:
+        label: Hersteller
+        type: text
+        help: Der Hersteller des Gegenstands.
+        width: 2/4
+      model:
+        label: Modell / Artikelnummer
+        type: text
+        help: Eine konkrete Modell- oder Artikelnummer.
+        width: 2/4
+      name:
+        label: Name
+        type: text
+        help: Eine generische Beschreibung des Gegenstands.
+        width: 2/4
+      locationDetail:
+        label: Lagerort Details
+        type: text
+        help: Genauere Angabe (Regal, Fach, Kiste, etc.)
+        width: 2/4
       owner:
         width: 1/4
         label: Eigentümer
