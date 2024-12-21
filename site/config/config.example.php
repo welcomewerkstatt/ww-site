@@ -41,4 +41,8 @@ return [
             'activeMembersGroupId' => '12345678',
         ],
     ],
+    'db' => [
+        'type'     => 'sqlite',
+        'database' => '/Users/someone/ww-site/inventory.db'
+    ]
 ];

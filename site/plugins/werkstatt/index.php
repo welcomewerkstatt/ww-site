@@ -77,5 +77,10 @@ Kirby::plugin(
     'options' => [
       'cache' => true
     ],
+    'siteMethods' => [
+      'invcount' => function() {
+        return Db::max('items', 'invnum') + 1;
+      }
+    ]
   ]
 );

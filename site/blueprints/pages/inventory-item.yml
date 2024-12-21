@@ -6,6 +6,10 @@ options:
   preview: false
   sort: false
 
+create:
+  title: "{{ site.invcount }}"
+  slug: "{{ site.invcount }}"
+
 
 fields:
   invnum:

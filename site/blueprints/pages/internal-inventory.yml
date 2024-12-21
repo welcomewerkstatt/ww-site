@@ -9,6 +9,7 @@ sections:
     image: false
     search: true
     sortable: false
+    templates: inventory-item
     limit: 2000
     sortBy: invnum desc
     columns:
