@@ -2,20 +2,14 @@
 
 class InventoryItemPage extends Kirby\Cms\Page
 {
-  // public function __construct(array $props)
-  // {
-  //   file_put_contents("debug.txt", print_r($props, true), FILE_APPEND | LOCK_EX);
-  //   return parent::__construct($props);
-  // }
 
   public function writeContent(array $data, string|null $languageCode = null): bool
   {
-    file_put_contents("debug.txt", print_r($data, true), FILE_APPEND | LOCK_EX);
-
-    // var_dump($data);
+    // file_put_contents("debug.txt", print_r($data, true), FILE_APPEND | LOCK_EX);
 
     $item = Db::first('items', '*', ['invnum' => $this->invnum()]);
 
+    // Transform multiline YAML strings (e.g. `- file123.jpg\n- file456.jpg` into arrays)
     if ($data["images"]) {
       $splitImages = explode("\n", $data["images"]);
       $imageElements = array_filter(array_map(fn ($image) => substr($image,2), $splitImages));
