@@ -1,11 +1,30 @@
 title: Interne Inventarliste
-fields:
-  text:
-    label: Text
-    type: textarea
-    size: small
-  info:
-    label: Info
-    type: info
-    text: |
-      Die Inventarliste wird hier automatisch eingefügt. Anpassungen an der Liste können über den "Inventar"-Tab vorgenommen werden.
+
+sections:
+
+  pages:
+    label: Items
+    layout: table
+    text: "{{ page.content.invnum }}"
+    image: false
+    search: true
+    sortable: false
+    limit: 2000
+    sortBy: invnum desc
+    columns:
+      title:
+        label: Inventarnummer
+        width: 4rem
+      name: true
+      combinedName:
+        value: "{{ page.content.manufacturer }} {{ page.content.model }}"
+        label: Produktname
+    status: all
+
+  blubb:
+    type: fields
+    fields:
+      text:
+        label: Text
+        type: textarea
+        size: small
