@@ -31,7 +31,7 @@ class InternalInventoryPage extends Kirby\Cms\Page
                     'manufacturer'    => $item->manufacturer(),
                     'registered'      => $item->registered(),
                     'location'        => $item->location(),
-                    'locationDetails' => $item->locationdetails(),
+                    'locationDetail'  => $item->locationdetail(),
                     'owner'           => $item->owner(),
                     'category'        => $item->category(),
                     'source'          => $item->source(),
