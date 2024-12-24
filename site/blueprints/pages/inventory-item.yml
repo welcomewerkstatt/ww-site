@@ -59,6 +59,11 @@ fields:
       machineroom: Maschinenraum
       electronicarea: Elektronikbereich
       bikearea: Fahrradecke
+  locationdetail:
+    label: Lagerort Details
+    type: text
+    help: Genauere Angabe (Regal, Fach, Kiste, etc.)
+    width: 1/4
   owner:
     width: 1/4
     label: Eigentümer
