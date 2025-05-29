@@ -1,7 +1,7 @@
 <?php
 
   // Filter out discharged items
-  $items = $site->pages()->get('inventar')->items()->toStructure()->filterBy('discharge', 'maxlength', '0');
+  $items = page('internes/inventarliste')->children()->filterBy('discharge', 'maxlength', '0')->sortBy('invnum', 'desc');
 
   $options = [
     'storage' => 'Lager',
@@ -37,19 +37,19 @@
           <?php foreach ($items as $item) : ?>
             <tr>
               <td><?= $item->invnum() ?></td>
-              <td><?= $item->name() ?></td>
+              <td><?= $item->content()->name() ?></td>
               <td><?= $item->manufacturer() ?></td>
-              <td><?= $item->model() ?></td>
+              <td><?= $item->content()->model() ?></td>
               <td><?= $options[$item->location()->value()] ?? '' ?><?= $item->locationdetail()->value() ? '<br/>('.$item->locationdetail()->value().')' :'' ?></td>
-              <td><?= $item->owner() ?></td>
+              <td><?= $item->content()->owner() ?></td>
               <td style="padding: 0;">
                 <?php
                   $index = 0;
-                  $images = $item->images()->toFiles();
+                  $images = $item->content()->images()->toFiles();
                 ?>
                 <?php foreach ($images as $image) : ?>
                   <?php
-                    $caption = implode(" - ", array_filter([$item->name(), $item->manufacturer(), $item->model()], 'strlen'));
+                    $caption = implode(" - ", array_filter([$item->content()->name(), $item->manufacturer(), $item->content()->model()], 'strlen'));
                   ?>
                   <a href="<?= $image->url() ?>" data-caption="<?= $caption ?>" class="lightbox table-thumbnail-container <?php e($index !== 0, 'hidden', '') ?>" data-group="<?= $item->invnum() ?>">
                     <img class="table-thumbnail" src="<?= $image->resize(300)->url() ?>" />
