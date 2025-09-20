@@ -6,7 +6,7 @@ sections:
     label: Items
     layout: table
     text: "{{ page.content.invnum }}"
-    image: false
+    image: true
     search: true
     sortable: false
     templates: inventory-item
@@ -21,11 +21,3 @@ sections:
         value: "{{ page.content.manufacturer }} {{ page.content.model }}"
         label: Produktname
     status: all
-
-  blubb:
-    type: fields
-    fields:
-      text:
-        label: Text
-        type: textarea
-        size: small

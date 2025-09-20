@@ -1,8 +1,0 @@
-options:
-  delete: false
-  changeTemplate: false
-  replace: false
-  update: false
-
-fields:
-  hidden: true

@@ -1,6 +1,7 @@
 <?php
 
 use Kirby\Cms\Page;
+use tobimori\Seo\Seo;
 
 return [
 	'cascade' => [
@@ -17,22 +18,17 @@ return [
 		'ogTemplate' => '{{ title }}',
 		'ogSiteName' => fn (Page $page) => $page->site()->title(),
 		'ogType' => 'website',
-		'twitterCardType' => 'summary',
 		'ogDescription' => fn (Page $page) => $page->metadata()->metaDescription(),
-		'twitterCreator' => fn (Page $page) => $page->metadata()->twitterSite(),
-		'lang' => fn (Page $page) => $page->kirby()->language()?->locale(LC_ALL) ?? $page->kirby()->option('tobimori.seo.lang', 'en_US'),
+		'cropOgImage' => true,
+		'locale' => fn (Page $page) => $page->kirby()->language()?->locale(LC_ALL) ?? Seo::option('locale', 'en_US'),
 		// default for robots: noIndex if global index configuration is set, otherwise fall back to page status
 		'robotsIndex' => function (Page $page) {
-			$index = $page->kirby()->option('tobimori.seo.robots.index');
-			if (is_callable($index)) {
-				$index = $index();
-			}
-
+			$index = Seo::option('robots.index');
 			if (!$index) {
 				return false;
 			}
 
-			return $page->kirby()->option('tobimori.seo.robots.followPageStatus', true) ? $page->isListed() : true;
+			return Seo::option('robots.followPageStatus') ? $page->isListed() : true;
 		},
 		'robotsFollow' => fn (Page $page) => $page->kirby()->option('tobimori.seo.default.robotsIndex')($page),
 		'robotsArchive' => fn (Page $page) => $page->kirby()->option('tobimori.seo.default.robotsIndex')($page),
@@ -45,6 +41,8 @@ return [
 		'instagram' => 'https://instagram.com/my-company',
 		'youtube' => 'https://youtube.com/channel/my-company',
 		'linkedin' => 'https://linkedin.com/company/my-company',
+		'bluesky' => 'https://bsky.app/profile/example.bsky.social',
+		'mastodon' => 'https://mastodon.social/@example'
 	],
 	'previews' => [
 		'google',
@@ -55,7 +53,6 @@ return [
 		'active' => true, // whether robots handling should be done by the plugin
 		'followPageStatus' => true, // should unlisted pages be noindex by default?
 		'pageSettings' => true, // whether to have robots settings on each page
-		'indicator' => true, // whether the indicator should be shown in the panel
 		'index' => fn () => !option('debug'), // default site-wide robots setting
 		'sitemap' => null, // sets sitemap url, will be replaced by plugin sitemap in the future
 		'content' => [], // custom robots content
@@ -64,7 +61,7 @@ return [
 	'sitemap' => [
 		'active' => true,
 		'redirect' => true, // redirect /sitemap to /sitemap.xml
-		'lang' => 'en',
+		'locale' => 'en',
 		'generator' => require __DIR__ . '/options/sitemap.php',
 		'changefreq' => 'weekly',
 		'groupByTemplate' => false,
@@ -75,8 +72,11 @@ return [
 		'parent' => null,
 		'template' => null,
 	],
-	'canonicalBase' => null, // base url for canonical links
+	'canonical' => [
+		'base' => null, // base url for canonical links
+		'trailingSlash' => false, // whether to add trailing slashes to canonical URLs (except for files)
+	],
 	'generateSchema' => true, // whether to generate default schema.org data
-	'lang' => 'en_US', // default language, used for single-language sites
+	'locale' => 'en_US', // default locale, used for single-language sites
 	'dateFormat' => null, // custom date format
 ];

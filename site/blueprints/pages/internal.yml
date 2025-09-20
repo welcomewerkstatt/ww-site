@@ -20,6 +20,7 @@ pages:
     - internal-blocks
     - internal
     - internal-inventory
+    - items
 options:
   delete:
     editor: false

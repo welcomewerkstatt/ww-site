@@ -1,7 +1,7 @@
 <?php
 
-  // Filter out discharged items
-  $items = page('internes/inventarliste')->children()->filterBy('discharge', 'maxlength', '0')->sortBy('invnum', 'desc');
+  // Filter out discharged items and sort by inventory number
+  $items = $page->children()->filterBy('discharge', 'maxlength', '0')->sortBy('invnum', 'desc');
 
   $options = [
     'storage' => 'Lager',
@@ -45,7 +45,7 @@
               <td style="padding: 0;">
                 <?php
                   $index = 0;
-                  $images = $item->content()->images()->toFiles();
+                  $images = $item->images();
                 ?>
                 <?php foreach ($images as $image) : ?>
                   <?php
@@ -64,7 +64,7 @@
           <?php endforeach ?>
         </tbody>
       </table>
-      <p class="last-edited">Zuletzt bearbeitet am <?= $site->pages()->get('inventar')->modified('d.m.Y \u\m H:i \U\h\r') ?></p>
+      <p class="last-edited">Zuletzt bearbeitet am <?= $page->modified('d.m.Y \u\m H:i \U\h\r') ?></p>
     </section>
   </div>
 </main>

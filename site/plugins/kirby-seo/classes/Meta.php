@@ -3,11 +3,13 @@
 namespace tobimori\Seo;
 
 use Kirby\Cms\App;
+use Kirby\Cms\FileVersion;
 use Kirby\Cms\Page;
 use Kirby\Content\Field;
 use Kirby\Exception\InvalidArgumentException;
 use Kirby\Toolkit\A;
 use Kirby\Toolkit\Str;
+use Kirby\Cms\Language;
 
 /**
  * The Meta class is responsible for handling the meta data & cascading
@@ -20,7 +22,7 @@ class Meta
 	public const DEFAULT_VALUES = ['[]', 'default'];
 
 	protected Page $page;
-	protected ?string $lang;
+	protected ?Language $lang;
 	protected array $consumed = [];
 	protected array $metaDefaults = [];
 	protected array $metaArray = [];
@@ -28,14 +30,55 @@ class Meta
 	/**
 	 * Creates a new Meta instance
 	 */
-	public function __construct(Page $page, ?string $lang = null)
+	public function __construct(Page $page, ?Language $lang = null)
 	{
 		$this->page = $page;
-		$this->lang = $lang;
+		$this->lang = $lang ?? kirby()->language();
 
 		if (method_exists($this->page, 'metaDefaults')) {
-			$this->metaDefaults = $this->page->metaDefaults($this->lang);
+			$this->metaDefaults = $this->page->metaDefaults($this->lang?->code());
 		}
+	}
+
+	/**
+	 * Normalize a locale string to use a specific separator
+	 *
+	 * @param string $locale The locale string (e.g., 'en_US.UTF-8', 'en-US', 'en_US')
+	 * @param string $separator The separator to use ('-' for BCP47/hreflang, '_' for Open Graph)
+	 * @return string The normalized locale (e.g., 'en-US' or 'en_US')
+	 */
+	public static function normalizeLocale(string $locale, string $separator = '-'): string
+	{
+		// encoding suffix if present (e.g., '.UTF-8')
+		$locale = Str::contains($locale, '.') ? Str::before($locale, '.') : $locale;
+
+		// target both underscores and hyphens
+		$locale = Str::replace($locale, '_', $separator);
+		$locale = Str::replace($locale, '-', $separator);
+
+		return $locale;
+	}
+
+	/**
+	 * Convert a Language to BCP 47 language tag format for hreflang attributes
+	 *
+	 * @param Language $language
+	 * @return string The BCP 47 compliant language tag (e.g., 'en-US', 'de-DE')
+	 */
+	public static function toBCP47(Language $language): string
+	{
+		return self::normalizeLocale($language->locale(LC_ALL), '-');
+	}
+
+	/**
+	 * Convert a Language to Open Graph locale format
+	 *
+	 * @param Language $language
+	 * @return string The Open Graph locale format (e.g., 'en_US', 'de_DE')
+	 */
+	public static function toOpenGraphLocale(Language $language): string
+	{
+		return self::normalizeLocale($language->locale(LC_ALL), '_');
 	}
 
 	/**
@@ -47,10 +90,8 @@ class Meta
 			return $this->metaArray;
 		}
 
-		/**
-		 * We have to specify field names and resolve them later, so we can use this
-		 * function to resolve meta tags from field names in the programmatic function
-		 */
+		// We have to specify field names and resolve them later, so we can use this
+		// function to resolve meta tags from field names in the programmatic function
 		$meta =
 			[
 				'title' => 'metaTitle',
@@ -60,15 +101,15 @@ class Meta
 				'og:description' => 'ogDescription',
 				'og:site_name' => 'ogSiteName',
 				'og:image' => 'ogImage',
-				'og:image:width' => fn () => $this->ogImage() ? $this->get('ogImage')->toFile()?->width() : null,
-				'og:image:height' => fn () => $this->ogImage() ? $this->get('ogImage')->toFile()?->height() : null,
-				'og:image:alt' => fn () => $this->get('ogImage')->toFile()?->alt(),
+				'og:image:width' => fn () => $this->ogImageThumb()?->width() ?? null,
+				'og:image:height' => fn () => $this->ogImageThumb()?->height() ?? null,
+				'og:image:alt' => fn () => $this->get('ogImage')->toFile()?->alt() ?? null,
 				'og:type' => 'ogType',
 			];
 
 
 		// Robots
-		if ($robotsActive = option('tobimori.seo.robots.active')) {
+		if ($robotsActive = Seo::option('robots.active')) {
 			$meta['robots'] = fn () => $this->robots();
 		}
 
@@ -81,41 +122,55 @@ class Meta
 		$meta['canonical'] = $canonicalFn;
 		$meta['og:url'] = $canonicalFn;
 
+		// Check if the current URL is canonical
+		// Compare the current request URL with the canonical URL
+		$currentUrl = kirby()->request()->url()->toString();
+		$canonicalUrl = $this->canonicalUrl();
+		$isCanonical = $currentUrl === $canonicalUrl;
+
 		// Multi-lang alternate tags
-		if (kirby()->languages()->count() > 1 && kirby()->language() !== null) {
+		// Skip hreflang tags if URL is not canonical (has query params, Kirby params, etc.)
+		if (kirby()->languages()->count() > 1 && $this->lang !== null && $isCanonical) {
 			foreach (kirby()->languages() as $lang) {
+				// only if this language is translated for this page and exists
+				// note: can be checked now, does not cause infinite loop
+				if (!$this->page->translation($lang->code())->exists()) {
+					continue;
+				}
+
 				// only add alternate tags if the page is indexable
 				$meta['alternate'][] = fn () => $allowsIndexFn() ? [
-					'hreflang' => $lang->code(),
+					'hreflang' => Meta::toBCP47($lang),
 					'href' => $this->page->url($lang->code()),
+					'rel' => 'alternate',
 				] : null;
 
-				if ($lang !== kirby()->language()) {
-					$meta['og:locale:alternate'][] = fn () => $lang->code();
+				if ($lang !== $this->lang) {
+					$meta['og:locale:alternate'][] = fn () => Meta::toOpenGraphLocale($lang);
 				}
 			}
 
 			// only add alternate tags if the page is indexable
 			$meta['alternate'][] = fn () => $allowsIndexFn() ? [
 				'hreflang' => 'x-default',
-				'href' => $this->page->url(kirby()->language()->code()),
+				'href' => $this->page->indexUrl(),
+				'rel' => 'alternate',
 			] : null;
-			$meta['og:locale'] = fn () => kirby()->language()->locale(LC_ALL);
+			$meta['og:locale'] = fn () => Meta::toOpenGraphLocale($this->lang);
 		} else {
-			$meta['og:locale'] = fn () => $this->locale(LC_ALL);
+			// Single-language site: get locale from cascade (will fallback to 'locale' option)
+			$meta['og:locale'] = fn () => Meta::normalizeLocale($this->get('locale')->value(), '_');
 		}
 
-		// Twitter tags "opt-in" - TODO: wip
-		if (option('tobimori.seo.twitter', true)) {
-			$meta = array_merge($meta, [
-				'twitter:card' => 'twitterCardType',
-				'twitter:title' => 'ogTitle',
-				'twitter:description' => 'ogDescription',
-				'twitter:image' => 'ogImage',
-				'twitter:site' => 'twitterSite',
-				'twitter:creator' => 'twitterCreator',
-			]);
+		// If URL is not canonical, also skip og:locale:alternate tags
+		if (!$isCanonical) {
+			unset($meta['og:locale:alternate']);
 		}
+
+		$meta['me'] = fn () => (
+			($socialMedia = $this->site('socialMediaAccounts')?->toObject())
+			&& ($mastodon = $socialMedia->mastodon()->value())
+		) ? $mastodon : null;
 
 		// This array will be normalized for use in the snippet in $this->snippetData()
 		return $this->metaArray = $meta;
@@ -128,6 +183,7 @@ class Meta
 	public const TAG_TYPE_MAP = [
 		[
 			'tag' => 'title',
+			'priority' => true,
 			'tags' => [
 				'title'
 			]
@@ -139,6 +195,7 @@ class Meta
 				'content' => 'href',
 			],
 			'tags' => [
+				'me',
 				'canonical',
 				'alternate',
 			]
@@ -159,7 +216,7 @@ class Meta
 	 * Normalize the meta array and remaining meta defaults to be used in the snippet,
 	 * also resolve the content, if necessary
 	 */
-	public function snippetData(array $raw = null): array
+	public function snippetData(?array $raw = null): array
 	{
 		$mergeWithDefaults = !isset($raw);
 		$raw ??= $this->metaArray();
@@ -170,7 +227,7 @@ class Meta
 			if (is_numeric($name)) {
 				// but we still check if the array is valid
 				if (!is_array($value) || count(array_intersect(['tag', 'content', 'attributes'], array_keys($value))) !== count($value)) {
-					throw new InvalidArgumentException("[kirby-seo] Invalid array structure found in programmatic content for page {$this->slug()}. Please check your metaDefaults method for template {$this->template()->name()}.");
+					throw new InvalidArgumentException("[Kirby SEO] Invalid array structure found in programmatic content for page {$this->slug()}. Please check your metaDefaults method for template {$this->template()->name()}.");
 				}
 
 				$tags[] = $value;
@@ -227,6 +284,7 @@ class Meta
 					'tag' => $tag['tag'],
 					'attributes' => $value,
 					'content' => null,
+					'priority' => $tag['priority'] ?? false,
 				];
 				continue;
 			}
@@ -240,6 +298,7 @@ class Meta
 					$tag['attributes']['content'] => $value,
 				] : null,
 				'content' => !isset($tag['attributes']) ? $value : null,
+				'priority' => $tag['priority'] ?? false,
 			];
 		}
 
@@ -293,9 +352,9 @@ class Meta
 	 */
 	public function get(string $key, array $exclude = []): Field
 	{
-		$cascade = option('tobimori.seo.cascade');
+		$cascade = Seo::option('cascade');
 		if (count(array_intersect(get_class_methods($this), $cascade)) !== count($cascade)) {
-			throw new InvalidArgumentException('[kirby-seo] Invalid cascade method in config. Please check your options for `tobimori.seo.cascade`.');
+			throw new InvalidArgumentException('[Kirby SEO] Invalid cascade method in config. Please check your options for `tobimori.seo.cascade`.');
 		}
 
 		// Track consumed keys, so we don't output legacy field values
@@ -322,8 +381,8 @@ class Meta
 	 */
 	protected function fields(string $key): Field|null
 	{
-		if (($field = $this->page->content($this->lang)->get($key))) {
-			if (Str::contains($key, 'robots') && !option('tobimori.seo.robots.pageSettings')) {
+		if (($field = $this->page->content($this->lang?->code())->get($key))) {
+			if (Str::contains($key, 'robots') && !Seo::option('robots.pageSettings')) {
 				return null;
 			}
 
@@ -366,7 +425,7 @@ class Meta
 	{
 		if (array_key_exists($key, self::FALLBACK_MAP)) {
 			$fallback = self::FALLBACK_MAP[$key];
-			$cascade = option('tobimori.seo.cascade');
+			$cascade = Seo::option('cascade');
 
 			foreach (array_intersect($cascade, self::FALLBACK_CASCADE) as $method) {
 				if ($field = $this->$method($fallback)) {
@@ -398,10 +457,9 @@ class Meta
 			$val = $this->metaDefaults[$key];
 		}
 
-		/* If there is no programmatic value for the key,
-		 * try looking it up in the meta array
-		 * maybe it is a meta tag and not a field name?
-		 */
+		// If there is no programmatic value for the key,
+		// try looking it up in the meta array
+		// maybe it is a meta tag and not a field name?
 		if (!isset($val) && ($key = $this->findTagForField($key)) && array_key_exists($key, $this->metaDefaults)) {
 			$val = $this->metaDefaults[$key];
 		}
@@ -456,7 +514,7 @@ class Meta
 	 */
 	protected function site(string $key): Field|null
 	{
-		if (($site = $this->page->site()->content($this->lang)->get($key)) && ($site->isNotEmpty() && !A::has(self::DEFAULT_VALUES, $site->value))) {
+		if (($site = $this->page->site()->content($this->lang?->code())->get($key)) && ($site->isNotEmpty() && !A::has(self::DEFAULT_VALUES, $site->value))) {
 			return $site;
 		}
 
@@ -469,11 +527,7 @@ class Meta
 	 */
 	protected function options(string $key): Field|null
 	{
-		if ($option = option("tobimori.seo.default.{$key}")) {
-			if (is_callable($option)) {
-				$option = $option($this->page);
-			}
-
+		if ($option = Seo::option("default.{$key}", args: [$this->page])) {
 			if (is_a($option, 'Kirby\Content\Field')) {
 				return $option;
 			}
@@ -562,35 +616,11 @@ class Meta
 	}
 
 	/**
-	 * Get the Twitter username from an account url set in the site options
-	 */
-	public function twitterSite()
-	{
-		$accs = $this->page->site()->socialMediaAccounts()->toObject();
-		$username = '';
-
-		if ($accs->twitter()->isNotEmpty()) {
-			// tries to match all twitter urls, and extract the username
-			$matches = [];
-			preg_match('/^(https?:\/\/)?(www\.)?twitter\.com\/(#!\/)?@?(?<name>[^\/\?]*)$/', $accs->twitter()->value(), $matches);
-			if (isset($matches['name'])) {
-				$username = $matches['name'];
-			}
-		}
-
-		return new Field($this->page, 'twitter', $username);
-	}
-
-	/**
 	 * Gets the date format for modified meta tags, based on the registered date handler
 	 */
 	public function dateFormat(): string
 	{
-		if ($custom = option('tobimori.seo.dateFormat')) {
-			if (is_callable($custom)) {
-				return $custom($this->page);
-			}
-
+		if ($custom = Seo::option('dateFormat')) {
 			return $custom;
 		}
 
@@ -611,7 +641,7 @@ class Meta
 	public function robots()
 	{
 		$robots = [];
-		foreach (option('tobimori.seo.robots.types') as $type) {
+		foreach (Seo::option('robots.types') as $type) {
 			if (!$this->get('robots' . Str::ucfirst($type))->toBool()) {
 				$robots[] = 'no' . Str::lower($type);
 			}
@@ -625,20 +655,47 @@ class Meta
 	}
 
 	/**
+	 * Get the og:image thumb object
+	 */
+	public function ogImageThumb(): FileVersion|null
+	{
+		$field = $this->get('ogImage');
+
+		// Only process if we have a file object
+		if ($file = $field->toFile()) {
+			$cropOgImage = $this->get('cropOgImage')->toBool();
+
+			if ($cropOgImage) {
+				// Crop to 1200x630
+				return $file->thumb([
+					'width' => 1200,
+					'height' => 630,
+					'crop' => true,
+				]);
+			} else {
+				// Resize to max 1500px on the longest side
+				return $file->thumb([
+					'width' => 1500,
+					'height' => 1500,
+					'upscale' => false,
+				]);
+			}
+		}
+
+		// Return null if it's a custom URL or empty
+		return null;
+	}
+
+	/**
 	 * Get the og:image url
 	 */
 	public function ogImage(): string|null
 	{
-		$field = $this->get('ogImage');
-
-		if ($ogImage = $field->toFile()?->thumb([
-			'width' => 1200,
-			'height' => 630,
-			'crop' => true,
-		])) {
+		if ($ogImage = $this->ogImageThumb()) {
 			return $ogImage->url();
 		}
 
+		$field = $this->get('ogImage');
 		if ($field->isNotEmpty()) {
 			return $field->value();
 		}

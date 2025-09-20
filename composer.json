@@ -10,12 +10,11 @@
     }
   ],
   "require": {
-    "php": "~8.3.0",
-    "getkirby/cms": "^4.7",
-    "bahuma/oauth2-nextcloud": "^2.0",
-    "thathoff/kirby-oauth": "^3.1.0",
-    "tobimori/kirby-seo": "^1.1.2",
-    "tobimori/kirby-dreamform": "^1.3.5"
+    "php": "~8.4.0",
+    "getkirby/cms": "^5.0",
+    "bahuma/oauth2-nextcloud": "^2.1.0",
+    "thathoff/kirby-oauth": "^3.2.0",
+    "tobimori/kirby-seo": "^2.0.0-alpha.3"
   },
   "config": {
     "optimize-autoloader": true,
