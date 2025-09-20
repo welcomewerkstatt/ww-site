@@ -52,3 +52,7 @@ package-lock.json
 
 .dreamform_license
 kirby
+/site/plugins/kirby-seo
+/site/plugins/kirby-dreamform
+/site/plugins/oauth
+
