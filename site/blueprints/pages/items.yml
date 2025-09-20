@@ -25,3 +25,10 @@ sections:
       name:
         label: Name
     status: all
+  content:
+    type: fields
+    fields: 
+      text:
+        label: Text
+        type: textarea
+        size: small
