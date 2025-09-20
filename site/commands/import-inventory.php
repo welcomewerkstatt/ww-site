@@ -7,8 +7,8 @@ return [
 		$kirby = $cli->kirby();
 		$kirby->impersonate('kirby');
 		$site = $kirby->site();
-		$oldInventory = $site->find('inventar');
-		$newInventory = $site->find('internes/inventarliste2');
+		$oldInventory = $site->findBy('intendedTemplate', 'inventory');
+		$newInventory = $site->findBy('intendedTemplate', 'items');
 
 		if (!$oldInventory) {
 			$cli->error('Old Inventory page not found.');
