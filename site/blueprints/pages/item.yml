@@ -1,35 +1,46 @@
-title: Inventar
-icon: 🛠
+title: Inventargegenstand
+create:
+  title: "{{ site.invcount }}"
+  slug: "{{ site.invcount }}"
 options:
-  changeStatus: false
+  changeSlug: false
   changeTitle: false
   changeTemplate: false
-  changeSlug: false
-  delete: false
   duplicate: false
   preview: false
 
-
-fields:
-  items:
-    label: Gegenstände
-    type: structure
-    sortBy: invnum desc
-    columns:
-      invnum:
-      name:
-      manufacturer:
-      model:
-      location:
-      images:
-      owner:
-      notes:
-      discharge:
-      category:
+status:
+  draft:
+    label: Entwurf
+    text: Der Gegenstand befindet sich noch im Entwurfsmodus. Er kann nur von Redakteuren mit Panel-Zugriff gesehen werden.
+  unlisted:
+    label: Veröffentlicht
+    text: Dieser Gegenstand ist im Inventar vorhanden und wird in der Inventarliste angezeigt.
+sections:
+  content:
+    type: fields
     fields:
       invnum:
-        type: number
+        type: text
+        disabled: true
         label: Nr.
+        width: 1/4
+        default: "{{ site.invcount }}"
+      registered:
+        label: Registriert am
+        default: today
+        type: date
+        help: Datum, an dem der Gegenstand ins Inventar aufgenommen wurde.
+        width: 1/4
+      manufacturer:
+        label: Hersteller
+        type: text
+        help: Der Hersteller des Gegenstands.
+        width: 1/4
+      model:
+        label: Modell / Artikelnummer
+        type: text
+        help: Eine konkrete Modell- oder Artikelnummer.
         width: 1/4
       amount:
         width: 1/4
@@ -39,11 +50,10 @@ fields:
         step: 1
         default: 1
         min: 1
-      registered:
-        label: Registriert am
-        default: today
-        type: date
-        help: Datum an dem der Gegenstand ins Inventar aufgenommen wurde.
+      name:
+        label: Name
+        type: text
+        help: Eine generische Beschreibung des Gegenstands.
         width: 1/4
       location:
         label: Lagerort
@@ -59,28 +69,11 @@ fields:
           machineroom: Maschinenraum
           electronicarea: Elektronikbereich
           bikearea: Fahrradecke
-          weldingarea: Schweissecke
-          3dprint: 3D-Drucker-Raum
-      manufacturer:
-        label: Hersteller
-        type: text
-        help: Der Hersteller des Gegenstands.
-        width: 2/4
-      model:
-        label: Modell / Artikelnummer
-        type: text
-        help: Eine konkrete Modell- oder Artikelnummer.
-        width: 2/4
-      name:
-        label: Name
-        type: text
-        help: Eine generische Beschreibung des Gegenstands.
-        width: 2/4
-      locationDetail:
+      locationdetail:
         label: Lagerort Details
         type: text
         help: Genauere Angabe (Regal, Fach, Kiste, etc.)
-        width: 2/4
+        width: 1/4
       owner:
         width: 1/4
         label: Eigentümer
@@ -121,12 +114,8 @@ fields:
         query: site.pages.findBy('title', 'Interner Bereich')
         help: Wähle die zugehörige, interne Hilfe-Seite zu diesem Gegenstand.
         multiple: false
-      images:
-        help: Bilder des Gegenstands
-        label: Bilder
-        query: page.children.find('images').images
-        type: files
-        layout: cards
-        uploads:
-          parent: page.children.find('images')
-        size: small
+  files:
+    type: files
+    label: Bilder
+    multiple: true
+    layout: cards

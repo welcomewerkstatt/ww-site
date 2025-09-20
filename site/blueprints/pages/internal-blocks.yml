@@ -19,7 +19,7 @@ pages:
   templates:
     - internal
     - internal-blocks
-    - internal-inventory
+    - items
 options:
   delete:
     editor: false
