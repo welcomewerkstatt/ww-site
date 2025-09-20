@@ -1,4 +1,6 @@
-title: Inventory
+title: Inventar
+icon: 🛠
+
 sections:
   items:
     rawvalues: true

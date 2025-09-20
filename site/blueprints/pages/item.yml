@@ -1,10 +1,13 @@
-title: Inventory Item
+title: Inventargegenstand
 create:
   title: "{{ site.invcount }}"
   slug: "{{ site.invcount }}"
 options:
   changeSlug: false
   changeTitle: false
+  changeTemplate: false
+  duplicate: false
+  preview: false
 
 status:
   draft:
