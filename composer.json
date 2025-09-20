@@ -11,9 +11,9 @@
   ],
   "require": {
     "php": "~8.4.0",
-    "getkirby/cms": "^5.0",
     "bahuma/oauth2-nextcloud": "^2.1.0",
-    "thathoff/kirby-oauth": "^3.2.0",
+    "getkirby/cms": "^5.1",
+    "thathoff/kirby-oauth": "^3.3.0",
     "tobimori/kirby-seo": "^2.0.0-alpha.3"
   },
   "config": {
