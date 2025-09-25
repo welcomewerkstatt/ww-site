@@ -8,7 +8,7 @@
     </button>
   </div>
   <?php
-  $items = $pages->template('internal')->first()->children()->listed();
+  $items = page('internes')->children()->listed();
   if ($items->isNotEmpty()) :
   ?>
     <ul class="padding no-margin flex-1 overflow-auto">
