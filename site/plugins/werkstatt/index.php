@@ -8,10 +8,12 @@ Kirby::plugin(
   'welcome-werkstatt/werkstatt',
   [
     'blueprints' => [
-      'blocks/embed' => __DIR__ . '/blueprints/blocks/embed.yml'
+      'blocks/embed' => __DIR__ . '/blueprints/blocks/embed.yml',
+      'blocks/infobox' => __DIR__ . '/blueprints/blocks/infobox.yml'
     ],
     'snippets' => [
-      'blocks/embed' => __DIR__ . '/snippets/blocks/embed.php'
+      'blocks/embed' => __DIR__ . '/snippets/blocks/embed.php',
+      'blocks/infobox' => __DIR__ . '/snippets/blocks/infobox.php'
     ],
     'tags' => [
       'external' => [
