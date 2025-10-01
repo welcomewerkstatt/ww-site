@@ -1,0 +1,48 @@
+title: Newsletter
+preset: page
+pages: false
+files: true
+buttons:
+  open: true
+  preview: true
+  sendNewsletter: true
+  settings: true
+  status: true
+fields:
+  subject:
+    label: Betreff
+    type: text
+    required: false
+    help: Wird als Betreff der E-Mail verwendet. Wenn leer, wird der Seitentitel verwendet.
+  text:
+    label: Text
+    type: blocks
+    pretty: true
+    fieldsets:
+      - text
+      - heading
+      - news-item
+  publishDate:
+    label: Versanddatum
+    type: date
+    display: DD.MM.YYYY
+    disabled: true
+    time: true
+    required: false
+
+
+options:
+  delete:
+    editor: false
+  changeTitle:
+    ncuser: true
+  create:
+    ncuser: true
+  update:
+    ncuser: true
+  move:
+    ncuser: true
+  duplicate:
+    ncuser: true
+  sort:
+    ncuser: true
