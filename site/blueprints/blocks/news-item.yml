@@ -1,0 +1,26 @@
+name: News Item
+icon: image
+wysiwyg: true
+preview: fields
+
+fields:
+  title:
+    label: Titel
+    type: text
+  body:
+    label: Inhalt
+    type: textarea
+  image:
+    label: Bild
+    type: files
+    multiple: false
+    image:
+      back: black
+    uploads:
+      template: blocks/image
+
+  alt:
+    label: Alternative Text (Bildbeschreibung)
+    type: text
+    icon: title
+ 

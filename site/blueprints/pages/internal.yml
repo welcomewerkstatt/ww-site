@@ -20,6 +20,7 @@ pages:
     - internal-blocks
     - internal
     - items
+    - newsletter
 options:
   delete:
     editor: false
