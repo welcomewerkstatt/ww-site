@@ -56,15 +56,13 @@ class EasyVerein
 
     $members = $this->getFromEasyVerein($apiUrl)['results'];
 
-    $members = array_map(function ($member) use ($whitelist) {
-      if (in_array($member['id'], $whitelist)) {
-        return [
-          'id' => $member['id'],
-          'firstName' => $member['contactDetails']['firstName'],
-          'familyName' => $member['contactDetails']['familyName'],
-          'email' => $member['contactDetails']['primaryEmail']
-        ];
-      }
+    $members = array_map(function ($member) {
+      return [
+        'id' => $member['id'],
+        'firstName' => $member['contactDetails']['firstName'],
+        'familyName' => $member['contactDetails']['familyName'],
+        'email' => $member['contactDetails']['primaryEmail']
+      ];
     }, $members);
 
     return array_values(array_filter($members));
