@@ -56,8 +56,6 @@ class EasyVerein
 
     $members = $this->getFromEasyVerein($apiUrl)['results'];
 
-    $whitelist = [258318, 312983];
-
     $members = array_map(function ($member) use ($whitelist) {
       if (in_array($member['id'], $whitelist)) {
         return [
