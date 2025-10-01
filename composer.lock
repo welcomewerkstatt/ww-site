@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a3f20e191fea7d599652e182c5caf7b1",
+    "content-hash": "53fb91a11161ee783b8b4bcf583f5952",
     "packages": [
         {
             "name": "bahuma/oauth2-nextcloud",
@@ -1968,7 +1968,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": "~8.3.0"
+        "php": "~8.4.0"
     },
     "platform-dev": {},
     "plugin-api-version": "2.6.0"

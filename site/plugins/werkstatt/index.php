@@ -77,5 +77,12 @@ Kirby::plugin(
     'options' => [
       'cache' => true
     ],
+    'siteMethods' => [
+      'invcount' => function() {
+        $lastCount = $this->index()->findBy('intendedTemplate', 'items')->children()->sortBy("invnum", "desc")->first()->invnum()->toInt();
+
+        return $lastCount + 1;
+      }
+    ]
   ]
 );

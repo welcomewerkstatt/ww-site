@@ -10,9 +10,9 @@
     }
   ],
   "require": {
-    "php": "~8.3.0",
+    "php": "~8.4.0",
+    "bahuma/oauth2-nextcloud": "^2.1.0",
     "getkirby/cms": "^5.1",
-    "bahuma/oauth2-nextcloud": "^2.1",
     "thathoff/kirby-oauth": "^3.3.0",
     "tobimori/kirby-seo": "^2.0.0-alpha.3"
   },

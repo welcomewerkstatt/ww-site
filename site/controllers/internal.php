@@ -2,7 +2,10 @@
 
 use Kirby\Http\Url;
 
-// Check for valid "referer" value to show page or not
+/**
+ * This controller handles authorization for internal pages, which are only supposed
+ * to be accessible to logged-in users or via valid referer (i.e. from within Nextcloud).
+ */
 return function ($kirby) {
 
   $error = false;
@@ -11,8 +14,16 @@ return function ($kirby) {
   $refererIsValid = false;
   $hasMenu = true;
 
-  $urlOptions = $kirby->option('url');
   $host = $kirby->environment()->host();
+  $urlOptions = $kirby->option('url');
+
+  if (!is_array($urlOptions) || count($urlOptions) < 2) {
+    return [
+      'error' => false,
+      'hasMenu' => true
+    ];
+  }
+
   $shortlinkUrl = $urlOptions[$kirby->option('preya.kirby-ww-shortlinks.shortlinkUrlArrayIdx')];
   $refererHeader = $kirby->request()->header('Referer');
 

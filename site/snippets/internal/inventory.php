@@ -1,7 +1,7 @@
 <?php
 
-  // Filter out discharged items
-  $items = $site->pages()->get('inventar')->items()->toStructure()->filterBy('discharge', 'maxlength', '0')->sortBy('invnum', 'desc');
+  // Filter out discharged items and sort by inventory number
+  $items = $page->children()->filterBy('discharge', 'maxlength', '0')->sortBy('invnum', 'desc');
 
   $options = [
     'storage' => 'Lager',
@@ -52,17 +52,17 @@
                 </td>
               <td><?= $item->name() ?></td>
               <td><?= $item->manufacturer() ?></td>
-              <td><?= $item->model() ?></td>
-              <td><?= $options[$item->location()->value()] ?? $item->location()->value() ?><?= $item->locationdetail()->value() ? '<br/>('.$item->locationdetail()->value().')' :'' ?></td>
-              <td><?= $item->owner() ?></td>
+              <td><?= $item->content()->model() ?></td>
+              <td><?= $options[$item->location()->value()] ?? '' ?><?= $item->locationdetail()->value() ? '<br/>('.$item->locationdetail()->value().')' :'' ?></td>
+              <td><?= $item->content()->owner() ?></td>
               <td style="padding: 0;">
                 <?php
                   $index = 0;
-                  $images = $item->images()->toFiles();
+                  $images = $item->images();
                 ?>
                 <?php foreach ($images as $image) : ?>
                   <?php
-                    $caption = implode(" - ", array_filter([$item->name(), $item->manufacturer(), $item->model()], 'strlen'));
+                    $caption = implode(" - ", array_filter([$item->content()->name(), $item->manufacturer(), $item->content()->model()], 'strlen'));
                   ?>
                   <a href="<?= $image->url() ?>" data-caption="<?= $caption ?>" class="lightbox table-thumbnail-container <?php e($index !== 0, 'hidden', '') ?>" data-group="<?= $item->invnum() ?>">
                     <img class="table-thumbnail" loading="lazy" src="<?= $image->resize(300)->url() ?>" />
@@ -77,7 +77,7 @@
           <?php endforeach ?>
         </tbody>
       </table>
-      <p class="last-edited">Zuletzt bearbeitet am <?= $site->pages()->get('inventar')->modified('d.m.Y \u\m H:i \U\h\r') ?></p>
+      <p class="last-edited">Zuletzt bearbeitet am <?= $page->modified('d.m.Y \u\m H:i \U\h\r') ?></p>
     </section>
   </div>
 </main>

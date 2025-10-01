@@ -1,0 +1,36 @@
+title: Inventar
+icon: 🛠
+
+sections:
+  items:
+    rawvalues: true
+    create: item
+    type: pages
+    template: item
+    label: Items
+    layout: table
+    search: true
+    text: "{{ page.content.invnum }}"
+    image:
+      query: page.images.first
+    search: true
+    limit: 2000
+    sortBy: invnum desc
+    columns:
+      title:
+        label: Inventarnummer
+        width: 100px
+      manufacturer:
+        label: Hersteller
+      model:
+        label: Modell
+      name:
+        label: Name
+    status: all
+  content:
+    type: fields
+    fields: 
+      text:
+        label: Text
+        type: textarea
+        size: small
