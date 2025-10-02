@@ -24,8 +24,6 @@ class Brevo
 
     $message = $this->buildMessage($from, $fromName, $to, $subject, $htmlContent, $textContent);
 
-    file_put_contents(__DIR__ . '/brevo_debug.json', $message);
-
     $response = Remote::post($this->config['apiBaseUrl'] . $url, [
       'headers' => [
         'accept' => 'application/json',
