@@ -94,19 +94,19 @@ class EasyVerein
 
   public function getReceiversFromAddressGroupId($addressGroupId)
   {
-    $apiUrl = 'member/?query={id,emailOrUserName,contactDetails{firstName,familyName,primaryEmail}}&memberGroups=' . $addressGroupId . '&limit=100';
+    $apiUrl = 'contact-details/?query={id,firstName,familyName,primaryEmail}&contactDetailsGroups=' . $addressGroupId . '&limit=100';
 
-    $members = $this->getFromEasyVerein($apiUrl)['results'];
+    $people = $this->getFromEasyVerein($apiUrl)['results'];
 
-    $members = array_map(function ($member) {
+    $people = array_map(function ($person) {
       return [
-        'id' => $member['id'],
-        'firstName' => $member['contactDetails']['firstName'],
-        'familyName' => $member['contactDetails']['familyName'],
-        'email' => $member['contactDetails']['primaryEmail']
+        'id' => $person['id'],
+        'firstName' => $person['firstName'],
+        'familyName' => $person['familyName'],
+        'email' => $person['primaryEmail']
       ];
-    }, $members);
+    }, $people);
 
-    return array_values(array_filter($members));
+    return array_values(array_filter($people));
   }
 }
