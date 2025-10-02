@@ -31,14 +31,18 @@ Kirby::plugin(
               'load' => function () {
                 $page = page(get('page'));
                 $easyVerein = new EasyVerein();
-                $groups = $easyVerein->getAllGroups();
+
+                $memberGroups = $easyVerein->getAllMemberGroups();
+                $addressGroups = $easyVerein->getAllAddressGroups();
+
+                $combinedGroups = array_merge($memberGroups, $addressGroups);
 
                 $options = array_map(function ($group) {
                   return [
-                    'value' => $group['id'],
-                    'text'  => $group['name'],
+                    'value' => $group['type'] . ': ' . $group['id'],
+                    'text'  => $group['type'] . ': ' . $group['name'].' ('.$group['count'].')',
                   ];
-                }, $groups);
+                }, $combinedGroups);
 
                 return [
                   'component' => 'k-form-dialog',
@@ -49,7 +53,7 @@ Kirby::plugin(
                         'label' => 'Newsletter versenden',
                         'type' => 'info',
                         'theme' => 'notice',
-                        'text' => 'Achtung: Hier kann eine E-Mail an mehrere hundert Empfänger gesendet werden. Bitte nur verwenden, wenn der Inhalt final ist und die Seite korrekt dargestellt wird. Am besten vorher eine Test-E-Mail an sich selbst senden.',
+                        'text' => 'Achtung: Hier kann eine E-Mail an mehrere hundert Empfänger auf einmal gesendet werden. Bitte nur verwenden, wenn der Inhalt final ist und die Seite korrekt dargestellt wird. Am besten vorher eine Test-E-Mail an sich selbst senden.',
                       ],
                       'testReceiver' => [
                         'label' => 'Test-Empfänger',
@@ -84,7 +88,8 @@ Kirby::plugin(
                 ];
               },
               'submit' => function () {
-                $receiverGroup = get('receiverGroup');
+                $receiverParameter = get('receiverGroup');
+                $receiverGroup = explode(" ", $receiverParameter);
                 $testReceiver = get('testReceiver');
 
                 $kirby = kirby();
@@ -105,7 +110,13 @@ Kirby::plugin(
                     'familyName' => 'Empfänger'
                   ]];
                 } else {
-                  $receivers = $easyVerein->getReceiversFromGroupId($receiverGroup);
+                  $receiverGroupId = $receiverGroup[1];
+                  if ($receiverGroup[0] === 'Mitglieder') {
+                    $memberReceivers = $easyVerein->getReceiversFromMemberGroupId($receiverGroupId);
+                  } elseif ($receiverGroup[0] === 'Addressen') {
+                    $addressReceivers = $easyVerein->getReceiversFromAddressGroupId($receiverGroupId);
+                  } 
+                  $receivers = array_merge($memberReceivers, $addressReceivers);
                 }
 
                 $mailer = new Brevo();

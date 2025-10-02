@@ -34,25 +34,67 @@ class EasyVerein
     return $response->json();
   }
 
-  public function getAllGroups()
+  public function getAllMemberGroups()
   {
-    $apiUrl = 'member-group/?query={id,name}&limit=100';
+    $apiUrl = 'member-group/?query={id,name,linkedItems}&limit=100';
 
     $groups = $this->getFromEasyVerein($apiUrl)['results'];
 
     $groups = array_map(function ($group) {
       return [
         'id' => $group['id'],
-        'name' => $group['name']
+        'name' => $group['name'],
+        'count' => $group['linkedItems'],
+        'type' => 'Mitglieder'
       ];
     }, $groups);
 
-    return array_filter($groups);
+    return array_filter($groups, function ($group) {
+      return $group['count'] > 0;
+    });
   }
 
-  public function getReceiversFromGroupId($groupId)
+  public function getAllAddressGroups()
   {
-    $apiUrl = 'member/?query={id,emailOrUserName,contactDetails{firstName,familyName,primaryEmail}}&memberGroups=' . $groupId . '&limit=100';
+    $apiUrl = 'contact-details-group/?query={id,name,linkedItems}&limit=100';
+
+    $groups = $this->getFromEasyVerein($apiUrl)['results'];
+
+    $groups = array_map(function ($group) {
+      return [
+        'id' => $group['id'],
+        'name' => $group['name'],
+        'count' => $group['linkedItems'],
+        'type' => 'Addressen'
+      ];
+    }, $groups);
+
+    return array_filter($groups, function ($group) {
+      return $group['count'] > 0;
+    });
+  }
+
+  public function getReceiversFromMemberGroupId($memberGroupId)
+  {
+    $apiUrl = 'member/?query={id,emailOrUserName,contactDetails{firstName,familyName,primaryEmail}}&memberGroups=' . $memberGroupId . '&limit=100';
+
+    $members = $this->getFromEasyVerein($apiUrl)['results'];
+
+    $members = array_map(function ($member) {
+      return [
+        'id' => $member['id'],
+        'firstName' => $member['contactDetails']['firstName'],
+        'familyName' => $member['contactDetails']['familyName'],
+        'email' => $member['contactDetails']['primaryEmail']
+      ];
+    }, $members);
+
+    return array_values(array_filter($members));
+  }
+
+  public function getReceiversFromAddressGroupId($addressGroupId)
+  {
+    $apiUrl = 'member/?query={id,emailOrUserName,contactDetails{firstName,familyName,primaryEmail}}&memberGroups=' . $addressGroupId . '&limit=100';
 
     $members = $this->getFromEasyVerein($apiUrl)['results'];
 
