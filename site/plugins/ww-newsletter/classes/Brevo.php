@@ -26,20 +26,20 @@ class Brevo
 
     file_put_contents(__DIR__ . '/brevo_debug.json', $message);
 
-    // $response = Remote::post($this->config['apiBaseUrl'] . $url, [
-    //   'headers' => [
-    //     'accept' => 'application/json',
-    //     'api-key' => $this->config['apiKey'],
-    //     'content-type' => 'application/json',
-    //   ],
-    //   'data' => $message,
-    // ]);
+    $response = Remote::post($this->config['apiBaseUrl'] . $url, [
+      'headers' => [
+        'accept' => 'application/json',
+        'api-key' => $this->config['apiKey'],
+        'content-type' => 'application/json',
+      ],
+      'data' => $message,
+    ]);
 
-    // if ($response->code() !== 201 && $response->code() !== 200) {
-    //   throw new Exception('Error sending email via Brevo: ' . $response->content());
-    // }
+    if ($response->code() !== 201 && $response->code() !== 200) {
+      throw new Exception('Error sending email via Brevo: ' . $response->content());
+    }
 
-    // return $response->content();
+    return $response->content();
   }
 
   private function buildMessage($from, $fromName, $to, $subject, $htmlContent, $textContent)
