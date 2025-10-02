@@ -111,6 +111,9 @@ Kirby::plugin(
                   ]];
                 } else {
                   $receiverGroupId = $receiverGroup[1];
+                  
+                  $memberReceivers = [];
+                  $addressReceivers = [];
                   if ($receiverGroup[0] === 'Mitglieder') {
                     $memberReceivers = $easyVerein->getReceiversFromMemberGroupId($receiverGroupId);
                   } elseif ($receiverGroup[0] === 'Addressen') {
