@@ -39,7 +39,7 @@ Kirby::plugin(
 
                 $options = array_map(function ($group) {
                   return [
-                    'value' => $group['type'] . ': ' . $group['id'],
+                    'value' => $group['type'] . '-' . $group['id'],
                     'text'  => $group['type'] . ': ' . $group['name'].' ('.$group['count'].')',
                   ];
                 }, $combinedGroups);
@@ -80,7 +80,7 @@ Kirby::plugin(
                       'theme' => 'pink'
                     ],
                     'value' => [
-                      'receiverGroup' => option('welcome-werkstatt.werkstatt.easyverein.activeMembersGroupId'),
+                      'receiverGroup' => 'Mitglieder-' . option('welcome-werkstatt.werkstatt.easyverein.activeMembersGroupId'),
                       'pageId' => $page->id()
                     ]
                   ],
@@ -89,7 +89,7 @@ Kirby::plugin(
               },
               'submit' => function () {
                 $receiverParameter = get('receiverGroup');
-                $receiverGroup = explode(" ", $receiverParameter);
+                $receiverGroup = explode("-", $receiverParameter);
                 $testReceiver = get('testReceiver');
 
                 $kirby = kirby();
@@ -111,7 +111,7 @@ Kirby::plugin(
                   ]];
                 } else {
                   $receiverGroupId = $receiverGroup[1];
-                  
+
                   $memberReceivers = [];
                   $addressReceivers = [];
                   if ($receiverGroup[0] === 'Mitglieder') {
