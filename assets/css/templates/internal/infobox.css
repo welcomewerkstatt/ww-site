@@ -1,0 +1,65 @@
+@keyframes infobox-dot-anim {
+  0% {
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  15% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.infobox {
+  --infobox-color: #1187cc;
+  margin: 24px 0px;
+  padding: 0px;
+  border: 2px solid var(--infobox-color);
+  border-radius: 4px;
+
+  &.infobox-alert {
+    --infobox-color: #cc2211;
+  }
+
+  .infobox-title {
+    position: relative;
+    margin: 0px;
+    padding: 8px 12px;
+    background-color: var(--infobox-color);
+    color: #ffffff;
+  }
+
+  &.infobox-alert .infobox-title {
+    padding-left: 45px;
+  }
+
+  &.infobox-alert .infobox-title::before {
+    content: ' ';
+    position: absolute;
+    display: block;
+    width: 45px;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    background-color: white;
+    clip-path: circle(8px);
+    animation-name: infobox-dot-anim;
+    animation-duration: 1.2s;
+    animation-iteration-count: infinite;
+  }
+
+  .infobox-content {
+    margin: 0px;
+    padding: 8px 12px;
+    font-size: larger;
+    h2, p {
+      border: none;
+      margin-top: 8px;
+      margin-bottom: 8px;
+      font-weight: normal;
+    }
+  }
+}

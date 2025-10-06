@@ -5,6 +5,18 @@ fields:
     label: Text
     type: blocks
     pretty: true
+    fieldsets:
+      - heading
+      - text
+      - list
+      - quote
+      - infobox
+      - image
+      - gallery
+      - video
+      - code
+      - markdown
+      - line
   collapsedByDefault:
     type: toggle
     label: Collapsed by default in menu?
