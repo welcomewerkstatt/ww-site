@@ -1,0 +1,28 @@
+name: Infobox
+type: infobox
+icon: info-card
+preview: fields
+wysiwyg: true
+fields:
+  design:
+    label: 'Typ'
+    type: radio
+    options:
+      news: Aktuelles
+      info: Allgemeine Info
+    default: news
+    required: true
+  title:
+    label: Titel
+    type: text
+    required: true
+  text:
+    label: Text
+    type: textarea
+    required: true
+  date:
+    label: Datum
+    type: date
+  time:
+    label: Uhrzeit
+    type: time
