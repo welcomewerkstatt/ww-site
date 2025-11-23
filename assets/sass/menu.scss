@@ -45,6 +45,7 @@ nav {
 nav ul {
   padding: 0;
   position: relative;
+  min-height: 1lh;
 }
 
 nav .active {
@@ -73,7 +74,6 @@ nav ul li ul li {
   font-weight: normal;
   margin-left: 1em;
 }
-
 .hamburger-icon {
   background-image: url("../img/hamburger.svg");
   background-size: auto 100%;
