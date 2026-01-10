@@ -194,6 +194,7 @@ main {
   left: var(--sidebar-width);
   height: 100%;
   width: calc(100% - var(--sidebar-width));
+  align-content: flex-start;
 }
 
 .content-no-menu {
@@ -223,7 +224,7 @@ main {
   box-sizing: border-box;
   margin: 0 auto;
   padding: 45px;
-  flex: 1;
+  flex: 0 0 auto;
   width: 100%;
 }
 
@@ -324,7 +325,9 @@ button {
 
 .full-bleed-table {
   width: auto !important;
-  max-width: 100% !important;
+  max-width: 1600px !important;
+  width: 100% !important;
+  overflow: unset !important;
   grid-column: 1 / 4;
   margin: 0 auto;
 }

@@ -22,7 +22,7 @@
     <section class="markdown-body content-grid">
       <h1><a class="anchor" aria-hidden="true" style="cursor: pointer;" onclick="(() => {navigator.clipboard.writeText('https://cloud.welcome-werkstatt.de/apps/external/1/<?= str_replace("internes/","",$page->id()) ?>')})()"><span class="octicon octicon-link"></span></a><?= $page->title() ?> (<?= $items->count() ?> Gegenstände)</h1>
       <?= $page->text()->kt() ?>
-      <table class="sortable full-bleed-table">
+      <table class="sortable searchable full-bleed-table">
         <thead>
           <tr>
             <th>Nr.</th>
@@ -83,4 +83,20 @@
 </main>
 <script>
   const prvs = new Parvus();
+
+  // Preserve table width during search
+  window.addEventListener('load', () => {
+    const table = document.querySelector('.searchable');
+    if (table) {
+      // Lock the table width
+      const tableWidth = table.offsetWidth;
+      table.style.width = `${tableWidth}px`;
+
+      // Lock column widths
+      const headerCells = table.querySelectorAll('thead th');
+      headerCells.forEach(th => {
+        th.style.width = `${th.offsetWidth}px`;
+      });
+    }
+  });
 </script>

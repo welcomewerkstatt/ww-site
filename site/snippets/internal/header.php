@@ -8,10 +8,11 @@
   <?= css([
     'assets/css/templates/internal/github-markdown.css',
     'assets/css/templates/internal/parvus.min.css',
-    'assets/css/templates/internal/sortable.css',
+    'assets/css/templates/internal/sortable.min.css',
+    'assets/css/templates/internal/searchable.css',
     'assets/css/templates/internal/internal.css'
   ]) ?>
-  <?= js(['assets/js/templates/sortable.js','assets/js/templates/collapsible.js', 'assets/js/templates/parvus.min.js']) ?>
+  <?= js(['assets/js/templates/sortable.auto.min.js', 'assets/js/templates/searchable.min.js', 'assets/js/templates/collapsible.js', 'assets/js/templates/parvus.min.js']) ?>
   <title><?= $page->title() ?> – Welcome Werkstatt Interner Bereich</title>
 </head>
 
