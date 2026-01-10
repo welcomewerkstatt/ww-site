@@ -1,6 +1,3 @@
-[submodule "content"]
-	path = content
-	url = git@github.com:welcomewerkstatt/ww-content.git
 [submodule "site/plugins/meta-tags"]
 	path = site/plugins/meta-tags
 	url = git@github.com:pedroborges/kirby-meta-tags.git

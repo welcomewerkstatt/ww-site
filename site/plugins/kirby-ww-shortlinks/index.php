@@ -17,26 +17,21 @@ Kirby::plugin('preya/kirby-ww-shortlinks', [
 
           $errorRedirectTarget = $urlOptions[$kirby->option('preya.kirby-ww-shortlinks.errorRedirectUrlArrayIdx')];
 
-          $inventoryTemplate = $kirby->option('preya.kirby-ww-shortlinks.inventoryTemplate');
+          $inventoryPageTemplate = $kirby->option('preya.kirby-ww-shortlinks.inventoryPageTemplate', 'items');
 
           $host = $kirby->environment()->host();
 
           if ($host == Url::domain($shortlinkUrl)) {
 
-            $inventoryItem = $kirby->site()->pages()->template($inventoryTemplate)->first()->items()->toStructure()->findBy("invnum", $shortId);
+            $inventoryItemPage = $kirby->site()->index()->findBy('intendedTemplate', "items")->find($shortId);
 
-            if ($inventoryItem !== null) {
-              $targetPage = $inventoryItem->internalPage()->toPage();
+            $linkedItemPage = $inventoryItemPage->internalPage()->toPage();
 
-              if ($targetPage == null) {
-                go($errorRedirectTarget, 301);
-              }
-              return $targetPage;
+            if ($linkedItemPage !== null) {
+              return $linkedItemPage;
             } else {
-
-
               go($errorRedirectTarget, 301);
-            }
+            } 
           } else {
             // Find next match
             $this->next();
@@ -49,6 +44,6 @@ Kirby::plugin('preya/kirby-ww-shortlinks', [
   'options' => [
     'shortlinkUrlArrayIdx' => 1,
     'errorRedirectUrlArrayIdx' => 0,
-    'inventoryTemplate' => 'inventory'
+    'inventoryPageTemplate' => 'items'
   ]
 ]);

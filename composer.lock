@@ -320,16 +320,16 @@
         },
         {
             "name": "getkirby/cms",
-            "version": "5.1.2",
+            "version": "5.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/getkirby/kirby.git",
-                "reference": "0f916becac8a2bc824a72cdb70066ed56b50c0f4"
+                "reference": "b6fd967f0744c83dedac3f424f4cd6981bcf862e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/getkirby/kirby/zipball/0f916becac8a2bc824a72cdb70066ed56b50c0f4",
-                "reference": "0f916becac8a2bc824a72cdb70066ed56b50c0f4",
+                "url": "https://api.github.com/repos/getkirby/kirby/zipball/b6fd967f0744c83dedac3f424f4cd6981bcf862e",
+                "reference": "b6fd967f0744c83dedac3f424f4cd6981bcf862e",
                 "shasum": ""
             },
             "require": {
@@ -421,7 +421,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2025-09-30T08:56:15+00:00"
+            "time": "2025-10-21T09:15:07+00:00"
         },
         {
             "name": "getkirby/composer-installer",
@@ -1901,16 +1901,16 @@
         },
         {
             "name": "tobimori/kirby-seo",
-            "version": "2.0.0-alpha.3",
+            "version": "2.0.0-alpha.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tobimori/kirby-seo.git",
-                "reference": "3c43837e1c39693d9f22ba34cf7d0cae263e84f6"
+                "reference": "70205675438fe094d3b43e80731dee6f6b993dcc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tobimori/kirby-seo/zipball/3c43837e1c39693d9f22ba34cf7d0cae263e84f6",
-                "reference": "3c43837e1c39693d9f22ba34cf7d0cae263e84f6",
+                "url": "https://api.github.com/repos/tobimori/kirby-seo/zipball/70205675438fe094d3b43e80731dee6f6b993dcc",
+                "reference": "70205675438fe094d3b43e80731dee6f6b993dcc",
                 "shasum": ""
             },
             "require": {
@@ -1919,11 +1919,15 @@
             },
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "^3.48",
+                "getkirby/cli": "^1.8.0",
                 "getkirby/cms": "^5.0.0",
-                "spatie/schema-org": "^3.23"
+                "spatie/schema-org": "^3.23",
+                "tobimori/kirby-queues": "^1.0.0-beta.1"
             },
             "suggest": {
-                "spatie/schema-org": "Enable the Schema.org support"
+                "getkirby/cli": "Enable background processing support",
+                "spatie/schema-org": "Enable the Schema.org support",
+                "tobimori/kirby-queues": "Enable background processing support"
             },
             "type": "kirby-plugin",
             "extra": {
@@ -1944,11 +1948,11 @@
                     "email": "tobias@moeritz.io"
                 }
             ],
-            "description": "The ultimate Kirby SEO toolkit",
+            "description": "The default choice for SEO on Kirby: Implement technical SEO & Meta best practices with ease and provide an easy-to-use editor experience",
             "homepage": "https://github.com/tobimori/kirby-seo#readme",
             "support": {
                 "issues": "https://github.com/tobimori/kirby-seo/issues",
-                "source": "https://github.com/tobimori/kirby-seo/tree/2.0.0-alpha.3"
+                "source": "https://github.com/tobimori/kirby-seo/tree/2.0.0-alpha.8"
             },
             "funding": [
                 {
@@ -1956,7 +1960,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-06-24T14:33:28+00:00"
+            "time": "2025-10-28T11:41:58+00:00"
         }
     ],
     "packages-dev": [],
