@@ -30,6 +30,7 @@ tabs:
       - width: 1/1
         sections:
           inventory:
+            parent: site.find("internes")
             templates:
               - items
             type: pages
@@ -40,7 +41,7 @@ tabs:
   global:
     label: Global
     icon: cog
-    sections:
+    sections: 
       header:
         type: files
         headline: Headerbilder
